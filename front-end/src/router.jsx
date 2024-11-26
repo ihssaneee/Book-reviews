@@ -28,15 +28,20 @@ const router=createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:
+        element:(
         <ProtectedRoute>
             <Dashboard/>
         </ProtectedRoute>
+        ),
+        children:[
+            {
+                path:'genres',
+                element:<Genres />
+
+            }
+        ]
     },
-    {
-        path:'/genres',
-        element:<Genres />
-    },
+  
     
    
     

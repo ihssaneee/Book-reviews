@@ -8,6 +8,7 @@ import PeopleIcon from '@mui/icons-material/People';
 
 
 
+
 export default function AdminSidebar() {
   
   return (
@@ -29,7 +30,7 @@ export default function AdminSidebar() {
               </a>
               </div>
               <div className=" group">
-              <a href="#" className="flex items-center font-roboto  font-medium text-xl p-2 mb-1 text-white leading-6 mx-2 hover:bg-[#FFD700] hover:text-gray-950 transition duration-75 rounded-md"  >
+              <a  className="flex items-center font-roboto  font-medium text-xl p-2 mb-1 text-white leading-6 mx-2 hover:bg-[#FFD700] hover:text-gray-950 transition duration-75 rounded-md"  >
               <BookIcon fontSize='large' className="text-[#FFDB58] mr-2  group-hover:text-gray-950 tra" /> Genres
               </a>
               </div>

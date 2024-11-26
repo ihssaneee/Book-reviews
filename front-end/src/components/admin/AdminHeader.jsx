@@ -4,11 +4,12 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ModeNightOutlinedIcon from "@mui/icons-material/ModeNightOutlined";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
 import DropdownMenu from "./dropDownMenu";
+
 
 
 const AdminHeader = () => {

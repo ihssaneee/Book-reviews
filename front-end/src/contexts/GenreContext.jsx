@@ -15,6 +15,7 @@ export const GenresProvider=({children})=>{
         try{
             const response=await axiosInstance.get('/genres');
             setGenres(response.data.genres);
+            console.log(response.data.genres);
         }
         catch(error){
             console.error('could not fetch genres',error);

@@ -16,8 +16,19 @@ class GenreController extends Controller
     public function index()
     {
         //
-        $genres=Genre::all();
-        return response()->json($genres,200);
+        try{
+            $genres=Genre::all();
+            return response()->json([
+                'genres'=>$genres,
+                'message'=>"genres fetched successfuly."
+            ],200);
+        }
+        catch(\Exception $e){
+            log::error('could not fetch the genres',$e);
+            return response()->json([
+                'message'=>'error happened while fetching genres.'
+            ],500);
+        }
     }
 
     
