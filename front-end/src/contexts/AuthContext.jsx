@@ -11,6 +11,7 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [loginLoading,setLoginLoading]=useState(false);
 
     // Fetch the current user
     useEffect(() => {
@@ -31,15 +32,23 @@ const AuthProvider = ({ children }) => {
 
     // Login function
     const login = async (credentials) => {
+        setLoginLoading(true);
         try {
             const response = await axiosInstance.post('/login', credentials);
             setUser(response.data.user);
             console.log("User state updated:", response.data.user);
+           
+            
             return response.data.user;
         } catch (error) {
             console.error('Login failed:', error);
+            
             throw error;
         }
+        finally{
+            setLoginLoading(false);
+        }
+        
     };
 
     // Logout function
@@ -57,6 +66,7 @@ const AuthProvider = ({ children }) => {
         loading,
         login,
         logout,
+        loginLoading,
     };
 
 

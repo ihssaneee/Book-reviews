@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import React from "react";
 import { useNavigate} from 'react-router-dom';
-import { axiosInstance } from "../api/axiosConfig";
 import { useAuth } from "../contexts/AuthContext";
+import {ThreeDots} from 'react-loader-spinner';
 
 
 export default function Login() {
   const navigate=useNavigate();
-  const {login}=useAuth();
+  const {login,loginLoading}=useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const[error,setError]=useState(null);
-    const validateForm=()=>{
+    
+        const validateForm=()=>{
       if (!email ||!password){
         setError('all fields are required !');
         return false;
@@ -23,11 +24,13 @@ export default function Login() {
     const handleSubmit = async (e) => {
       
         e.preventDefault();
+        
         if (!validateForm()){
           return;
         };
         try {
          const loggedUser=  await login({email,password});
+        
             if (loggedUser.role==='admin'){
               navigate('/dashboard');
 
@@ -110,6 +113,18 @@ export default function Login() {
                       error:
                       <></>}
                   </div>
+                 {loginLoading?<div className="flex items-center justify-center m-4">
+                  <ThreeDots
+                      visible={true}
+                      height="80"
+                      width="80"
+                      color="#4f46e5"
+                      radius="9"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      />
+                 </div>:""}
                 </div>
               </form>
     
