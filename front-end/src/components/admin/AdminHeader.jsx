@@ -12,14 +12,21 @@ import DropdownMenu from "./dropDownMenu";
 
 
 
-const AdminHeader = () => {
+const AdminHeader = ({toggle}) => {
    const {loading,user,logout}=useAuth();
    const navigate=useNavigate();
   const [isVisible,setIsVisible]=useState(true);
+  const[istoggled,setIsToglled]=useState(false);
+  const handleToggleClick=()=>{
+    setIsToglled(!istoggled);
+    toggle(istoggled);
+  }
   const handleClick=()=>{
     setIsVisible(!isVisible);
     
+    
   }
+
   const handleLogout=async()=>{
     try{
             await logout();
@@ -32,9 +39,10 @@ const AdminHeader = () => {
   
 
     return (
-        <div className="flex flex-1 ml-64 h-[5rem] border items-center shadow justify-between ">
-            <div className="flex">
+        <div className={`flex flex-1  h-[5rem] border items-center shadow justify-between ` }>
+            <div onClick={handleToggleClick} className="flex">
                 <ChevronLeftIcon
+                    
                     fontSize="large"
                     className="cursor-pointer text-gray-600 mx-2 "
                 />

@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import AdminSidebar from "../components/admin/AdminSidebar";
 import AdminHeader from "../components/admin/AdminHeader";
-import Genres from "../components/Genres/GenresList";
 import { Outlet } from "react-router-dom";
 
 export default function Dashboard(){
+    const [toggled,setToggled]=useState(false);
+    const toggle=(e)=>{
+        setToggled(e);
+    }
+
     return (
         <div className="flex h-screen" >
-            <aside className="fixed top-0 left-0 h-screen w-64 bg-[#000035] border rounded-none ">
-                <AdminSidebar/>
+            <aside className="">
+                <AdminSidebar toggled={toggled} />
             </aside>
             <main className="flex-1 flex flex-col ">
-                <header >
-                    <AdminHeader className="fixed"/>
+                <header className={`${toggled? "ml-20": "ml-64"}`} >
+                    <AdminHeader toggle={toggle}  className="fixed"/>
                 </header>
-                <section className="ml-[17rem] mr-10">
+                <section className={`${toggled?"ml-24":"ml-[17rem]"} mr-10`}>
                     <Outlet />
                     
                 </section>
