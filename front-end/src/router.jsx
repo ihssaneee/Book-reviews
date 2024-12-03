@@ -7,6 +7,7 @@ import App from './App';
 import Dashboard from './admin/dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import Genres from './components/Genres/GenresList';
+import Users from './components/Users/UsersList';
 
 
 const router=createBrowserRouter([
@@ -36,9 +37,10 @@ const router=createBrowserRouter([
         children:[
             {
                 path:'genres',
-                element:<Genres />
+                element:<Users />
 
             }
+            
         ]
     },
   

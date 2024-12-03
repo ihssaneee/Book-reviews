@@ -11,6 +11,52 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 
+/**
+ * Genres component that displays a list of genres with filtering options.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Genres />
+ * )
+ *
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @description
+ * This component fetches and displays a list of genres. It includes options to filter the genres by name and ID.
+ * It also provides a search input and buttons to add a new genre, filter genres, and perform actions on each genre.
+ *
+ * @function
+ * @name Genres
+ *
+ * @hook
+ * @name useGenres
+ * @description Custom hook to fetch genres data.
+ *
+ * @state {boolean} isVisible - State to toggle the visibility of the filter options.
+ * @state {string} selectedValue - State to store the selected genre name for filtering.
+ * @state {string} selectedId - State to store the selected genre ID for filtering.
+ *
+ * @function
+ * @name handleClick
+ * @description Toggles the visibility of the filter options.
+ *
+ * @function
+ * @name handleChange
+ * @description Updates the selected genre name for filtering.
+ * @param {Object} e - The event object.
+ *
+ * @function
+ * @name handleIdChange
+ * @description Updates the selected genre ID for filtering.
+ * @param {Object} e - The event object.
+ *
+ * @constant
+ * @name filteredData
+ * @description Filters the genres based on the selected name and ID.
+ *
+ * @returns {JSX.Element} The rendered component.
+ */
 const Genres = () => {
     const { genres, loading } = useGenres();
     const [isVisible, setIsVisible] = useState(false);

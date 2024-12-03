@@ -16,7 +16,7 @@ export default function AdminSidebar({toggled}) {
                         src={`${!toggled?"/images/ReadNest2.png":"/images/miniLogo.png"}`}
                         alt="books Logo"
                         id="logo"
-                        className={`${!toggled? "max-w-40 ": "max-w-16  "} block   mt-8 `} 
+                        className={`${!toggled? "max-w-40 ": "max-w-14  "} block   mt-8 `} 
                         />
             </div>
             <nav className="flex flex-col mt-14  ">
@@ -36,8 +36,8 @@ export default function AdminSidebar({toggled}) {
                
                 />
                 <SidebarLink 
-                to="people"
-                label="users"
+                to="genres"
+                label="genres"
                 icon={<PeopleIcon fontSize="medium"/>}
                 toggled={toggled}
                

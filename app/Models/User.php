@@ -22,7 +22,16 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'picture',
     ];
+    public function getPictureAttribute($value){
+        if ($value){
+            return asset('storage/'.$value);
+        }
+        else{
+            return asset('storage/Default_pfp.jpg');
+        }
+    }
     public function reviews(){
         return $this->hasMany(Review::class);
     }

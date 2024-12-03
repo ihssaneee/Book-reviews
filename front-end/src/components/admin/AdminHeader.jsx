@@ -39,33 +39,33 @@ const AdminHeader = ({toggle}) => {
   
 
     return (
-        <div className={`flex flex-1  h-[5rem] border items-center shadow justify-between ` }>
-            <div onClick={handleToggleClick} className="flex">
+        <div className={`flex flex-1  h-[5rem] border items-center  justify-between ` }>
+            <div  className="flex">
                 <ChevronLeftIcon
-                    
+                    onClick={handleToggleClick}
                     fontSize="large"
-                    className="cursor-pointer text-gray-600 mx-2 "
+                    className="cursor-pointer  text-gray-600 mx-2 "
                 />
-                <div className="flex items-center rounded-sm border bg-[#F3F3F9] h-9 px-4">
-                    <SearchIcon fontSize="small" className="mx-1" />
+                <div className="flex items-center rounded-sm border bg-white h-9 px-4">
+                    <SearchIcon fontSize="small"  className="mx-1 text-slate-600" />
                     <input
                         type="search"
                         placeholder="Search..."
-                        className="p-1 bg-[#F3F3F9] border-none focus:ring-0"
+                        className="p-1 bg-white border-none focus:ring-0"
                     />
                 </div>
             </div>
-            <div className="flex  flex-1 justify-end  items-stretch gap-6  ">
-                <div className="flex items-center">
+            <div className="flex  flex-1 justify-end  items-center  gap-3  ">
+                <div className="flex justify-center items-center h-11 w-11 bg-white border rounded-full hover:bg-opacity-35">
                 <ModeNightOutlinedIcon
-                 fontSize="medium"
-                    className="text-[#878A99] cursor-pointer"
+                 fontSize="large"
+                    className="text-[#878A99] cursor-pointer   p-2 "
                 />
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center justify-center border rounded-full w-11 h-11 bg-white hover:bg-opacity-35">
                 <NotificationsNoneIcon
-                    fontSize="medium"
-                    className="text-[#878A99] cursor-pointer"
+                    fontSize="large"
+                    className="text-[#878A99] cursor-pointer p-1.5"
                 />
                 </div>
                 <div className=" relative  w-22 mr-10 cursor-pointer " onClick={handleClick}>

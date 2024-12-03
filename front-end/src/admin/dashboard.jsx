@@ -14,7 +14,7 @@ export default function Dashboard(){
             <aside className="">
                 <AdminSidebar toggled={toggled} />
             </aside>
-            <main className="flex-1 flex flex-col ">
+            <main className="flex-1 flex flex-col bg-[#F4F4F4] ">
                 <header className={`${toggled? "ml-20": "ml-64"}`} >
                     <AdminHeader toggle={toggle}  className="fixed"/>
                 </header>
