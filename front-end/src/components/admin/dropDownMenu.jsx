@@ -1,40 +1,51 @@
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useAuth } from "../../contexts/AuthContext";
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 const DropdownMenu = ({handleLogout,isVisible}) => {
+    const {user}=useAuth();
     return (
-        <div
-            id="dropdown"
-            className={`absolute z-10  ${
-                isVisible ? "hidden" : "flex"
-            } items-center   gap-6 flex-col  h-40 top-16   bg-white border shadow w-[8rem]  p-4 `}
-        >
-            <a href="#" className="flex items-center text-sm w-full  ">
-                <AccountCircleIcon
-                    fontSize="small"
-                    className="mr-2 text-[#878A99] font-Roboto  "
+        <>
+            <div className="flex justify-center items-center gap-2   border-b p-2  ">
+                <span className="max-w-16 max-h-16 flex items-center justify-center ">
+                    <img src={user.picture} 
+                    alt="profile picture"
+                    className="max-w-14 max-h-14 object-cover rounded-full"
+                    />
+                </span>
+                <span className="flex flex-col justify-center  items-start font-Roboto  text-zinc-600 gap-1">
+                    <p className="font-bold font-Roboto text-sm">{user.name}</p>
+                    <p className="font-Roboto font-normal text-sm">{user.email}</p>
+                </span>
+            </div>
+            <a href="#" className="flex items-center text-base w-full text-zinc-600 font-Roboto ">
+                <PersonOutlineOutlinedIcon
+                    fontSize="medium"
+                    className="mr-2 text-[#878A99]   "
                 />
                 Profile
             </a>
-            <a href="#" className="flex items-center text-sm w-full  ">
-                <SettingsIcon
-                    fontSize="small"
+            <a href="#" className="flex items-center text-base w-full  font-Roboto text-zinc-600">
+                <SettingsOutlinedIcon
+                    fontSize="medium"
                     className="mr-2 text-[#878A99] font-Roboto"
                 />
                 Settings
             </a>
             <button
                 onClick={handleLogout}
-                className="flex items-center text-sm w-full "
+                className="flex items-center text-base w-full font-Roboto text-zinc-600"
             >
                 <LogoutIcon
-                    fontSize="small"
+                    fontSize="medium"
                     className=" mr-2 text-[#878A99] font-Roboto"
                 />
                 Log out
             </button>
-        </div>
+        </>
     );
 };
 export default DropdownMenu;
