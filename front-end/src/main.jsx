@@ -7,13 +7,16 @@ import App from './App.jsx';
 import { initializeCsrfProtection } from './api/axiosConfig.js';
 import AuthProvider from './contexts/AuthContext.jsx';
 import { GenresProvider } from './contexts/GenreContext.jsx';
+import { UsersProvider } from './contexts/UserContext.jsx'
 
 initializeCsrfProtection();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
      <AuthProvider >
        <GenresProvider>
-          <RouterProvider router={router} />
+          <UsersProvider>
+            <RouterProvider router={router} />
+          </UsersProvider>
         </GenresProvider>
       </AuthProvider>
    

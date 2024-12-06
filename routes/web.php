@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Middleware\Admin;
-
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\GenreController;
 
 
@@ -29,6 +29,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
 Route::middleware(['auth:sanctum','Admin'])->group(function(){
     Route::resource('books',BookController::class);
     Route::resource('genres',GenreController::class);
+    Route::resource('users',UserController::class);
     
 });
 

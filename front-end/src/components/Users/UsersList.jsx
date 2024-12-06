@@ -11,6 +11,7 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 import ReusableTable from "../ReusableTable";
+import { useUsers } from "../../contexts/UserContext";
 
 /**
  * Genres component that displays a list of genres with filtering options.
@@ -95,13 +96,13 @@ import ReusableTable from "../ReusableTable";
  */
 const Users = () => {
     // Custom hook to fetch genres and loading state
-    const { genres, loading } = useGenres();
+    const { users, loading } = useUsers();
 
     // State to manage visibility of the filter section
     const [isVisible, setIsVisible] = useState(false);
 
     // State to manage selected genre value
-    const [selectedValue, setSelectedValue] = useState("Choose Genre");
+    const [selectedValue, setSelectedValue] = useState("Choose user");
 
     // State to manage selected genre ID
     const [selectedId, setSelectedId] = useState("Choose ID");
@@ -112,21 +113,24 @@ const Users = () => {
     };
 
     // Filter genres based on selected value and ID
-    const filteredData = genres.filter(genre => {
-        if (selectedValue !== "Choose Genre" && genre.name !== selectedValue) {
+    const filteredData = users.filter(user => {
+        if (selectedValue !== "Choose user" && user.name !== selectedValue) {
             return false;
         }
-        if (selectedId != "Choose ID" && genre.id != selectedId) {
+        if (selectedId != "Choose ID" && user.id != Number(selectedId)){
             return false;
         }
-        return true;
+        else{
+            return true};
     });
 
     // Table columns configuration
     const columns = [
         { key: 'id', header: "ID", className: "pl-2 py- bg-[#EEF1F4]" },
-        { key: 'name', header: "NAME", className: "pl-2 text-left" },
-        { key: 'description', header: "DESCRIPTION", className: "pl-2 py- bg-[#EEF1F4]" },
+        { key: 'user', header: "", className: "pl-2 text-left" },
+        { key: 'email', header: "EMAIL", className: "pl-2 py- bg-[#EEF1F4]" },
+        {key:'role',header:"ROLE"},
+        
         {
             key: "actions",
             header: "ACTIONS",
@@ -150,7 +154,7 @@ const Users = () => {
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
-                    <a className="">New Genre</a>
+                    <a className="">New User</a>
                 </div>
                 <div className="flex items-center justify-center">
                     <div
@@ -188,10 +192,10 @@ const Users = () => {
                         value={selectedValue}
                         onChange={handleChange}
                     >
-                        <option value="Choose Genre">Choose Genre</option>
-                        {genres.map((genre) => (
-                            <option key={genre.id} value={genre.name}>
-                                {genre.name}
+                        <option value="Choose user">Choose User</option>
+                        {users.map((user) => (
+                            <option key={user.id} value={user.name}>
+                                {user.name}
                             </option>
                         ))}
                     </select>
@@ -203,8 +207,8 @@ const Users = () => {
                         className="focus:ring-0 focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
                     >
                         <option value="Choose ID">Choose ID</option>
-                        {genres.map(genre => (
-                            <option key={genre.id} value={genre.id}>{genre.id}</option>
+                        {users.map(user => (
+                            <option key={user.id} value={user.id}>{user.id}</option>
                         ))}
                     </select>
                 </div>

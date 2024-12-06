@@ -28,10 +28,10 @@ export const GenresProvider=({children})=>{
         fetchGenres();
     }
     ,[])
-    const addGenre=async({newGenre})=>{
+    const addGenre=async(newGenre)=>{
         try{
         const response= await axiosInstance.post('/genres',newGenre);
-        setGenres(response.data.genres)
+        setGenres([...genres,response.data.genre]);
         console.log('genre added successfuly!');
         }
         catch(error){
@@ -40,24 +40,23 @@ export const GenresProvider=({children})=>{
     };
     const deleteGenre=async(genreId)=>{
         try{
-            await axiosInstance.delete('/genres',genreId);
+            const response= await axiosInstance.delete(`/genres/${genreId}`);
+            setGenres(genres.filter((genre)=>genre.id!=genreId));
             console.log('genre deleted successfuly');
         }
         catch(error){
-            console.error("error happened while deleting the genre");
+            console.error("error happened while deleting the genre",error);
 
         }
     };
-    const editGenre=async({updatedData,genreId})=>{
+    const editGenre=async(genreId,updatedData)=>{
         try{
-            await axiosInstance.put('/genres',{
-                genreId,
-                updatedData
-            });
+           const response= await axiosInstance.put(`/genres/${genreId}`,updatedData);
+            setGenres(genres.map((genre)=>genreId===genreId?response.data.genre:genre));
             console.log('gerne updated successfuly!');
         }
         catch(error){
-            console.error('error happened while updating the genre.');
+            console.error('error happened while updating the genre.',error);
         }
 
     };

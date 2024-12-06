@@ -19,7 +19,8 @@ export default function AdminSidebar({toggled}) {
                         className={`${!toggled? "max-w-40 ": "max-w-14  "} block   mt-8 `} 
                         />
             </div>
-            <nav className="flex flex-col mt-14  ">
+            <nav className={`flex flex-col mt-14 +
+                ${toggled?"items-center justify-center":""}`}>
             <SidebarLink 
                 to="dashboard"
                 label="Dashboard"
@@ -36,8 +37,8 @@ export default function AdminSidebar({toggled}) {
                
                 />
                 <SidebarLink 
-                to="genres"
-                label="genres"
+                to="users"
+                label="users"
                 icon={<PeopleIcon fontSize="medium"/>}
                 toggled={toggled}
                

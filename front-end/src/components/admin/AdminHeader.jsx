@@ -34,7 +34,7 @@ const AdminHeader = ({ toggle }) => {
 
     return (
         <div
-            className={`flex flex-1  h-[5rem] border items-center  justify-between `}
+            className={`flex flex-1  h-[5rem] border bg-white items-center  justify-between `}
         >
             <div className="flex">
                 <ChevronLeftIcon

@@ -37,8 +37,12 @@ const router=createBrowserRouter([
         children:[
             {
                 path:'genres',
-                element:<Users />
+                element:<Genres />
 
+            },
+            {
+                path:'users',
+                element:<Users />
             }
             
         ]

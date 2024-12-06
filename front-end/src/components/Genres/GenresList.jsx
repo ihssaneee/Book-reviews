@@ -10,6 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
+import ReusableTable from "../ReusableTable";
 
 /**
  * Genres component that displays a list of genres with filtering options.
@@ -57,42 +58,97 @@ import CloseIcon from "@mui/icons-material/Close";
  *
  * @returns {JSX.Element} The rendered component.
  */
+/**
+ * Users component renders a list of genres with filtering options.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Users />
+ * )
+ * 
+ * @returns {JSX.Element} The rendered component.
+ * 
+ * @section State
+ * @description Manages the component's state including visibility of filters, selected genre, and selected ID.
+ * 
+ * @section Handlers
+ * @description Contains event handlers for toggling filter visibility, changing selected genre, and changing selected ID.
+ * 
+ * @section Filtering
+ * @description Filters the genres based on selected genre name and ID.
+ * 
+ * @section Columns
+ * @description Defines the columns for the reusable table displaying the genres.
+ * 
+ * @section Render
+ * @description Renders the component including the filter options, search input, and the table of genres.
+ */
+/**
+ * Users component that displays a list of genres with filtering options.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Users />
+ * )
+ */
 const Genres = () => {
+    // Custom hook to fetch genres and loading state
     const { genres, loading } = useGenres();
+
+    // State to manage visibility of the filter section
     const [isVisible, setIsVisible] = useState(false);
+
+    // State to manage selected genre value
     const [selectedValue, setSelectedValue] = useState("Choose Genre");
-    const [selectedId,setSelectedId]=useState("Choose ID");
+
+    // State to manage selected genre ID
+    const [selectedId, setSelectedId] = useState("Choose ID");
+
+    // Toggle visibility of the filter section
     const handleClick = () => {
         setIsVisible(!isVisible);
     };
-    const filteredData =genres.filter(genre=>{
-           if (selectedValue !== "Choose Genre" && genre.name !== selectedValue){
-                return false;
-           }
-           if (selectedId!="Choose ID" && genre.id!=selectedId){
-            return false;
-           }
-           return true;
-           
-          
-        
-            
-    })
 
+    // Filter genres based on selected value and ID
+    const filteredData = genres.filter(genre => {
+        if (selectedValue !== "Choose Genre" && genre.name !== selectedValue) {
+            return false;
+        }
+        if (selectedId != "Choose ID" && genre.id != selectedId) {
+            return false;
+        }
+        return true;
+    });
+
+    // Table columns configuration
+    const columns = [
+        { key: 'id', header: "ID", className: "pl-2 py- bg-[#EEF1F4]" },
+        { key: 'name', header: "NAME", className: "pl-2 text-left" },
+        { key: 'description', header: "DESCRIPTION", className: "pl-2 py- bg-[#EEF1F4]" },
+        {
+            key: "actions",
+            header: "ACTIONS",
+            className: "pl-2 text-left",
+        }
+    ];
+
+    // Handle change in selected genre value
     const handleChange = (e) => {
         setSelectedValue(e.target.value);
-        
-        
     };
-    const handleIdChange=(e)=>{
-        setSelectedId(e.target.value);
-    }
 
+    // Handle change in selected genre ID
+    const handleIdChange = (e) => {
+        setSelectedId(e.target.value);
+    };
 
     return (
-        <div className="flex flex-col border mt-4 ">
+        <div className="flex flex-col bg-white border mt-4">
+            {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
-                <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white ">
+                <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
                     <a className="">New Genre</a>
                 </div>
@@ -104,123 +160,57 @@ const Genres = () => {
                         {!isVisible ? (
                             <FilterAltIcon
                                 fontSize="large"
-                                className=" m-1 p-1.5"
+                                className="m-1 p-1.5"
                             />
                         ) : (
                             <CloseIcon
                                 fontSize="large"
-                                className=" m-1 p-1.5"
+                                className="m-1 p-1.5"
                             />
                         )}
                     </div>
                     <div className="flex rounded shadow items-center justify-center border m-4">
                         <input
                             type="search"
-                            className="border-none  focus:ring-0"
+                            className="border-none focus:ring-0"
                         ></input>
                         <SearchIcon />
                     </div>
                 </div>
             </div>
+            {/* Filter section */}
             <div
-                className={`overflow-hidden flex m-3 gap-4 transition-max-height duration-300 ease-in-out  ${
-                    isVisible ? "max-h-16" : "max-h-0  "
-                }`}
+                className={`overflow-hidden flex m-3 gap-4 transition-max-height duration-300 ease-in-out ${isVisible ? "max-h-16" : "max-h-0"}`}
             >
                 <div className="">
                     <select
-                        className="focus:outline-none focus:ring-0 focus:border-gray-500 font-Roboto "
+                        className="focus:ring-0 focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
                         value={selectedValue}
                         onChange={handleChange}
                     >
                         <option value="Choose Genre">Choose Genre</option>
                         {genres.map((genre) => (
-                            <option  key={genre.id} value={genre.name}>
+                            <option key={genre.id} value={genre.name}>
                                 {genre.name}
                             </option>
                         ))}
                     </select>
                 </div>
-                <div className=" ">
-                    <select value={selectedId} onChange={handleIdChange} className="focus:border-gray-700 focus:ring-0 font-Roboto ">
+                <div className="">
+                    <select
+                        value={selectedId}
+                        onChange={handleIdChange}
+                        className="focus:ring-0 focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
+                    >
                         <option value="Choose ID">Choose ID</option>
-                        {genres.map(genre=>(
+                        {genres.map(genre => (
                             <option key={genre.id} value={genre.id}>{genre.id}</option>
-                        )
-
-                        )}
+                        ))}
                     </select>
                 </div>
             </div>
-            <table className="border  table-auto max-w-full">
-                <thead>
-                    <tr className="text-left border bg-[#F3F6F9] font-Roboto  text-sm shadow-sm">
-                        <th scope="col" className="pl-2 py-   bg-[#EEF1F4] ">
-                            ID
-                        </th>
-                        <th className=" pl-2  text-left ">Name</th>
-                        <th className="pl-2   p-2 text-left  bg-[#EEF1F4]">
-                            
-                            Description
-                        </th>
-                        <th className=" pl-2  text-left  ">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {loading ? (
-                        <tr>
-                            <RotatingLines
-                                visible={true}
-                                height="96"
-                                width="96"
-                                color="grey"
-                                strokeWidth="5"
-                                animationDuration="0.75"
-                                ariaLabel="rotating-lines-loading"
-                            />
-                        </tr>
-                    ) : (
-                        filteredData.map((genre) => (
-                            <tr className="border font-Roboto  " key={genre.id}>
-                                <td className=" pl-2  py-4 bg-[#FBFBFB]">
-                                    {genre.id}
-                                </td>
-                                <td className=" pl-2 py-4">{genre.name}</td>
-                                <td className=" pl-2 py-4 bg-[#FBFBFB] ">
-                                    {genre.description}
-                                </td>
-                                <td className=" flex items-center justify-center py-4 gap-2  ">
-                                    <div className="text-blue-900">
-                                        <VisibilityOutlinedIcon
-                                            data-tooltip-content="View"
-                                            data-tooltip-id="myTooltip"
-                                            fontSize="small"
-                                        />
-                                        <Tooltip id="myTooltip" />
-                                    </div>
-                                    <div className=" text-sm  bg-white text-gray-500 cursor-pointer ">
-                                        <ModeEditOutlinedIcon
-                                            data-tooltip-content="Edit"
-                                            data-tooltip-id="myTooltip"
-                                            fontSize="small"
-                                            className=""
-                                        />
-                                        <Tooltip id="myTooltip" />
-                                    </div>
-                                    <div className="  text-red-500 cursor-pointer   hover: hover:  ">
-                                        <DeleteOutlineOutlinedIcon
-                                            data-tooltip-content="delete"
-                                            data-tooltip-id="myTooltip"
-                                            fontSize="small"
-                                        />
-                                        <Tooltip id="myTooltip" />
-                                    </div>
-                                </td>
-                            </tr>
-                        ))
-                    )}
-                </tbody>
-            </table>
+            {/* Table displaying filtered genres */}
+            <ReusableTable columns={columns} data={filteredData} />
         </div>
     );
 };
