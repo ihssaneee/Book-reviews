@@ -31,7 +31,7 @@ class UserController extends Controller
             $user->delete();
             return response()->json([
                 'message'=>'User deleted successfuly.',
-                'data'=>$user,
+                'user'=>$user,
             ],200);
         }
         catch(\Exception $e){
@@ -54,7 +54,7 @@ class UserController extends Controller
                 ]);
                 return response()->json([
                     'message'=>'user created successfuly',
-                    'data'=>$user
+                    'user'=>$user,
 
                 ],201);
 
@@ -81,7 +81,7 @@ class UserController extends Controller
             ]);
             return response()->json([
                 'message'=>'data updated successfuly',
-                'data'=>$user,
+                'user'=>$user,
 
             ],200);
            
@@ -95,7 +95,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         return response()->json([
-            'data' => $user,
+            'user' => $user,
         ]);
     }
 

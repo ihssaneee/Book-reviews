@@ -102,7 +102,7 @@ const Users = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     // State to manage selected genre value
-    const [selectedValue, setSelectedValue] = useState("Choose user");
+    const [searchedValue, setSearchedValue] = useState("");
 
     // State to manage selected genre ID
     const [selectedId, setSelectedId] = useState("Choose ID");
@@ -112,22 +112,36 @@ const Users = () => {
         setIsVisible(!isVisible);
     };
 
+    
+
     // Filter genres based on selected value and ID
     const filteredData = users.filter(user => {
-        if (selectedValue !== "Choose user" && user.name !== selectedValue) {
+        const query = searchedValue.toLowerCase();
+    
+        // Check if any value in the user object matches the search query
+        const matchesSearch = Object.values(user).some(value =>
+            value!=null && value.toString().toLowerCase().includes(query)
+        );
+    
+        // Filter out users that don't match the search query if a search value exists
+        if (searchedValue.length !== 0 && !matchesSearch) {
             return false;
         }
-        if (selectedId != "Choose ID" && user.id != Number(selectedId)){
+    
+        // Filter out users that don't match the selected ID if one is specified
+        if (selectedId !== "Choose ID" && user.id !== Number(selectedId)) {
             return false;
         }
-        else{
-            return true};
+    
+        // Include the user if none of the conditions exclude them
+        return true;
     });
+    
 
     // Table columns configuration
     const columns = [
         { key: 'id', header: "ID", className: "pl-2 py- bg-[#EEF1F4]" },
-        { key: 'user', header: "", className: "pl-2 text-left" },
+        { key: 'user', header: "USER", className: "pr- text-left" },
         { key: 'email', header: "EMAIL", className: "pl-2 py- bg-[#EEF1F4]" },
         {key:'role',header:"ROLE"},
         
@@ -140,7 +154,7 @@ const Users = () => {
 
     // Handle change in selected genre value
     const handleChange = (e) => {
-        setSelectedValue(e.target.value);
+        setSearchedValue(e.target.value);
     };
 
     // Handle change in selected genre ID
@@ -187,18 +201,7 @@ const Users = () => {
                 className={`overflow-hidden flex m-3 gap-4 transition-max-height duration-300 ease-in-out ${isVisible ? "max-h-16" : "max-h-0"}`}
             >
                 <div className="">
-                    <select
-                        className="focus:ring-0 focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
-                        value={selectedValue}
-                        onChange={handleChange}
-                    >
-                        <option value="Choose user">Choose User</option>
-                        {users.map((user) => (
-                            <option key={user.id} value={user.name}>
-                                {user.name}
-                            </option>
-                        ))}
-                    </select>
+                   <input type="text"  onChange={handleChange} placeholder="Search User"/>
                 </div>
                 <div className="">
                     <select

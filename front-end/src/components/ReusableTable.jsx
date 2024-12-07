@@ -32,8 +32,8 @@ const ReusableTable = ({columns, data}) => {
                         {columns.map(column=>(
                             <td className=" pl-1  py-4 text-zinc-500" key={`${column.key}-${item.id}`} >
                                 {column.key==="user"?
-                               <div className="flex items-center justify-start gap-2 ">
-                                <img src={item.picture} alt='profile picture' className="w-10 h-10 object-cover " />
+                               <div className="flex items-center justify-start gap-3  ">
+                                <img src={item.picture} alt='profile picture' className="w-11 h-11 object-cover " />
                                 <span className="font-bold">{item.name}</span>
                                </div>:column.key==="actions"?(
                                 <div className=" flex  gap-2 py-2">

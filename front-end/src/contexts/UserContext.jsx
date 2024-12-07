@@ -16,6 +16,7 @@ export const UsersProvider=({children})=>{
         try {
             const response = await axiosInstance.get('/users');
             setUsers(response.data.users);
+            console.log('data fetched successfuly',users)
         } catch (error) {
             console.error("error couldn't fetch users!", error);
         } finally {

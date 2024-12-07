@@ -104,7 +104,8 @@ class BookController extends Controller
             }
             $book->update($updatedData);
                 return response()->json([
-                    'message'=>'Book updated successfully'
+                    'message'=>'Book updated successfully',
+                    'data'=>$book,
                 ],200);  
         }
       
@@ -125,7 +126,7 @@ class BookController extends Controller
         try{
             $book->delete();
             return response()->json([
-                'message'=>'book deleted successfuly'
+                'message'=>'book deleted successfuly',
             ],200);
         }
         catch(\Exception $e){
