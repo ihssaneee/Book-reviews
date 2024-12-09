@@ -1,13 +1,16 @@
 import React,{useState,useEffect} from "react";
 import { useContext,createContext } from "react";
 import { axiosInstance } from "../api/axiosConfig";
+import { useAuth } from "./AuthContext";
 
 
 const UsersContext=createContext();
+
 export const useUsers=() =>{
     return useContext(UsersContext);
 }
 export const UsersProvider=({children})=>{
+    const {user}=useAuth();
     const [users,setUsers]=useState([]);
     const[loading,setLoading]=useState(false);
 
@@ -25,8 +28,10 @@ export const UsersProvider=({children})=>{
     };
 
     useEffect(() => {
+        if (user){
         fetchUsers();
-    }, []);
+        }
+    }, [user]);
     const addUser=async(newUser) =>{
         try{
             const response=await axiosInstance.post('/users',newUser);

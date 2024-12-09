@@ -7,7 +7,8 @@ import App from './App.jsx';
 import { initializeCsrfProtection } from './api/axiosConfig.js';
 import AuthProvider from './contexts/AuthContext.jsx';
 import { GenresProvider } from './contexts/GenreContext.jsx';
-import { UsersProvider } from './contexts/UserContext.jsx'
+import { UsersProvider } from './contexts/UserContext.jsx';
+import { BookProvider } from './contexts/BookContext.jsx'
 
 initializeCsrfProtection();
 createRoot(document.getElementById('root')).render(
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')).render(
      <AuthProvider >
        <GenresProvider>
           <UsersProvider>
+            <BookProvider>
             <RouterProvider router={router} />
+            </ BookProvider>
           </UsersProvider>
         </GenresProvider>
       </AuthProvider>

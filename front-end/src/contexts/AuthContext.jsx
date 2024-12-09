@@ -11,6 +11,7 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isAuthenticated,setIsAuthenitcated]=useState(false);
     const [loginLoading,setLoginLoading]=useState(false);
 
     // Fetch the current user
@@ -36,6 +37,7 @@ const AuthProvider = ({ children }) => {
         try {
             const response = await axiosInstance.post('/login', credentials);
             setUser(response.data.user);
+            setIsAuthenitcated(true);
             console.log("User state updated:", response.data.user);
            
             
@@ -56,6 +58,7 @@ const AuthProvider = ({ children }) => {
         try {
             await axiosInstance.post('/logout');
             setUser(null);
+            setIsAuthenitcated(false);
         } catch (error) {
             console.error('Logout error:', error);
         }

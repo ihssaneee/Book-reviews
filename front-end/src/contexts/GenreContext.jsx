@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { createContext,useContext } from "react";
 import { axiosInstance } from "../api/axiosConfig";
+import { useAuth } from "./AuthContext";
 
 const GenresContext=createContext();
 
@@ -10,6 +11,7 @@ export const useGenres=()=>{
 
 export const GenresProvider=({children})=>{
     const[genres,setGenres]=useState([]);
+    const {user}=useAuth();
     const[loading,setLoading]=useState(true);
     const fetchGenres=async()=>{
         try{
@@ -25,9 +27,11 @@ export const GenresProvider=({children})=>{
         }
     };
     useEffect(()=>{
+        if (user){
         fetchGenres();
+        }
     }
-    ,[])
+    ,[user])
     const addGenre=async(newGenre)=>{
         try{
         const response= await axiosInstance.post('/genres',newGenre);

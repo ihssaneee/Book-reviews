@@ -18,7 +18,7 @@ class BookController extends Controller
         try {
             $books=Book::all();
             return response()->json([
-                'data'=>$books,
+                'books'=>$books,
                 'message'=>'books fetched successfuly',
             ],200);
         }
@@ -57,7 +57,7 @@ class BookController extends Controller
             $book=Book::create($validatedData);
             return response()->json([
                 'message'=>'book created successfuly',
-                "data"=>$book
+                "book"=>$book
             ],201);
         }
         catch(\Exception $e){
@@ -75,7 +75,7 @@ class BookController extends Controller
     {
         //
         return response()->json([
-            'data'=>$book,
+            'book'=>$book,
             'message'=>"book fetched successfuly"
         ]);
     }
@@ -105,7 +105,7 @@ class BookController extends Controller
             $book->update($updatedData);
                 return response()->json([
                     'message'=>'Book updated successfully',
-                    'data'=>$book,
+                    'book'=>$book,
                 ],200);  
         }
       

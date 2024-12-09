@@ -8,6 +8,7 @@ import Dashboard from './admin/dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import Genres from './components/Genres/GenresList';
 import Users from './components/Users/UsersList';
+import Books from './components/Books/BooksList';
 
 
 const router=createBrowserRouter([
@@ -43,6 +44,10 @@ const router=createBrowserRouter([
             {
                 path:'users',
                 element:<Users />
+            },
+            {
+                path:'books',
+                element:<Books />
             }
             
         ]
