@@ -11,6 +11,7 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 import ReusableTable from "../ReusableTable";
+import { Link,Outlet } from "react-router-dom";
 
 /**
  * Genres component that displays a list of genres with filtering options.
@@ -150,7 +151,7 @@ const Genres = () => {
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
-                    <a className="">New Genre</a>
+                    <Link to='AddGenre' className="">New Genre</Link>
                 </div>
                 <div className="flex items-center justify-center">
                     <div
@@ -209,8 +210,20 @@ const Genres = () => {
                     </select>
                 </div>
             </div>
-            {/* Table displaying filtered genres */}
+           {loading?(
+            <div>
+                <RotatingLines
+                        strokeColor="grey"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="96"
+                        visible={true}
+                    />
+            </div>
+           ):(
             <ReusableTable columns={columns} data={filteredData} />
+           )}
+           
         </div>
     );
 };

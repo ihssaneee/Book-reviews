@@ -1,91 +1,87 @@
-import React,{useState,useEffect} from "react";
-import { createContext,useContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { axiosInstance } from "../api/axiosConfig";
 import { useAuth } from "./AuthContext";
 
-const GenresContext=createContext();
+const GenresContext = createContext();
 
-export const useGenres=()=>{
-    return useContext(GenresContext);
+export const useGenres = () => {
+  return useContext(GenresContext);
 };
 
-export const GenresProvider=({children})=>{
-    const[genres,setGenres]=useState([]);
-    const {user}=useAuth();
-    const[loading,setLoading]=useState(true);
-    const fetchGenres=async()=>{
-        try{
-            const response=await axiosInstance.get('/genres');
-            setGenres(response.data.genres);
-            console.log(response.data.genres);
-        }
-        catch(error){
-            console.error('could not fetch genres',error);
-        }
-        finally{
-            setLoading(false);
-        }
-    };
-    useEffect(()=>{
-        if (user){
-        fetchGenres();
-        }
+export const GenresProvider = ({ children }) => {
+  const [genres, setGenres] = useState([]);
+  const { user } = useAuth();
+  const [loading, setLoading] = useState(true);
+
+  const fetchGenres = async () => {
+    try {
+      const response = await axiosInstance.get('/genres');
+      setGenres(response.data.genres);
+      console.log('Fetched genres:', response.data.genres);
+    } catch (error) {
+      console.error('Could not fetch genres', error);
+    } finally {
+      setLoading(false);
     }
-    ,[user])
-    const addGenre=async(newGenre)=>{
-        try{
-        const response= await axiosInstance.post('/genres',newGenre);
-        setGenres([...genres,response.data.genre]);
-        console.log('genre added successfuly!');
-        }
-        catch(error){
-            console.error('error happened while adding the genre',error);
-        }
-    };
-    const deleteGenre=async(genreId)=>{
-        try{
-            const response= await axiosInstance.delete(`/genres/${genreId}`);
-            setGenres(genres.filter((genre)=>genre.id!=genreId));
-            console.log('genre deleted successfuly');
-        }
-        catch(error){
-            console.error("error happened while deleting the genre",error);
+  };
 
-        }
-    };
-    const editGenre=async(genreId,updatedData)=>{
-        try{
-           const response= await axiosInstance.put(`/genres/${genreId}`,updatedData);
-            setGenres(genres.map((genre)=>genreId===genreId?response.data.genre:genre));
-            console.log('gerne updated successfuly!');
-        }
-        catch(error){
-            console.error('error happened while updating the genre.',error);
-        }
+  useEffect(() => {
+    if (user) {
+      fetchGenres();
+    }
+  }, [user]);
 
-    };
-    
-    
+  const addGenre = async (newGenre) => {
+    try {
+      const response = await axiosInstance.post('/genres', newGenre);
+      setGenres((prevGenres) => [...prevGenres, response.data.genre]);
+      console.log('Genre added successfully!');
+    } catch (error) {
+      console.error('Error adding genre', error);
+      throw error; // Rethrow to let the form handle it
+    }
+  };
 
-    
-    const value={
-        genres,
-        loading,
-        fetchGenres,
-        addGenre,
-        deleteGenre,
-        editGenre,
+  const deleteGenre = async (genreId) => {
+    try {
+      await axiosInstance.delete(`/genres/${genreId}`);
+      setGenres((prevGenres) => prevGenres.filter((genre) => genre.id !== genreId));
+      console.log('Genre deleted successfully');
+    } catch (error) {
+      console.error("Error deleting genre", error);
+      throw error; // Rethrow to let the caller handle it
+    }
+  };
 
-    };
+  const editGenre = async (genreId, updatedData) => {
+    try {
+      const response = await axiosInstance.put(`/genres/${genreId}`, updatedData);
+      setGenres((prevGenres) => prevGenres.map((genre) => genre.id === genreId ? response.data.genre : genre));
+      console.log('Genre updated successfully!');
+    } catch (error) {
+      console.error('Error updating genre.', error);
+      throw error; // Rethrow to let the caller handle it
+    }
+  };
 
+  const value = {
+    genres,
+    loading,
+    fetchGenres,
+    addGenre,
+    deleteGenre,
+    editGenre,
+  };
 
+  return (
+    <GenresContext.Provider value={value}>
+      {children}
+    </GenresContext.Provider>
+  );
+};
 
-    return(
-        <GenresContext.Provider value={value}>
-            {children}
-        </GenresContext.Provider>
+// Option 1: Default Export Directly
+export default GenresProvider;
 
-    )
-}
-export default {GenresProvider}
-
+// // Option 2: Named Export (Uncomment if using named exports)
+// export { GenresProvider };

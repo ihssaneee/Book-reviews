@@ -9,6 +9,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Genres from './components/Genres/GenresList';
 import Users from './components/Users/UsersList';
 import Books from './components/Books/BooksList';
+import AddGenreForm from './components/Genres/AddGenreForm';
 
 
 const router=createBrowserRouter([
@@ -38,8 +39,14 @@ const router=createBrowserRouter([
         children:[
             {
                 path:'genres',
-                element:<Genres />
+                element:<Genres />,
+                
 
+
+            },
+            {
+                path:'AddGenre',
+                element:<AddGenreForm />
             },
             {
                 path:'users',
