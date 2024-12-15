@@ -10,7 +10,11 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import DropdownMenu from "./dropDownMenu";
 
+import  useWindowSize  from "../useWindowSize";
+
 const AdminHeader = ({ toggle }) => {
+    
+    console.log(useWindowSize());
     const { loading, user, logout } = useAuth();
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(true);
@@ -33,7 +37,7 @@ const AdminHeader = ({ toggle }) => {
     };
 
     return (
-       <div className="flex items-center justify-between w-full ">
+       <div className="flex  items-center justify-between w-full ">
             <div className="flex ">
                 <ChevronLeftIcon
                     onClick={toggle}
@@ -41,6 +45,13 @@ const AdminHeader = ({ toggle }) => {
                     className="mx-2 text-gray-600 cursor-pointer "
                 />
                 <div className="flex items-center px-4 bg-white border rounded-sm h-9">
+                    {useWindowSize()<=640?(
+                    <SearchIcon
+                        fontSize="small"
+                        className="mx-1 text-slate-600"
+                    />
+                    ):(<>
+                    <div className="flex items-center px-4 bg-white border rounded-sm h-9"></div>
                     <SearchIcon
                         fontSize="small"
                         className="mx-1 text-slate-600"
@@ -50,6 +61,8 @@ const AdminHeader = ({ toggle }) => {
                         placeholder="Search..."
                         className="p-1 bg-white border-none focus:ring-0"
                     />
+                    </>)
+                    }
                 </div>
             </div>
             <div className="relative flex items-center justify-end flex-1 gap-3 ">
@@ -66,7 +79,7 @@ const AdminHeader = ({ toggle }) => {
                         />
                     </div>
                     <div
-                        className="mr-10 cursor-pointer w-22"
+                        className="mr-10 cursor-pointer w-22 "
                         onClick={handleClick}
                     >
                             <div className="h-[5rem] flex items-center justify-center ">

@@ -5,29 +5,16 @@ import BookIcon from "@mui/icons-material/Book";
 import PeopleIcon from "@mui/icons-material/People";
 import { NavLink, useNavigate } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
+import WindowSize from "../useWindowSize";
 
 export default function AdminSidebar({toggled,toggle}) {
     const navigate = useNavigate();
-    const [wSize,setWsize]=useState(window.innerWidth);
-    const handleResize=()=>{
-        setWsize(window.innerWidth);
-    }
-    useEffect(()=>{
-        const handleResize=()=>{
-            setWsize(window.innerWidth);
-        };
-        window.addEventListener('resize',handleResize);
-        console.log(wSize);
-        return ()=>{
-            window.removeEventListener('resize',handleResize)
-        }
-    },)
-    
+   
 
     return (
         <div className={` top-0 left-0 h-dvh   bg-[#000035] border rounded-none transition-all duration-300 ease-in-out `}>
             <div className="flex items-center justify-center pb-6 items ">
-                {wSize>=1020?(
+                {WindowSize>=1020?(
                 <img
                         src={`${!toggled?"/images/ReadNest2.png":"/images/miniLogo.png"}`}
                         alt="books Logo"

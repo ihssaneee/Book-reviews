@@ -146,7 +146,7 @@ const Genres = () => {
     };
 
     return (
-        <div className="flex flex-col bg-white border mt-4">
+        <div className="flex overflow-scroll  flex-col bg-white border mt-4">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
@@ -170,10 +170,10 @@ const Genres = () => {
                             />
                         )}
                     </div>
-                    <div className="flex rounded shadow items-center justify-center border m-4">
+                    <div className="flex rounded  shadow items-center justify-center border m-4 ">
                         <input
                             type="search"
-                            className="border-none focus:ring-0"
+                            className="border-none focus:ring-0 "
                         ></input>
                         <SearchIcon />
                     </div>

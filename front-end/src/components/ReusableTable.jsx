@@ -15,7 +15,7 @@ const ReusableTable = ({columns, data}) => {
 
 
     return(
-        <table className="max-w-full mx-4 mt-3 overflow-auto bg-white table-auto">
+        <table className="max-w-full mx-4 mt-3  bg-white table-auto">
 
             <thead>
             <tr className="text-sm text-left bg-white shadow-sm font-Roboto text-zinc-500">
