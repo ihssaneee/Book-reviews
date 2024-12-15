@@ -14,11 +14,11 @@ import DropdownMenu from "./dropDownMenu";
 const AdminHeader = () => {
    const {loading,user,logout}=useAuth();
    const navigate=useNavigate();
-  const [isVisible,setIsVisible]=useState(true);
-  const handleClick=()=>{
-    setIsVisible(!isVisible);
+//   const [isVisible,setIsVisible]=useState(true);
+//   const handleClick=()=>{
+//     setIsVisible(!isVisible);
     
-  }
+//   }
   const handleLogout=async()=>{
     try{
             await logout();

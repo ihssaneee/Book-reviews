@@ -5,24 +5,33 @@ import { Outlet } from "react-router-dom";
 
 export default function Dashboard(){
     const [toggled,setToggled]=useState(false);
-    const toggle=(e)=>{
-        setToggled(e);
+    const toggle=()=>{
+        setToggled(!toggled);
     }
 
     return (
         <div className="flex h-screen" >
-            <aside className="">
-                <AdminSidebar toggled={toggled} />
+            <aside className={`fixed inset-0 z-30 max-h-screen ${toggled? "translate-x-0 w-64 ": "-translate-x-64 w-0"} lg:translate-x-0  ${toggled? "lg:w-20" : "lg:w-64" } transition-all duration-300 ease-in-out `}>
+                <AdminSidebar toggle={toggle} toggled={toggled} />
             </aside>
-            <main className="flex-1 flex flex-col bg-[#F4F4F4] ">
-                <header className={`${toggled? "ml-20": "ml-64"}`} >
-                    <AdminHeader toggle={toggle}  className="fixed"/>
+            {toggled && (
+                <div className="fixed inset-0 z-20 bg-black opacity-25 z- backdrop-blur-sm lg:hidden " onClick={toggle}>
+                    
+                </div>
+            )
+                
+            }
+           
+            <main className="flex-1 flex max-h-screen   flex-col  bg-[#F4F4F4]  ">
+                <header className={` ml-0    lg:ml-64 h-auto border bg-white  ${toggled? "lg:ml-marginLeft" : "lg:ml-64" } `} >
+                    <AdminHeader toggle={toggle}  className=""/>
                 </header>
-                <section className={`${toggled?"ml-24":"ml-[17rem]"} mr-10`}>
+                <section className={`${toggled?"lg:ml-24":"lg:ml-[17rem]"} mr-10 flex-1 overflow-x-auto`}>
                     <Outlet />
                     
                 </section>
             </main>
+            
 
 
 

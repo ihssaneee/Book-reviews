@@ -14,11 +14,11 @@ const AdminHeader = ({ toggle }) => {
     const { loading, user, logout } = useAuth();
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(true);
-    const [istoggled, setIsToglled] = useState(false);
-    const handleToggleClick = () => {
-        setIsToglled(!istoggled);
-        toggle(istoggled);
-    };
+    // const [istoggled, setIsToglled] = useState(false);
+    // const handleToggleClick = () => {
+    //     setIsToglled(!istoggled);
+    //     toggle(istoggled);
+    // };
     const handleClick = () => {
         setIsVisible(!isVisible);
     };
@@ -33,16 +33,14 @@ const AdminHeader = ({ toggle }) => {
     };
 
     return (
-        <div
-            className={`flex flex-1  h-[5rem] border bg-white items-center  justify-between `}
-        >
-            <div className="flex">
+       <div className="flex items-center justify-between w-full ">
+            <div className="flex ">
                 <ChevronLeftIcon
-                    onClick={handleToggleClick}
+                    onClick={toggle}
                     fontSize="large"
-                    className="cursor-pointer  text-gray-600 mx-2 "
+                    className="mx-2 text-gray-600 cursor-pointer "
                 />
-                <div className="flex items-center rounded-sm border bg-white h-9 px-4">
+                <div className="flex items-center px-4 bg-white border rounded-sm h-9">
                     <SearchIcon
                         fontSize="small"
                         className="mx-1 text-slate-600"
@@ -54,21 +52,21 @@ const AdminHeader = ({ toggle }) => {
                     />
                 </div>
             </div>
-            <div className="flex relative  flex-1 justify-end  items-center  gap-3  ">
-                    <div className="flex justify-center items-center h-11 w-11 bg-white border rounded-full hover:bg-opacity-35">
+            <div className="relative flex items-center justify-end flex-1 gap-3 ">
+                    <div className="flex items-center justify-center bg-white border rounded-full h-11 w-11 hover:bg-opacity-35">
                         <ModeNightOutlinedIcon
                             fontSize="large"
                             className="text-[#878A99] cursor-pointer   p-2 "
                         />
                     </div>
-                    <div className="flex items-center justify-center border rounded-full w-11 h-11 bg-white hover:bg-opacity-35">
+                    <div className="flex items-center justify-center bg-white border rounded-full w-11 h-11 hover:bg-opacity-35">
                         <NotificationsNoneIcon
                             fontSize="large"
                             className="text-[#878A99] cursor-pointer p-1.5"
                         />
                     </div>
                     <div
-                        className=" w-22 mr-10 cursor-pointer"
+                        className="mr-10 cursor-pointer w-22"
                         onClick={handleClick}
                     >
                             <div className="h-[5rem] flex items-center justify-center ">
@@ -76,7 +74,7 @@ const AdminHeader = ({ toggle }) => {
                                     <img
                                         src={user.picture}
                                         alt="Profile picture"
-                                        className="w-10 h-10 rounded-full object-cover"
+                                        className="object-cover w-10 h-10 rounded-full"
                                     />
                                 ) : null}
                             </div>
@@ -95,7 +93,7 @@ const AdminHeader = ({ toggle }) => {
                     </div>
             </div>
         </div>
-    );
-};
+    )
 
+}
 export default AdminHeader;

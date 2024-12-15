@@ -1,7 +1,8 @@
-export default function NotFound(){
-    return(
-        <div className="max-h-screen  h-screen w-screen">
-            <img src="/images/error_404.png" alt="error 404 not found" className="bg-cover bg-no-repeat h-full w-full " />
-        </div>
-    )
-}
+export default function NotFound() {
+    return (
+      <div className="relative h-screen w-screen flex items-center justify-center border">
+        <img src="/images/error_404.png" className=" h-full w-full object-fill " />
+      </div>
+    );
+  }
+  

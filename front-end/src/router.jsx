@@ -45,8 +45,8 @@ const router=createBrowserRouter([
 
             },
             {
-                path:'AddGenre',
-                element:<AddGenreForm />
+                path:'genres/add',
+                element:<AddGenreForm />,
             },
             {
                 path:'users',

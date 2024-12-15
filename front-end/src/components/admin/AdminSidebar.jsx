@@ -1,26 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import BookIcon from "@mui/icons-material/Book";
 import PeopleIcon from "@mui/icons-material/People";
 import { NavLink, useNavigate } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
 
-export default function AdminSidebar({toggled}) {
+export default function AdminSidebar({toggled,toggle}) {
     const navigate = useNavigate();
-  
+    const [wSize,setWsize]=useState(window.innerWidth);
+    const handleResize=()=>{
+        setWsize(window.innerWidth);
+    }
+    useEffect(()=>{
+        const handleResize=()=>{
+            setWsize(window.innerWidth);
+        };
+        window.addEventListener('resize',handleResize);
+        console.log(wSize);
+        return ()=>{
+            window.removeEventListener('resize',handleResize)
+        }
+    },)
+    
 
     return (
-        <div className={`fixed top-0 left-0 h-screen  bg-[#000035] border rounded-none transition-all duration-300 ease-in-out ${toggled?"w-20 ":"w-64"}`}>
-            <div className="flex justify-center  pb-6">
+        <div className={` top-0 left-0 h-dvh   bg-[#000035] border rounded-none transition-all duration-300 ease-in-out `}>
+            <div className="flex items-center justify-center pb-6 items ">
+                {wSize>=1020?(
                 <img
                         src={`${!toggled?"/images/ReadNest2.png":"/images/miniLogo.png"}`}
                         alt="books Logo"
                         id="logo"
                         className={`${!toggled? "max-w-40 ": "max-w-14  "} block   mt-8 `} 
                         />
+                ):(<>
+                    <img
+                        src="/images/ReadNest2.png"
+                        alt="books Logo"
+                        id="logo"
+                        className= "mt-8 block-inline max-w-40" 
+                        
+                        />
+                        <MenuIcon  fontSize="large" className="mt-6 ml-4 text-white " onClick={toggle} />
+                    </>
+                )}
+                
             </div>
+                
             <nav className={`flex flex-col mt-14 +
-                ${toggled?"items-center justify-center":""}`}>
+                ${toggled?"lg:items-center lg:justify-center":""}`}>
             <SidebarLink 
                 to="dashboard"
                 label="Dashboard"
@@ -62,7 +91,7 @@ const SidebarLink=({toggled,label,to,icon})=>{
         
         >
             <span className="text-[#FFDB58] mr-2  hover:text-gray-950">{icon}</span>
-            <span className={`${toggled?"max-w-0 opacity-0":"max-w-auto opacity-100"}hover:text-gray-950 overflow-hidden transition-all duration-300 ease-in-out `}>{label}</span>
+            <span className={`${toggled?"lg:max-w-0 lg:opacity-0":"lg:max-w-auto lg:opacity-100"}hover:text-gray-950 overflow-hidden transition-all duration-300 ease-in-out `}>{label}</span>
         
         </NavLink >
     )

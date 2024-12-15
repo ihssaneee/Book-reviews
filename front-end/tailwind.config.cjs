@@ -25,6 +25,9 @@ export default {
       fontFamily: {
         Roboto: ['Roboto','sans-serif'],
       },
+      margin:{
+        marginLeft: '4.5rem',
+      }
     },
   },
   plugins: [

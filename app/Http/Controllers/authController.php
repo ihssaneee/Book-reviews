@@ -57,7 +57,9 @@ class AuthController extends Controller
                 throw ValidationException::withMessages([
                     'email'=>['the provided credentials are incorrect!'],
                 ]);
+                
             }
+        
             //invalidate the session
             $request->session()->regenerate();
             return response()->json([

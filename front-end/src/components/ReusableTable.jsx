@@ -9,14 +9,16 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 
+
+
 const ReusableTable = ({columns, data}) => {
 
 
     return(
-        <table className="table-auto bg-white max-w-full mx-4 mt-3">
+        <table className="max-w-full mx-4 mt-3 overflow-auto bg-white table-auto">
 
             <thead>
-            <tr className="text-left  bg-white font-Roboto text-zinc-500  text-sm shadow-sm">
+            <tr className="text-sm text-left bg-white shadow-sm font-Roboto text-zinc-500">
                     {columns.map(column=>(
                         
                             <th  key={column.key}  >
@@ -28,15 +30,15 @@ const ReusableTable = ({columns, data}) => {
             </thead>
                 <tbody>
                     {data.length>0? data.map(item => (
-                       <tr className=" font-Roboto border-b  " key={item.id}>
+                       <tr className="border-b font-Roboto" key={item.id}>
                         {columns.map(column=>(
-                            <td className=" pl-1  py-4 text-zinc-500" key={`${column.key}-${item.id}`} >
+                            <td className="py-4 pl-1 text-zinc-500" key={`${column.key}-${item.id}`} >
                                 {column.key === "user" ?
-                               <div className="flex items-center justify-start gap-3  ">
-                                <img src={item.picture} alt='profile picture' className="w-11 h-11 object-cover " />
+                               <div className="flex items-center justify-start gap-3 ">
+                                <img src={item.picture} alt='profile picture' className="object-cover w-11 h-11 " />
                                 <span className="font-bold">{item.name}</span>
                                </div>:column.key === "actions"?(
-                                <div className=" flex  gap-2 py-2">
+                                <div className="flex gap-2 py-2 ">
                                      <div className="text-blue-900">
                                      <VisibilityOutlinedIcon
                                          data-tooltip-content="View"
@@ -45,7 +47,7 @@ const ReusableTable = ({columns, data}) => {
                                      />
                                      <Tooltip id="myTooltip" />
                                  </div>
-                                 <div className=" text-sm  bg-white text-gray-500 cursor-pointer ">
+                                 <div className="text-sm text-gray-500 bg-white cursor-pointer ">
                                      <ModeEditOutlinedIcon
                                          data-tooltip-content="Edit"
                                          data-tooltip-id="myTooltip"
@@ -54,7 +56,7 @@ const ReusableTable = ({columns, data}) => {
                                      />
                                      <Tooltip id="myTooltip" />
                                  </div>
-                                 <div className="  text-red-500 cursor-pointer   hover: hover:  ">
+                                 <div className="text-red-500 cursor-pointer hover:">
                                      <DeleteOutlineOutlinedIcon
                                          data-tooltip-content="delete"
                                          data-tooltip-id="myTooltip"
