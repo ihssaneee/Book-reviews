@@ -14,6 +14,7 @@ export const GenresProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const fetchGenres = async () => {
+    console.log('fetching genre...')
     try {
       const response = await axiosInstance.get('/genres');
       setGenres(response.data.genres);
@@ -63,6 +64,18 @@ export const GenresProvider = ({ children }) => {
       throw error; // Rethrow to let the caller handle it
     }
   };
+  const showGenre=async(genreId)=>{
+    try {
+      const response= await axiosInstance.get(`/genres/${genreId}`);
+      console.log('genre fetched correctly');
+      return response.data.genre;
+
+    }
+    catch(error){
+      console.error('could not fetch genre',error);
+      throw error;
+    }
+  }
 
   const value = {
     genres,
@@ -71,6 +84,7 @@ export const GenresProvider = ({ children }) => {
     addGenre,
     deleteGenre,
     editGenre,
+    showGenre,
   };
 
   return (

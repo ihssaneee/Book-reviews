@@ -46,9 +46,10 @@ class GenreController extends Controller
 
         ]);
         try{
-           Genre::create($validatedData);
+          $genre= Genre::create($validatedData);
             return response()->json([
-                'message'=>'Genre addeed successfully.'
+                'message'=>'Genre addeed successfully.',
+                'genre'=>$genre,
             ],201);
         }
         catch(\Exception $e){
@@ -69,7 +70,10 @@ class GenreController extends Controller
     public function show(Genre $genre)
     {
         //
-        return response()->json($genre,200);
+        return response()->json([
+            'message'=>"genre fetchedd correctly!",
+            'genre'=>$genre,
+        ]);
     }
 
    

@@ -10,6 +10,8 @@ import Genres from './components/Genres/GenresList';
 import Users from './components/Users/UsersList';
 import Books from './components/Books/BooksList';
 import AddGenreForm from './components/Genres/AddGenreForm';
+import EditGenre from './components/Genres/EditGenreForm';
+import AddUserForm from './components/Users/AddUserForm';
 
 
 const router=createBrowserRouter([
@@ -40,18 +42,24 @@ const router=createBrowserRouter([
             {
                 path:'genres',
                 element:<Genres />,
-                
-
-
             },
             {
                 path:'genres/add',
                 element:<AddGenreForm />,
             },
             {
+                path:`genres/edit/:id`,
+                element:<EditGenre />,
+            },
+            {
                 path:'users',
                 element:<Users />
             },
+            {
+                path:"users/add",
+                element:<AddUserForm />,
+            },
+
             {
                 path:'books',
                 element:<Books />

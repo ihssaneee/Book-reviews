@@ -11,11 +11,11 @@ import CloseIcon from "@mui/icons-material/Close";
 
 
 
-const ReusableTable = ({columns, data}) => {
+const ReusableTable = ({columns, data,onDelete,onEdit,onShow}) => {
 
 
     return(
-        <table className="max-w-full mx-4 mt-3  bg-white table-auto">
+        <table className="max-w-full  mx-4 mt-3  bg-white table-auto">
 
             <thead>
             <tr className="text-sm text-left bg-white shadow-sm font-Roboto text-zinc-500">
@@ -32,9 +32,9 @@ const ReusableTable = ({columns, data}) => {
                     {data.length>0? data.map(item => (
                        <tr className="border-b font-Roboto" key={item.id}>
                         {columns.map(column=>(
-                            <td className="py-4 pl-1 text-zinc-500" key={`${column.key}-${item.id}`} >
+                            <td className="py-4  text-zinc-500" key={`${column.key}-${item.id}`} >
                                 {column.key === "user" ?
-                               <div className="flex items-center justify-start gap-3 ">
+                               <div className="flex items-center justify-start gap-3 flex-wrap ">
                                 <img src={item.picture} alt='profile picture' className="object-cover w-11 h-11 " />
                                 <span className="font-bold">{item.name}</span>
                                </div>:column.key === "actions"?(
@@ -44,6 +44,9 @@ const ReusableTable = ({columns, data}) => {
                                          data-tooltip-content="View"
                                          data-tooltip-id="myTooltip"
                                          fontSize="small"
+                                         aria-hidden="false"
+                                         onClick={()=>onShow(item.id)}
+                                         
                                      />
                                      <Tooltip id="myTooltip" />
                                  </div>
@@ -52,7 +55,9 @@ const ReusableTable = ({columns, data}) => {
                                          data-tooltip-content="Edit"
                                          data-tooltip-id="myTooltip"
                                          fontSize="small"
-                                         className=""
+                                         aria-hidden="false"
+                                         onClick={()=>onEdit(item.id)}
+
                                      />
                                      <Tooltip id="myTooltip" />
                                  </div>
@@ -61,6 +66,8 @@ const ReusableTable = ({columns, data}) => {
                                          data-tooltip-content="delete"
                                          data-tooltip-id="myTooltip"
                                          fontSize="small"
+                                         aria-hidden="false"
+                                         onClick={()=>onDelete(item.id)}
                                      />
                                      <Tooltip id="myTooltip" />
                                  </div>

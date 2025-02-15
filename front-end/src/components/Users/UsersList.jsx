@@ -12,6 +12,7 @@ import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 import ReusableTable from "../ReusableTable";
 import { useUsers } from "../../contexts/UserContext";
+import { Link } from "react-router-dom";
 
 /**
  * Genres component that displays a list of genres with filtering options.
@@ -163,12 +164,12 @@ const Users = () => {
     };
 
     return (
-        <div className="flex flex-col bg-white border mt-4">
+        <div className="flex overflow-auto flex-col bg-white border mt-4">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
-                    <a className="">New User</a>
+                    <Link to='add' className="">New User</Link>
                 </div>
                 <div className="flex items-center justify-center">
                     <div

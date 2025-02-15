@@ -22,11 +22,11 @@ export default function Dashboard(){
                 
             }
            
-            <main className="flex-1 flex max-h-screen l overflow-auto flex-col  bg-[#F4F4F4]  ">
-                <header className={` ml-0   lg:ml-64 h-auto border bg-white  ${toggled? "lg:ml-marginLeft" : "lg:ml-64" } overflow-auto `} >
-                    <AdminHeader toggle={toggle}  className=" "/>
+            <main className="flex-1 flex max-h-screen   flex-col  bg-[#F4F4F4]  ">
+                <header className={` ml-0   lg:ml-64 h-auto border bg-white  ${toggled? "lg:ml-marginLeft" : "lg:ml-64" }  `} >
+                    <AdminHeader toggle={toggle}  className="w-full "/>
                 </header>
-                <section className={`${toggled?"lg:ml-24":"lg:ml-[17rem] mr-3 ml-3"} 
+                <section className={`${toggled?"lg:ml-24":"lg:ml-[17rem] mr-3 ml-3 "} 
                 flex-1  `}>
                     <Outlet  />
                     

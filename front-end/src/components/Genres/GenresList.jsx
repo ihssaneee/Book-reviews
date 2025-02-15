@@ -11,7 +11,7 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 import ReusableTable from "../ReusableTable";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /**
  * Genres component that displays a list of genres with filtering options.
@@ -96,8 +96,8 @@ import { Link } from "react-router-dom";
  */
 const Genres = () => {
     // Custom hook to fetch genres and loading state
-    const { genres, loading } = useGenres();
-
+    const { genres, loading ,editGenre,deleteGenre,showGenre} = useGenres();
+    const navigate=useNavigate();
     // State to manage visibility of the filter section
     const [isVisible, setIsVisible] = useState(false);
 
@@ -111,6 +111,13 @@ const Genres = () => {
     const handleClick = () => {
         setIsVisible(!isVisible);
     };
+    const handleShow=(id)=>{
+        navigate(`show/${id}`);
+    }
+    const handleEdit=(id)=>{
+        navigate(`edit/${id}`);
+    }
+  
 
     // Filter genres based on selected value and ID
     const filteredData = genres.filter(genre => {
@@ -146,7 +153,7 @@ const Genres = () => {
     };
 
     return (
-        <div className="flex overflow-scroll  flex-col bg-white border mt-4">
+        <div className="flex overflow-auto  flex-col bg-white border mt-4">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
@@ -221,7 +228,13 @@ const Genres = () => {
                     />
             </div>
            ):(
-            <ReusableTable columns={columns} data={filteredData} />
+            <ReusableTable 
+            columns={columns}
+             data={filteredData}
+             onEdit={handleEdit}
+             onDelete={deleteGenre}
+             onShow={handleShow}
+             />
            )}
            
         </div>

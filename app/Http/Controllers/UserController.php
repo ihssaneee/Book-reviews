@@ -45,12 +45,22 @@ class UserController extends Controller
                 'name'=>"required|string|max:255",
                 'email'=>"required|string|email|max:255|unique:users",
                 'password'=>"required|string|min:4|confirmed",
+                'picture'=>"file|image|mimes:png,jpg,jpeg,gif,svg|max:2048",
+                'role'=>"required|string|in:admin,user|max:255",
+
             ]);
             try{
+                if ($request->hasFile('picture')){
+                    $imagePath=$request->file('picture')->store('user_pictures','public');
+                   $validatedData['picture']=$imagePath;
+                }
                 $user=User::create([
                     'name'=>$validatedData['name'],
                     'email'=>$validatedData['email'],
                     'password'=>Hash::make($validatedData['password']),
+                    'role'=>$validatedData['role'],
+                    'picture'=>$validatedData['picture']
+
                 ]);
                 return response()->json([
                     'message'=>'user created successfuly',
@@ -62,7 +72,7 @@ class UserController extends Controller
             catch(\Exception $e){
                 return response()->json([
                     'message'=>'error! could not create the user.'
-                ]);
+                ],500);
             }
 
 
