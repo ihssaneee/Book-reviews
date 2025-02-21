@@ -35,7 +35,7 @@ export const UsersProvider=({children})=>{
     const addUser=async(newUser) =>{
         try{
             const response=await axiosInstance.post('/users',newUser);
-            setUsers([...users,response.data.user]);
+            setUsers((prevUsers)=>[...prevUsers,response.data.user]);
             console.log('user added successfuly');
         }
         catch(error){

@@ -5,8 +5,13 @@ import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import AddIcon from "@mui/icons-material/Add";
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { Link } from "react-router-dom";
+import { useUsers } from "../../contexts/UserContext";
+import { axiosInstance } from "../../api/axiosConfig";
 
 export default function AddUserForm() {
+    const {addUser}=useUsers();
+    const [error,setError]=useState(null);
+    const [success,setSuccess]=useState(null);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -43,9 +48,44 @@ export default function AddUserForm() {
             [name]: value,
         });
     };
+    const validateForm=()=>{
+        if (!formData.name.trim() || !formData.email.trim() || !formData.role.trim() || !formData.password.trim() || !formData.picture){
+            setError("all fields are required!")
+            return false;
+        }
+        setError(null);
+        return true;
+    }
+    const handleSubmit=async (e)=>{
+        e.preventDefault();
+        if (!validateForm()){
+            return;
+        }
+        try{
+        await addUser(formData);
+        setFormData({
+            name:"",
+            email:"",
+            role:"",
+            password:"",
+            picture:null,
+
+        })
+        setError(null);
+        setSuccess("User added successfuly!")
+        }
+        catch(error){
+            console.error("could not add user !",error);
+            const errorMessage=error.response?.data?.message || "an unexpected error occured"
+            setError(errorMessage);
+            setSuccess(null);
+
+            
+        }
+    }
 
     return (
-        <div className="flex flex-col   bg-white border   max-w-lg m-auto my-5 rounded-md shadow  font-Robotoroboto lg:text-base text-xs">
+        <div className="flex flex-col   bg-white border   max-w-lg m-auto my-5 rounded-md shadow  font-Roboto lg:text-base text-xs">
             <div className=" border-b m-4 py-4 flex-shrink">
                 <h2 className="text-2xl font-bold">Add New User</h2>
             </div>
@@ -96,7 +136,7 @@ export default function AddUserForm() {
             <div className="flex flex-col p-4  w-full gap-1  flex-shrink  ">
                 <label htmlFor="picture">Profile Picture</label>
                 <div
-                    {...getRootProps({ className: "dropzone" })}
+                    {...getRootProps()}
                     className="border-dashed border-2 border-neutral-300 p-8 cursor-pointer rounded-lg text-center"
                 >
                     <input {...getInputProps({})} />
@@ -110,18 +150,22 @@ export default function AddUserForm() {
                 </div>
                 <aside className="flex flex-wrap mt-4">{filePreview}</aside>
             </div>
-            <div className=" flex  items-center justify-around ">
+            <div className=" flex  items-center justify-center ">
             
-                <Link
+                <button
                     type="submit"
-                    className="w-24 m-4 text-base p-2 rounded-md bg-yellow-300 flex items-center justify-center gap-2 hover:bg-yellow-400"
+                    onSubmit={handleSubmit}
+                    className="w-24 m-6  text-base p-2 rounded-md bg-yellow-300 flex items-center justify-center gap-2 hover:bg-yellow-400"
                 >
                     <AddIcon fontSize="small" />
                     Add
                     
-                </Link>
-                <Link to="/dashboard/users" className="w-24 m-4 rounded-md border p-2 border-red-500 text-red-500 text-base">
-                        Cancel 
+                </button>
+                <Link
+                    to="/dashboard/users"
+                    className="w-24 m-6 rounded-md border p-2 border-red-500 text-red-500 text-base flex items-center justify-center hover:bg-red-50"
+                >
+                Cancel
                 </Link>
                     
             </div>
