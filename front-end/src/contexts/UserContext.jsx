@@ -39,7 +39,7 @@ export const UsersProvider=({children})=>{
             console.log('user added successfuly');
         }
         catch(error){
-            console.error('could not add user');
+            console.error('could not add user',error);
         }
     }
     const deleteUser=async(userId) =>{
@@ -65,6 +65,17 @@ export const UsersProvider=({children})=>{
             console.error('could not update user');
         }
     }
+    const showUser= async (userId)=>{
+        try{
+            const response= await axiosInstance.get(`users/${userId}`);
+            console.log("user fetched successfuly.");
+            return response.data.user
+        }
+        catch(error){
+            console.error("user could not be fetched",error);
+            throw error;
+        }
+    }
     const values={
         users,
         loading,
@@ -72,6 +83,7 @@ export const UsersProvider=({children})=>{
        addUser,
        editUser,
        deleteUser,
+       showUser,
 
     }
     return(

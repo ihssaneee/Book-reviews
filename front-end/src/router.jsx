@@ -12,7 +12,7 @@ import Books from './components/Books/BooksList';
 import AddGenreForm from './components/Genres/AddGenreForm';
 import EditGenre from './components/Genres/EditGenreForm';
 import AddUserForm from './components/Users/AddUserForm';
-
+import EditUser from './components/Users/EditUserForm';
 
 const router=createBrowserRouter([
     {
@@ -59,7 +59,11 @@ const router=createBrowserRouter([
                 path:"users/add",
                 element:<AddUserForm />,
             },
-
+            {
+                path:"users/edit/:id",
+                element:<EditUser />,
+            },
+           
             {
                 path:'books',
                 element:<Books />

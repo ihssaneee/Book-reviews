@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useGenres } from "../../contexts/GenreContext";
 import { RotatingLines } from "react-loader-spinner";
+import { Oval } from "react-loader-spinner";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
 import AddIcon from "@mui/icons-material/Add";
@@ -218,13 +219,15 @@ const Genres = () => {
                 </div>
             </div>
            {loading?(
-            <div>
-                <RotatingLines
+            <div  className="flex justify-center items-center">
+                <Oval
                         strokeColor="grey"
                         strokeWidth="5"
                         animationDuration="0.75"
-                        width="96"
+                        width="50"
                         visible={true}
+                        color="#FBDB5B"
+                        secondaryColor="#FBDB5B"
                     />
             </div>
            ):(

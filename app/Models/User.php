@@ -24,7 +24,8 @@ class User extends Authenticatable
         'role',
         'picture',
     ];
-    public function getPictureAttribute($value){
+    public function getPictureAttribute($value)
+    {
         if ($value){
             return asset('storage/'.$value);
         }

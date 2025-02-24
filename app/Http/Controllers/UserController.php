@@ -26,7 +26,7 @@ class UserController extends Controller
         ],500);
     }
     }
-    public function delete(User $user){
+    public function destroy(User $user){
         try{
             $user->delete();
             return response()->json([
