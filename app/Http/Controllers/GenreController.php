@@ -84,8 +84,8 @@ class GenreController extends Controller
     {
         //
         $validatedData=$request->validate([
-            'name' => 'required|string|max:255',
-        'description' => 'required|string|max:1000',
+            'name' => 'string|max:255',
+        'description' => 'string|max:1000',
         ]);
         try{
         $genre->update($validatedData);

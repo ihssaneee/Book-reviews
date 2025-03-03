@@ -39,6 +39,7 @@ export const BookProvider = ({ children }) => {
       console.log('Book added successfully.');
     } catch (error) {
       console.error('Book could not be added.', error);
+      throw error;
     }
   };
 
@@ -51,6 +52,7 @@ export const BookProvider = ({ children }) => {
       console.log('Book updated successfully.');
     } catch (error) {
       console.error('Book could not be updated!', error);
+      throw error;
     }
   };
 

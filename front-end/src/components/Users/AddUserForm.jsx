@@ -1,12 +1,11 @@
-import React, { Suspense, useCallback } from "react";
+import React from "react";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import AddIcon from "@mui/icons-material/Add";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { Link } from "react-router-dom";
 import { useUsers } from "../../contexts/UserContext";
-import { axiosInstance } from "../../api/axiosConfig";
+
 
 export default function AddUserForm() {
     const { addUser } = useUsers();
@@ -28,9 +27,11 @@ export default function AddUserForm() {
     };
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
-        accept: "image/*",
-        multiple: false,
-    });
+  accept: {
+    'image/*': []  // ✅ This is the required format for v14.x
+  },
+  multiple: false,
+});
     // File Preview
     const filePreview = formData.picture ? (
         <div className="mt-4">
@@ -78,6 +79,7 @@ export default function AddUserForm() {
             if (formData.picture){
                 formDataToSend.append("picture",formData.picture)
             }
+           
             await addUser(formDataToSend);
             setFormData({
                 name: "",

@@ -59,6 +59,7 @@ export const GenresProvider = ({ children }) => {
       const response = await axiosInstance.put(`/genres/${genreId}`, updatedData);
       setGenres((prevGenres) => prevGenres.map((genre) => genre.id === genreId ? response.data.genre : genre));
       console.log('Genre updated successfully!');
+      fetchGenres();
     } catch (error) {
       console.error('Error updating genre.', error);
       throw error; // Rethrow to let the caller handle it

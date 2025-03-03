@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Log;
 use function Pest\Laravel\json;
 
 class BookController extends Controller
@@ -44,6 +44,7 @@ class BookController extends Controller
             'image'=>"required|image|mimes:png,jpg,jpeg,svg,gif|max:2048",
             'link'=>"required|url",
             'language'=>"required|string|max:255",
+            'genre_id'=> "required|exists:genres,id",
             'year'=>"required|integer|min:1900|max:2099",
         ]);
         try{
@@ -61,6 +62,7 @@ class BookController extends Controller
             ],201);
         }
         catch(\Exception $e){
+            log::error("book could not be created". $e->getMessage());
             return response()->json([
                 'message'=>'book could not be created',
             ],500);

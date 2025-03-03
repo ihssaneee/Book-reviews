@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use app\Models\User;
+
+use App\Models\Genre;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -45,7 +49,7 @@ class UserController extends Controller
                 'name'=>"required|string|max:255",
                 'email'=>"required|string|email|max:255|unique:users",
                 'password'=>"required|string|min:4|confirmed",
-                'picture'=>"file|image|mimes:png,jpg,jpeg,gif,svg|max:2048",
+                'picture'=>"sometimes|file|image|mimes:png,jpg,jpeg,gif,svg|max:2048",
                 'role'=>"required|string|in:admin,user|max:255",
 
             ]);
@@ -53,15 +57,11 @@ class UserController extends Controller
                 if ($request->hasFile('picture')){
                     $imagePath=$request->file('picture')->store('user_pictures','public');
                    $validatedData['picture']=$imagePath;
-                }
-                $user=User::create([
-                    'name'=>$validatedData['name'],
-                    'email'=>$validatedData['email'],
-                    'password'=>Hash::make($validatedData['password']),
-                    'role'=>$validatedData['role'],
-                    'picture'=>$validatedData['picture']
-
-                ]);
+                };
+                if (isset($validatedData['password'])){
+                        $validatedData['password']=Hash::make($validatedData['password']);
+                };
+                $user=User::create($validatedData);
                 return response()->json([
                     'message'=>'user created successfuly',
                     'user'=>$user,
@@ -70,6 +70,7 @@ class UserController extends Controller
 
             }
             catch(\Exception $e){
+                Log::error("error creating the user". $e->getMessage());
                 return response()->json([
                     'message'=>'error! could not create the user.'
                 ],500);
@@ -77,31 +78,45 @@ class UserController extends Controller
 
 
     }
-    public function update(Request $request){
-        $updatedData=$request->validate([
-            'name'=>"required|string|max:255",
-            'email'=>"required|string|email|max:255|unique:users",
-            'password'=>"required|string|min:4|confirmed",
-        ]);
-        try{
-            $user=$request->update([
-                'name'=>$updatedData['name'],
-                'email'=>$updatedData['email'],
-                'password'=>Hash::make($updatedData['password']),
-            ]);
-            return response()->json([
-                'message'=>'data updated successfuly',
-                'user'=>$user,
+           public function update(Request $request, User $user){
+                Log::info('Update user request data:', $request->all());
+                $updatedData=$request->validate([
+                    'name'=>"sometimes|string|max:255",
+                    'email'=>[
+                        "sometimes",
+                        "string",
+                        "email",
+                        "max:255",
+                        Rule::unique('users')->ignore ($user->id),
+                    ],
+                    'password'=>"sometimes|string|min:6|confirmed",
+                    "picture"=>"sometimes|file|image|mimes:png,jpg,jpeg,svg,gif|max:2048",
+                    "role"=>"sometimes|string|in:user,admin|max:255",
+                ]);
+                try{
+                    if ($request->hasFile("picture")){
+                        $imagePath=$request->file('picture')->store("user_pictures",'public');
+                        $updatedData["picture"]=$imagePath;
+                    }
+                    if (isset($updatedData['password'])){
+                        $updatedData['password']=Hash::make($updatedData['password']);
+                    }
+                    $user->update($updatedData);
+                    
+                    return response()->json([
+                        'message'=>'data updated successfuly',
+                        'user'=>$user,
 
-            ],200);
-           
-        }
-        catch(\Exception $e){
-            return response()->json([
-                'message'=>"couldn't update data"
-            ],500);
-        }
-    }
+                    ],200);
+                }
+                catch(\Exception $e){
+                    log::error('error updating user' . $e->getMessage());
+                    return response()->json([
+                        'message'=>"couldn't update data"
+                    ],500);
+                }
+                
+            }
     public function show(User $user)
     {
         return response()->json([

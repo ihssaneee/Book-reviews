@@ -31,6 +31,9 @@ export const UsersProvider=({children})=>{
         if (user){
         fetchUsers();
         }
+        else{
+            console.log('no user ');
+        }
     }, [user]);
     const addUser=async(newUser) =>{
         try{
@@ -40,6 +43,7 @@ export const UsersProvider=({children})=>{
         }
         catch(error){
             console.error('could not add user',error);
+            throw error;
         }
     }
     const deleteUser=async(userId) =>{
@@ -54,16 +58,22 @@ export const UsersProvider=({children})=>{
 
     
 }
-    const editUser=async (userId,updatedData)=>{
+    const editUser=async (userId,formData)=>{
+        console.log(userId);
         try{
-        const response= await axiosInstance.put(`/users/${userId}`,updatedData);
-        setUsers(users.map((user)=>
-            user.id===userId?response.data.user:user));
+            const response = await axiosInstance.post(`/users/${userId}?_method=PUT`, formData);
+        setUsers(prevUsers =>
+            prevUsers.map(user => user.id === userId ? response.data.user : user)
+        );
+        fetchUsers();
+        
         console.log('user updated successfully');
     }
         catch(error){
-            console.error('could not update user');
+            console.error('could not update user',error);
+            throw error;
         }
+
     }
     const showUser= async (userId)=>{
         try{

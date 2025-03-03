@@ -11,6 +11,8 @@ import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 import ReusableTable from "../ReusableTable";
 import { useBooks } from "../../contexts/BookContext";
+import { Link } from "react-router-dom";
+
 
 
 const Books = () => {
@@ -59,13 +61,13 @@ const Books = () => {
 
     // Table columns configuration
     const columns = [
-        { key: 'id', header: "ID", className: "pl-2 py- bg-[#EEF1F4]" },
-        { key: 'author', header: "USER", className: "pr- text-left" },
-        { key: 'title', header: "EMAIL", className: "pl-2 py- bg-[#EEF1F4]" },
-        {key:'description', header:"ROLE"},
+        { key: 'id', header: "ID" },
+        { key: 'author', header: "Author" },
+        { key: 'title', header: "TITLE" },
+        {key:'description', header:"DESCRIPTION"},
         {key:'image', header:"IMAGE"},
         {key:'link', header:"LINK"},
-        {key:'genre_id',header:"GENRE ID"},
+        {key:'genre_id',header:"GENRE"},
         {KEY:'language', header:"LANGUAGE"},
         {key:'year', header:"YEAR"},
         
@@ -92,7 +94,7 @@ const Books = () => {
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
-                    <a className="">New Book</a>
+                    <Link to="add"  className="">New Book</Link>
                 </div>
                 <div className="flex items-center justify-center">
                     <div

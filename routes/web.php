@@ -13,6 +13,7 @@ use App\Http\Controllers\GenreController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 //authentication
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/signup',[AuthController::class,'signup']);
@@ -26,10 +27,12 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/user',[AuthController::class,'user']);
     
 });
+
 Route::middleware(['auth:sanctum','Admin'])->group(function(){
     Route::resource('books',BookController::class);
     Route::resource('genres',GenreController::class);
     Route::resource('users',UserController::class);
+    
     
 });
 
