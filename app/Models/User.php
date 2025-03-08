@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -32,6 +33,9 @@ class User extends Authenticatable
         else{
             return asset('storage/Default_pfp.jpg');
         }
+    }
+    public function getCreatedAtAttribute($value){
+        return Carbon::parse($value)->format('F Y');
     }
     public function reviews(){
         return $this->hasMany(Review::class);

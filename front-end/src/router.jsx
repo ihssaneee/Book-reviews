@@ -14,7 +14,8 @@ import EditGenre from './components/Genres/EditGenreForm';
 import AddUserForm from './components/Users/AddUserForm';
 import EditUser from './components/Users/EditUserForm';
 import AddBookForm from './components/Books/AddBookForm';
-
+import EditBookForm from './components/Books/EditBookForm';
+import UserProfile from './components/Users/user_profile';
 const router=createBrowserRouter([
     {
         path:'/login',
@@ -64,7 +65,10 @@ const router=createBrowserRouter([
                 path:"users/edit/:id",
                 element:<EditUser />,
             },
-           
+            {
+                path:"user/profile",
+                element:<UserProfile />,
+            },
             {
                 path:'books',
                 element:<Books />
@@ -72,6 +76,10 @@ const router=createBrowserRouter([
             {
                 path:'books/add',
                 element:<AddBookForm />,
+            },
+            {
+                path:'books/edit/:id',
+                element:<EditBookForm />,
             },
             
         ]

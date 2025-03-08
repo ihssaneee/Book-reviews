@@ -1,6 +1,7 @@
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Link } from "react-router-dom";
 
 const DropdownMenu = ({handleLogout,isVisible}) => {
     return (
@@ -10,13 +11,13 @@ const DropdownMenu = ({handleLogout,isVisible}) => {
                 isVisible ? "hidden" : "flex"
             } items-center   gap-6 flex-col   h-40 top-16   bg-white border shadow w-44 p-4 `}
         >
-            <a href="#" className="flex items-center text-sm w-full  ">
+            <Link to="dashboard/profile/view" className="flex items-center text-sm w-full  ">
                 <AccountCircleIcon
                     fontSize="small"
                     className="mr-2 text-[#878A99] font-Roboto  "
                 />
                 Profile
-            </a>
+            </Link>
             <a href="#" className="flex items-center text-sm w-full  ">
                 <SettingsIcon
                     fontSize="small"

@@ -17,7 +17,7 @@ export default function Dashboard() {
             {toggled && (
                 <div className="fixed inset-0 z-20 bg-black opacity-25 backdrop-blur-sm lg:hidden" onClick={toggle}></div>
             )}
-            <main className="overflow-visible   bg-[#F4F4F4] min-h-screen">
+            <main className="  bg-[#F4F4F4] min-h-screen">
                 <header className={`ml-0 lg:ml-64 h-auto border bg-white ${toggled ? "lg:ml-marginLeft" : "lg:ml-64"}`}>
                     <AdminHeader toggle={toggle} className="w-full" />
                 </header>

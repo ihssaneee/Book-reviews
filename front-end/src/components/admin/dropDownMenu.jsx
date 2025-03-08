@@ -4,6 +4,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useAuth } from "../../contexts/AuthContext";
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import { Link } from "react-router-dom";
 
 const DropdownMenu = ({handleLogout,isVisible}) => {
     const {user}=useAuth();
@@ -21,13 +22,13 @@ const DropdownMenu = ({handleLogout,isVisible}) => {
                     <p className="font-Roboto font-normal text-sm">{user.email}</p>
                 </span>
             </div>
-            <a href="#" className="flex items-center text-base w-full text-zinc-600 font-Roboto ">
+            <Link to="user/profile" className="flex items-center text-base w-full text-zinc-600 font-Roboto ">
                 <PersonOutlineOutlinedIcon
                     fontSize="medium"
                     className="mr-2 text-[#878A99]   "
                 />
                 Profile
-            </a>
+            </Link>
             <a href="#" className="flex items-center text-base w-full  font-Roboto text-zinc-600">
                 <SettingsOutlinedIcon
                     fontSize="medium"

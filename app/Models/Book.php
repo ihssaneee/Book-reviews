@@ -10,6 +10,11 @@ class Book extends Model
     protected $fillable=[
         'author','title','description','image','link','genre_id','language','year'
     ];
+    public function getImageAttribute($value){
+        if ($value){
+            return asset('storage/'. $value);
+        }
+    }
     public function genre(){
         return $this->belongsTo(Genre::class);
     }
