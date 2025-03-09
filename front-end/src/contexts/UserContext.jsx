@@ -68,6 +68,8 @@ export const UsersProvider=({children})=>{
         fetchUsers();
         
         console.log('user updated successfully');
+        return response.data.user;
+        
     }
         catch(error){
             console.error('could not update user',error);

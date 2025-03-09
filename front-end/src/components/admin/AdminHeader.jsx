@@ -17,6 +17,7 @@ import  useWindowSize  from "../useWindowSize";
 const AdminHeader = ({ toggle }) => {
     
     console.log(useWindowSize());
+    const divStyle="flex items-center justify-center w-10 h-10  rounded-full bg-gray-200";
     const { loading, user, logout } = useAuth();
     const {width}=useWindowSize();
     const navigate = useNavigate();
@@ -41,7 +42,7 @@ const AdminHeader = ({ toggle }) => {
 
     return (
         
-       <div className={`flex lg:items-center lg:justify-center w-full ${isSearched ? "justify-normal items-start":"items-center justify-between"}  `}>
+       <div className={`flex lg:items-center lg:justify-center w-full h-14 ${isSearched ? "justify-normal items-start":"items-center justify-between"}  `}>
         {(width <= 689 &&  !isSearched) || (width>689)?  (
             <>
             <div className="flex ">
@@ -82,28 +83,28 @@ const AdminHeader = ({ toggle }) => {
                     ):<></>}
                    
                 
-                    <div className="flex items-center justify-center bg-white   hover:bg-opacity-35">
+                    <div className={divStyle}>
                         <LightModeOutlinedIcon
-                            fontSize="large"
-                            className="text-[#878A99] cursor-pointer   p-2 "
+                            fontSize="medium"
+                            className="cursor-pointer w-1 h-1 text-black"
                         />
                     </div>
-                    <div className="flex items-center justify-center bg-white  hover:bg-opacity-35">
+                    <div className={divStyle}>
                         <NotificationsNoneIcon
-                            fontSize="large"
-                            className="text-[#878A99] cursor-pointer p-1.5"
+                            fontSize="medium"
+                            className="cursor-pointer w-1 h-1 text-black"
                         />
                     </div>
                     <div
                         className="mr-10 cursor-pointer w-22 "
                         onClick={handleClick}
                     >
-                            <div className="h-[5rem] flex items-center justify-center ">
+                            <div className=" flex items-center justify-center ">
                                 {!loading ? (
                                     <img
                                         src={user.picture}
                                         alt="Profile picture"
-                                        className="object-cover w-8 h-auto rounded-full"
+                                        className="object-cover w-10 h-10 rounded-full"
                                     />
                                 ) : null}
                             </div>

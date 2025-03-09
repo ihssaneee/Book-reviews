@@ -11,10 +11,10 @@ const DropdownMenu = ({handleLogout,isVisible}) => {
     return (
         <>
             <div className="flex justify-center items-center gap-2   border-b p-2  ">
-                <span className="max-w-16 max-h-16 flex items-center justify-center ">
+                <span className=" flex items-center justify-center ">
                     <img src={user.picture} 
                     alt="profile picture"
-                    className="max-w-14 max-h-14 object-cover rounded-full"
+                    className=" max-w-none w-14 h-14 object-cover rounded-full"
                     />
                 </span>
                 <span className="flex flex-col justify-center  items-start font-Roboto  text-zinc-600 gap-1">

@@ -63,6 +63,10 @@ const AuthProvider = ({ children }) => {
             console.error('Logout error:', error);
         }
     };
+    // update user 
+    const updateUser=(updatedUser)=>{
+        setUser(updatedUser);
+    }
 
     const value = {
         user,
@@ -70,6 +74,7 @@ const AuthProvider = ({ children }) => {
         login,
         logout,
         loginLoading,
+        updateUser,
     };
 
 
