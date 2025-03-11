@@ -24,6 +24,7 @@ export default {
     extend: {
       fontFamily: {
         Roboto: ['Roboto','sans-serif'],
+        Inter: ['Inter','sans-serif'],
       },
       margin:{
         marginLeft: '4.5rem',

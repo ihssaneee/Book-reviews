@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ModeNightOutlinedIcon from "@mui/icons-material/ModeNightOutlined";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useAuth } from "../../contexts/AuthContext";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -11,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import DropdownMenu from "./dropDownMenu";
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import CloseIcon from '@mui/icons-material/Close';
+
 
 import  useWindowSize  from "../useWindowSize";
 
@@ -21,8 +23,11 @@ const AdminHeader = ({ toggle }) => {
     const { loading, user, logout } = useAuth();
     const {width}=useWindowSize();
     const navigate = useNavigate();
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
     const [isSearched, setIsSearched] = useState(false);
+   
+    const dropdownRef=useRef(null);
+    const profileRef=useRef(null);
     const handleSearchClick = () => {
         setIsSearched(!isSearched);
        
@@ -39,6 +44,18 @@ const AdminHeader = ({ toggle }) => {
             console.error("could not log out.", error);
         }
     };
+    const handleClickOutside=(e)=>{
+        if (dropdownRef.current && !dropdownRef.current.contains(e.target) && profileRef.current &&  !profileRef.current.contains(e.target)){
+            setIsVisible(false);
+        }
+    }
+    useEffect(()=>{
+        document.addEventListener('click',handleClickOutside);
+        return ()=>{
+            document.removeEventListener('click',handleClickOutside);
+        }
+    },[]);
+   
 
     return (
         
@@ -96,24 +113,29 @@ const AdminHeader = ({ toggle }) => {
                         />
                     </div>
                     <div
-                        className="mr-10 cursor-pointer w-22 "
+                        className="mr-10 cursor-pointer w-22 relative "
+                        ref={profileRef}
                         onClick={handleClick}
                     >
-                            <div className=" flex items-center justify-center ">
+                            <div className=" flex items-center justify-center cursor-pointer">
                                 {!loading ? (
+                                   <>
                                     <img
                                         src={user.picture}
                                         alt="Profile picture"
                                         className="object-cover w-10 h-10 rounded-full"
                                     />
+                                    <FiberManualRecordIcon fontSize="small" className={`absolute rounded-full stroke-white stroke-2 outline-white  left-7 top-6 ${user.status==="active" ? "text-green-500" : "text-gray-500"}` } />
+                                    </> 
                                 ) : null}
                             </div>
+                            
                    
                     </div>
                    < div
-                       
+                        ref={dropdownRef}
                         className={`absolute z-10  ${
-                            isVisible ? "hidden opacity-0" : "flex opacity-100"
+                            !isVisible ? "hidden opacity-0" : "flex opacity-100"
                         } items-center   gap-6 flex-col   h-64 top-16   bg-white rounded-lg right-5 shadow-md max-w-64 p-4  `}
                     >
                         <DropdownMenu
