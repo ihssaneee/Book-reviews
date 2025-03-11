@@ -21,6 +21,7 @@ const AdminHeader = ({ toggle }) => {
     console.log(useWindowSize());
     const divStyle="flex items-center justify-center w-10 h-10  rounded-full bg-gray-200";
     const { loading, user, logout } = useAuth();
+    const [status]=useState(user.status);
     const {width}=useWindowSize();
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);

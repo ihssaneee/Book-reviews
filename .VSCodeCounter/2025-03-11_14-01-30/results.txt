@@ -1,0 +1,184 @@
+Date : 2025-03-11 14:01:30
+Directory : c:\xampp\htdocs\book-review
+Total : 112 files,  22861 codes, 1262 comments, 840 blanks, all 24963 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          7 |     17,966 |          0 |          7 |     17,973 |
+| JavaScript JSX |         35 |      2,853 |        239 |        256 |      3,348 |
+| PHP            |         51 |      1,778 |        977 |        522 |      3,277 |
+| JavaScript     |         11 |        135 |         33 |         19 |        187 |
+| Markdown       |          2 |         52 |          0 |         26 |         78 |
+| XML            |          1 |         31 |          2 |          1 |         34 |
+| HTML           |          1 |         25 |          0 |          1 |         26 |
+| CSS            |          4 |         21 |         11 |          8 |         40 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                       | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                          |        112 |     22,861 |      1,262 |        840 |     24,963 |
+| . (Files)                                                                                                  |          9 |     11,993 |          3 |         32 |     12,028 |
+| app                                                                                                        |         13 |        547 |        134 |        122 |        803 |
+| app\Http                                                                                                   |          7 |        409 |         91 |         86 |        586 |
+| app\Http\Controllers                                                                                       |          6 |        390 |         86 |         81 |        557 |
+| app\Http\Middleware                                                                                        |          1 |         19 |          5 |          5 |         29 |
+| app\Models                                                                                                 |          4 |         85 |         22 |         20 |        127 |
+| app\Providers                                                                                              |          2 |         53 |         21 |         16 |         90 |
+| bootstrap                                                                                                  |          2 |         25 |          2 |          6 |         33 |
+| config                                                                                                     |         13 |        593 |        703 |        255 |      1,551 |
+| database                                                                                                   |         14 |        384 |         98 |         75 |        557 |
+| database\factories                                                                                         |          1 |         25 |         14 |          6 |         45 |
+| database\migrations                                                                                        |         11 |        327 |         75 |         58 |        460 |
+| database\seeders                                                                                           |          2 |         32 |          9 |         11 |         52 |
+| front-end                                                                                                  |         45 |      9,073 |        271 |        278 |      9,622 |
+| front-end (Files)                                                                                          |          8 |      6,181 |         30 |         13 |      6,224 |
+| front-end\src                                                                                              |         37 |      2,892 |        241 |        265 |      3,398 |
+| front-end\src (Files)                                                                                      |          5 |        139 |         20 |         22 |        181 |
+| front-end\src\admin                                                                                        |          1 |         28 |          0 |          2 |         30 |
+| front-end\src\api                                                                                          |          1 |         25 |          1 |          5 |         31 |
+| front-end\src\components                                                                                   |         25 |      2,364 |        212 |        183 |      2,759 |
+| front-end\src\components (Files)                                                                           |          8 |        450 |          2 |         44 |        496 |
+| front-end\src\components\Books                                                                             |          4 |        632 |         18 |         31 |        681 |
+| front-end\src\components\Genres                                                                            |          4 |        356 |         92 |         27 |        475 |
+| front-end\src\components\Users                                                                             |          5 |        648 |        100 |         46 |        794 |
+| front-end\src\components\admin                                                                             |          3 |        264 |          0 |         34 |        298 |
+| front-end\src\components\form components                                                                   |          1 |         14 |          0 |          1 |         15 |
+| front-end\src\contexts                                                                                     |          4 |        336 |          8 |         52 |        396 |
+| front-end\src\layouts                                                                                      |          1 |          0 |          0 |          1 |          1 |
+| public                                                                                                     |          5 |         19 |         14 |         10 |         43 |
+| public (Files)                                                                                             |          1 |          9 |          3 |          6 |         18 |
+| public\vendor                                                                                              |          4 |         10 |         11 |          4 |         25 |
+| public\vendor\telescope                                                                                    |          4 |         10 |         11 |          4 |         25 |
+| resources                                                                                                  |          4 |        162 |          0 |         26 |        188 |
+| resources\css                                                                                              |          1 |          3 |          0 |          1 |          4 |
+| resources\js                                                                                               |          2 |          4 |          0 |          3 |          7 |
+| resources\views                                                                                            |          1 |        155 |          0 |         22 |        177 |
+| routes                                                                                                     |          3 |         41 |          4 |         20 |         65 |
+| tests                                                                                                      |          4 |         24 |         33 |         16 |         73 |
+| tests (Files)                                                                                              |          2 |         15 |         33 |         11 |         59 |
+| tests\Feature                                                                                              |          1 |          5 |          0 |          3 |          8 |
+| tests\Unit                                                                                                 |          1 |          4 |          0 |          2 |          6 |
++------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                   | language       | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\xampp\htdocs\book-review\README.md                                                                      | Markdown       |         47 |          0 |         22 |         69 |
+| c:\xampp\htdocs\book-review\app\Http\Controllers\BookController.php                                        | PHP            |        103 |         23 |         15 |        141 |
+| c:\xampp\htdocs\book-review\app\Http\Controllers\Controller.php                                            | PHP            |          5 |          1 |          3 |          9 |
+| c:\xampp\htdocs\book-review\app\Http\Controllers\GenreController.php                                       | PHP            |         84 |         20 |         21 |        125 |
+| c:\xampp\htdocs\book-review\app\Http\Controllers\ReviewController.php                                      | PHP            |         28 |         28 |         10 |         66 |
+| c:\xampp\htdocs\book-review\app\Http\Controllers\UserController.php                                        | PHP            |        110 |          1 |         17 |        128 |
+| c:\xampp\htdocs\book-review\app\Http\Controllers\authController.php                                        | PHP            |         60 |         13 |         15 |         88 |
+| c:\xampp\htdocs\book-review\app\Http\Middleware\Admin.php                                                  | PHP            |         19 |          5 |          5 |         29 |
+| c:\xampp\htdocs\book-review\app\Models\Book.php                                                            | PHP            |         17 |          1 |          5 |         23 |
+| c:\xampp\htdocs\book-review\app\Models\Genre.php                                                           | PHP            |         12 |          1 |          4 |         17 |
+| c:\xampp\htdocs\book-review\app\Models\Review.php                                                          | PHP            |         15 |          1 |          4 |         20 |
+| c:\xampp\htdocs\book-review\app\Models\User.php                                                            | PHP            |         41 |         19 |          7 |         67 |
+| c:\xampp\htdocs\book-review\app\Providers\AppServiceProvider.php                                           | PHP            |         12 |          8 |          5 |         25 |
+| c:\xampp\htdocs\book-review\app\Providers\TelescopeServiceProvider.php                                     | PHP            |         41 |         13 |         11 |         65 |
+| c:\xampp\htdocs\book-review\bootstrap\app.php                                                              | PHP            |         20 |          2 |          4 |         26 |
+| c:\xampp\htdocs\book-review\bootstrap\providers.php                                                        | PHP            |          5 |          0 |          2 |          7 |
+| c:\xampp\htdocs\book-review\composer.json                                                                  | JSON           |         73 |          0 |          1 |         74 |
+| c:\xampp\htdocs\book-review\composer.lock                                                                  | JSON           |      8,915 |          0 |          1 |      8,916 |
+| c:\xampp\htdocs\book-review\config\app.php                                                                 | PHP            |         22 |         82 |         23 |        127 |
+| c:\xampp\htdocs\book-review\config\auth.php                                                                | PHP            |         28 |         74 |         14 |        116 |
+| c:\xampp\htdocs\book-review\config\cache.php                                                               | PHP            |         57 |         34 |         18 |        109 |
+| c:\xampp\htdocs\book-review\config\cors.php                                                                | PHP            |         16 |         12 |         12 |         40 |
+| c:\xampp\htdocs\book-review\config\database.php                                                            | PHP            |        108 |         43 |         23 |        174 |
+| c:\xampp\htdocs\book-review\config\filesystems.php                                                         | PHP            |         33 |         32 |         13 |         78 |
+| c:\xampp\htdocs\book-review\config\logging.php                                                             | PHP            |         79 |         33 |         21 |        133 |
+| c:\xampp\htdocs\book-review\config\mail.php                                                                | PHP            |         55 |         43 |         19 |        117 |
+| c:\xampp\htdocs\book-review\config\queue.php                                                               | PHP            |         52 |         44 |         17 |        113 |
+| c:\xampp\htdocs\book-review\config\sanctum.php                                                             | PHP            |         13 |         53 |         14 |         80 |
+| c:\xampp\htdocs\book-review\config\services.php                                                            | PHP            |         20 |         11 |          8 |         39 |
+| c:\xampp\htdocs\book-review\config\session.php                                                             | PHP            |         23 |        160 |         35 |        218 |
+| c:\xampp\htdocs\book-review\config\telescope.php                                                           | PHP            |         87 |         82 |         38 |        207 |
+| c:\xampp\htdocs\book-review\database\factories\UserFactory.php                                             | PHP            |         25 |         14 |          6 |         45 |
+| c:\xampp\htdocs\book-review\database\migrations\0001_01_01_000000_create_users_table.php                   | PHP            |         38 |          6 |          6 |         50 |
+| c:\xampp\htdocs\book-review\database\migrations\0001_01_01_000001_create_cache_table.php                   | PHP            |         25 |          6 |          5 |         36 |
+| c:\xampp\htdocs\book-review\database\migrations\0001_01_01_000002_create_jobs_table.php                    | PHP            |         46 |          6 |          6 |         58 |
+| c:\xampp\htdocs\book-review\database\migrations\2024_10_01_193304_create_genres_table.php                  | PHP            |         20 |          6 |          4 |         30 |
+| c:\xampp\htdocs\book-review\database\migrations\2024_10_31_160119_create_personal_access_tokens_table.php  | PHP            |         24 |          6 |          4 |         34 |
+| c:\xampp\htdocs\book-review\database\migrations\2024_10_31_223407_create_books_table.php                   | PHP            |         27 |          6 |          4 |         37 |
+| c:\xampp\htdocs\book-review\database\migrations\2024_10_31_223531_create_reviews_table.php                 | PHP            |         24 |          6 |          4 |         34 |
+| c:\xampp\htdocs\book-review\database\migrations\2024_11_01_192427_add_role_to_users_table.php              | PHP            |         19 |          8 |          4 |         31 |
+| c:\xampp\htdocs\book-review\database\migrations\2024_12_02_220439_add_picture_to_users_table.php           | PHP            |         19 |          8 |          4 |         31 |
+| c:\xampp\htdocs\book-review\database\migrations\2025_02_27_160853_create_telescope_entries_table.php       | PHP            |         50 |          9 |         12 |         71 |
+| c:\xampp\htdocs\book-review\database\migrations\2025_03_10_182238_add_additional_fields_to_users_table.php | PHP            |         35 |          8 |          5 |         48 |
+| c:\xampp\htdocs\book-review\database\seeders\AdminSeeder.php                                               | PHP            |         18 |          4 |          6 |         28 |
+| c:\xampp\htdocs\book-review\database\seeders\DatabaseSeeder.php                                            | PHP            |         14 |          5 |          5 |         24 |
+| c:\xampp\htdocs\book-review\front-end\README.md                                                            | Markdown       |          5 |          0 |          4 |          9 |
+| c:\xampp\htdocs\book-review\front-end\eslint.config.js                                                     | JavaScript     |         37 |          0 |          2 |         39 |
+| c:\xampp\htdocs\book-review\front-end\index.html                                                           | HTML           |         25 |          0 |          1 |         26 |
+| c:\xampp\htdocs\book-review\front-end\package-lock.json                                                    | JSON           |      6,038 |          0 |          1 |      6,039 |
+| c:\xampp\htdocs\book-review\front-end\package.json                                                         | JSON           |         42 |          0 |          1 |         43 |
+| c:\xampp\htdocs\book-review\front-end\postcss.config.cjs                                                   | JavaScript     |          6 |         12 |          0 |         18 |
+| c:\xampp\htdocs\book-review\front-end\src\App.jsx                                                          | JavaScript JSX |         14 |          0 |          7 |         21 |
+| c:\xampp\htdocs\book-review\front-end\src\admin\dashboard.jsx                                              | JavaScript JSX |         28 |          0 |          2 |         30 |
+| c:\xampp\htdocs\book-review\front-end\src\api\axiosConfig.js                                               | JavaScript     |         25 |          1 |          5 |         31 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Books\AddBookForm.jsx                                 | JavaScript JSX |        250 |          1 |          5 |        256 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Books\BookItem.jsx                                    | JavaScript JSX |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Books\BooksList.jsx                                   | JavaScript JSX |        126 |         16 |         16 |        158 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Books\EditBookForm.jsx                                | JavaScript JSX |        256 |          1 |          9 |        266 |
+| c:\xampp\htdocs\book-review\front-end\src\components\DataTable.jsx                                         | JavaScript JSX |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\book-review\front-end\src\components\FilterComponent.jsx                                   | JavaScript JSX |         37 |          0 |          5 |         42 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Genres\AddGenreForm.jsx                               | JavaScript JSX |        108 |          0 |          7 |        115 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Genres\EditGenreForm.jsx                              | JavaScript JSX |        105 |          0 |          7 |        112 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Genres\GenreItem.jsx                                  | JavaScript JSX |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Genres\GenresList.jsx                                 | JavaScript JSX |        143 |         92 |         12 |        247 |
+| c:\xampp\htdocs\book-review\front-end\src\components\ProtectedRoute.jsx                                    | JavaScript JSX |         27 |          0 |          4 |         31 |
+| c:\xampp\htdocs\book-review\front-end\src\components\ReusableTable.jsx                                     | JavaScript JSX |        100 |          2 |          5 |        107 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Users\AddUserForm.jsx                                 | JavaScript JSX |        204 |          1 |          5 |        210 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Users\EditUserForm.jsx                                | JavaScript JSX |        199 |          3 |         15 |        217 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Users\UserItem.jsx                                    | JavaScript JSX |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Users\UsersList.jsx                                   | JavaScript JSX |        136 |         96 |         16 |        248 |
+| c:\xampp\htdocs\book-review\front-end\src\components\Users\user_profile.jsx                                | JavaScript JSX |        109 |          0 |          9 |        118 |
+| c:\xampp\htdocs\book-review\front-end\src\components\admin\AdminHeader.jsx                                 | JavaScript JSX |        140 |          0 |         18 |        158 |
+| c:\xampp\htdocs\book-review\front-end\src\components\admin\AdminSidebar.jsx                                | JavaScript JSX |         73 |          0 |         14 |         87 |
+| c:\xampp\htdocs\book-review\front-end\src\components\admin\dropDownMenu.jsx                                | JavaScript JSX |         51 |          0 |          2 |         53 |
+| c:\xampp\htdocs\book-review\front-end\src\components\form components\textInput.jsx                         | JavaScript JSX |         14 |          0 |          1 |         15 |
+| c:\xampp\htdocs\book-review\front-end\src\components\login.jsx                                             | JavaScript JSX |        123 |          0 |         19 |        142 |
+| c:\xampp\htdocs\book-review\front-end\src\components\notFound.jsx                                          | JavaScript JSX |          7 |          0 |          1 |          8 |
+| c:\xampp\htdocs\book-review\front-end\src\components\signup.jsx                                            | JavaScript JSX |        144 |          0 |          4 |        148 |
+| c:\xampp\htdocs\book-review\front-end\src\components\useWindowSize.jsx                                     | JavaScript JSX |         12 |          0 |          5 |         17 |
+| c:\xampp\htdocs\book-review\front-end\src\contexts\AuthContext.jsx                                         | JavaScript JSX |         68 |          5 |         16 |         89 |
+| c:\xampp\htdocs\book-review\front-end\src\contexts\BookContext.jsx                                         | JavaScript JSX |         87 |          0 |         10 |         97 |
+| c:\xampp\htdocs\book-review\front-end\src\contexts\GenreContext.jsx                                        | JavaScript JSX |         86 |          3 |         14 |        103 |
+| c:\xampp\htdocs\book-review\front-end\src\contexts\UserContext.jsx                                         | JavaScript JSX |         95 |          0 |         12 |        107 |
+| c:\xampp\htdocs\book-review\front-end\src\index.css                                                        | CSS            |         14 |          1 |          4 |         19 |
+| c:\xampp\htdocs\book-review\front-end\src\layouts\guest.jsx                                                | JavaScript JSX |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\book-review\front-end\src\main.jsx                                                         | JavaScript JSX |         25 |          0 |          3 |         28 |
+| c:\xampp\htdocs\book-review\front-end\src\router.jsx                                                       | JavaScript JSX |         86 |          0 |          8 |         94 |
+| c:\xampp\htdocs\book-review\front-end\src\something.jsx                                                    | JavaScript JSX |          0 |         19 |          0 |         19 |
+| c:\xampp\htdocs\book-review\front-end\tailwind.config.cjs                                                  | JavaScript     |         20 |         17 |          2 |         39 |
+| c:\xampp\htdocs\book-review\front-end\vite.config.js                                                       | JavaScript     |          8 |          1 |          2 |         11 |
+| c:\xampp\htdocs\book-review\package-lock.json                                                              | JSON           |      2,876 |          0 |          1 |      2,877 |
+| c:\xampp\htdocs\book-review\package.json                                                                   | JSON           |         17 |          0 |          1 |         18 |
+| c:\xampp\htdocs\book-review\phpunit.xml                                                                    | XML            |         31 |          2 |          1 |         34 |
+| c:\xampp\htdocs\book-review\postcss.config.js                                                              | JavaScript     |          6 |          0 |          1 |          7 |
+| c:\xampp\htdocs\book-review\public\index.php                                                               | PHP            |          9 |          3 |          6 |         18 |
+| c:\xampp\htdocs\book-review\public\vendor\telescope\app-dark.css                                           | CSS            |          2 |          5 |          2 |          9 |
+| c:\xampp\htdocs\book-review\public\vendor\telescope\app.css                                                | CSS            |          2 |          5 |          1 |          8 |
+| c:\xampp\htdocs\book-review\public\vendor\telescope\app.js                                                 | JavaScript     |          1 |          1 |          0 |          2 |
+| c:\xampp\htdocs\book-review\public\vendor\telescope\mix-manifest.json                                      | JSON           |          5 |          0 |          1 |          6 |
+| c:\xampp\htdocs\book-review\resources\css\app.css                                                          | CSS            |          3 |          0 |          1 |          4 |
+| c:\xampp\htdocs\book-review\resources\js\app.js                                                            | JavaScript     |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\book-review\resources\js\bootstrap.js                                                      | JavaScript     |          3 |          0 |          2 |          5 |
+| c:\xampp\htdocs\book-review\resources\views\welcome.blade.php                                              | PHP            |        155 |          0 |         22 |        177 |
+| c:\xampp\htdocs\book-review\routes\api.php                                                                 | PHP            |         10 |          0 |          5 |         15 |
+| c:\xampp\htdocs\book-review\routes\console.php                                                             | PHP            |          8 |          0 |          3 |         11 |
+| c:\xampp\htdocs\book-review\routes\web.php                                                                 | PHP            |         23 |          4 |         12 |         39 |
+| c:\xampp\htdocs\book-review\tailwind.config.js                                                             | JavaScript     |         18 |          1 |          2 |         21 |
+| c:\xampp\htdocs\book-review\tests\Feature\ExampleTest.php                                                  | PHP            |          5 |          0 |          3 |          8 |
+| c:\xampp\htdocs\book-review\tests\Pest.php                                                                 | PHP            |          9 |         32 |          7 |         48 |
+| c:\xampp\htdocs\book-review\tests\TestCase.php                                                             | PHP            |          6 |          1 |          4 |         11 |
+| c:\xampp\htdocs\book-review\tests\Unit\ExampleTest.php                                                     | PHP            |          4 |          0 |          2 |          6 |
+| c:\xampp\htdocs\book-review\vite.config.js                                                                 | JavaScript     |         10 |          0 |          2 |         12 |
+| Total                                                                                                      |                |     22,861 |      1,262 |        840 |     24,963 |
++------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
