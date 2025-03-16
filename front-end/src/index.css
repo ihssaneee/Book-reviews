@@ -17,3 +17,10 @@ html{
     padding:0;
     box-sizing:border-box;
 }
+.my-circle-icon circle {
+    r: 7px; /* Default radius */
+  }
+  
+  .my-circle-icon.active circle {
+    r: 8px; /* Radius when active */
+  }

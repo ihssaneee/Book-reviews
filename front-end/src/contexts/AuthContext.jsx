@@ -19,7 +19,9 @@ const AuthProvider = ({ children }) => {
         const fetchUser = async () => {
             try {
                 const response = await axiosInstance.get("/user");
+
                 setUser(response.data.user); // Now correctly accessing 'user'
+                setIsAuthenitcated(true);
                
             } catch (error) {
                 console.error("Error fetching user:", error);
@@ -67,6 +69,19 @@ const AuthProvider = ({ children }) => {
     const updateUser=(updatedUser)=>{
         setUser(updatedUser);
     }
+    //update user status 
+    const updateStatus=async(updatedStatus)=>{
+        try{
+            const response= await axiosInstance.put('/user/status',updatedStatus);
+            setUser((prevUser)=>({...prevUser,updatedStatus }))
+            console.log('staus updated successfully.');
+           
+        }
+        catch(error){
+            console.error('status could not be updated.',error);
+        }
+
+    }
 
     const value = {
         user,
@@ -75,6 +90,8 @@ const AuthProvider = ({ children }) => {
         logout,
         loginLoading,
         updateUser,
+        updateStatus,
+        isAuthenticated
     };
 
 

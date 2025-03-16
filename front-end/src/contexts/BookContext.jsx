@@ -10,7 +10,7 @@ export const useBooks = () => {
 
 export const BookProvider = ({ children }) => {
     const [books, setBooks] = useState([]);
-    const { user } = useAuth();
+    const { isAuthenticated } = useAuth();
     const [loading, setLoading] = useState(false);
 
     const fetchBooks = async () => {
@@ -27,10 +27,10 @@ export const BookProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        if (user) {
+        if (isAuthenticated) {
             fetchBooks();
         }
-    }, [user]);
+    }, [isAuthenticated]);
 
     const addBook = async (newBook) => {
         try {

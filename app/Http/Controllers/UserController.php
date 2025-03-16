@@ -48,6 +48,8 @@ class UserController extends Controller
             $validatedData=$request->validate([
                 'name'=>"required|string|max:255",
                 'email'=>"required|string|email|max:255|unique:users",
+                'gender'=>"required|string|in:female,male|max:255",
+                'country'=>'required|string|max:255',
                 'password'=>"required|string|min:4|confirmed",
                 'picture'=>"sometimes|file|image|mimes:png,jpg,jpeg,gif,svg|max:2048",
                 'role'=>"required|string|in:admin,user|max:255",
@@ -91,6 +93,8 @@ class UserController extends Controller
                     ],
                     'password'=>"sometimes|string|min:6|confirmed",
                     "picture"=>"sometimes|file|image|mimes:png,jpg,jpeg,svg,gif|max:2048",
+                    'gender'=>"sometimes|string|in:female,male|max:255",
+                    "country"=>"sometime|string|max:255",
                     "role"=>"sometimes|string|in:user,admin|max:255",
                 ]);
                 try{

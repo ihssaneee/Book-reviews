@@ -10,7 +10,7 @@ export const useGenres = () => {
 
 export const GenresProvider = ({ children }) => {
   const [genres, setGenres] = useState([]);
-  const { user } = useAuth();
+  const { user,isAuthenticated } = useAuth();
   const [loading, setLoading] = useState(true);
 
   const fetchGenres = async () => {
@@ -27,10 +27,14 @@ export const GenresProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (isAuthenticated) {
+      console.log('user is authenticated')
       fetchGenres();
     }
-  }, [user]);
+    else{
+      console.log('user not authenticated',user);
+    }
+  },[isAuthenticated] );
 
   const addGenre = async (newGenre) => {
     try {

@@ -10,7 +10,7 @@ export const useUsers=() =>{
     return useContext(UsersContext);
 }
 export const UsersProvider=({children})=>{
-    const {user}=useAuth();
+    const {isAuthenticated}=useAuth();
     const [users,setUsers]=useState([]);
     const[loading,setLoading]=useState(false);
 
@@ -28,13 +28,11 @@ export const UsersProvider=({children})=>{
     };
 
     useEffect(() => {
-        if (user){
+        if (isAuthenticated){
         fetchUsers();
         }
-        else{
-            console.log('no user ');
-        }
-    }, [user]);
+        
+    }, [isAuthenticated]);
     const addUser=async(newUser) =>{
         try{
             const response=await axiosInstance.post('/users',newUser);

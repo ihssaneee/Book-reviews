@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -83,5 +84,14 @@ class AuthController extends Controller
             return response()->json([
                 'user' => $user,
             ], 200);
+        }
+        public function updateStatus(Request $request)
+        {
+            /** @var \App\Models\User $user */
+            $user = Auth::user();
+            $user->status = $request->input('status');
+            $user->save();
+    
+            return response()->json(['status' => 'success']);
         }
     }

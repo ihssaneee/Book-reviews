@@ -10,7 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
-import ReusableTable from "../ReusableTable";
+import ReusableTable from "../../shared/ReusableTable";
 import { useUsers } from "../../contexts/UserContext";
 import { Link,useNavigate } from "react-router-dom";
 

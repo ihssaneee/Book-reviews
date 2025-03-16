@@ -22,8 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'country',
         'role',
         'picture',
+        'status',
+        'gender',
     ];
     public function getPictureAttribute($value)
     {
