@@ -94,7 +94,7 @@ class UserController extends Controller
                     'password'=>"sometimes|string|min:6|confirmed",
                     "picture"=>"sometimes|file|image|mimes:png,jpg,jpeg,svg,gif|max:2048",
                     'gender'=>"sometimes|string|in:female,male|max:255",
-                    "country"=>"sometime|string|max:255",
+                    "country"=>"sometimes|string|max:255",
                     "role"=>"sometimes|string|in:user,admin|max:255",
                 ]);
                 try{

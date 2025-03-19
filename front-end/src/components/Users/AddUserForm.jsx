@@ -6,7 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router-dom";
 import { useUsers } from "../../contexts/UserContext";
 import axios from "axios";
-import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 
 export default function AddUserForm() {
     const { addUser } = useUsers();
@@ -15,10 +15,10 @@ export default function AddUserForm() {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        gender:"",
-        phone_number:"",
-        address:"",
-        country:"",
+        gender: "",
+        phone_number: "",
+        address: "",
+        country: "",
         role: "",
         password: "",
         password_confirmation: "",
@@ -32,11 +32,11 @@ export default function AddUserForm() {
     };
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
-  accept: {
-    'image/*': []  // ✅ This is the required format for v14.x
-  },
-  multiple: false,
-});
+        accept: {
+            "image/*": [], // ✅ This is the required format for v14.x
+        },
+        multiple: false,
+    });
     // File Preview
     const filePreview = formData.picture ? (
         <div className="mt-4">
@@ -75,25 +75,28 @@ export default function AddUserForm() {
             return;
         }
         try {
-            const formDataToSend= new FormData();
-            formDataToSend.append('name',formData.name);
-            formDataToSend.append('email',formData.email);
-            formDataToSend.append('role',formData.role);
-            formDataToSend.append('password',formData.password);
-            formDataToSend.append('country',formData.country);
-            formDataToSend.append('gender',formData.gender);
-            formDataToSend.append('password_confirmation',formData.password_confirmation);
-            if (formData.picture){
-                formDataToSend.append("picture",formData.picture)
+            const formDataToSend = new FormData();
+            formDataToSend.append("name", formData.name);
+            formDataToSend.append("email", formData.email);
+            formDataToSend.append("role", formData.role);
+            formDataToSend.append("password", formData.password);
+            formDataToSend.append("country", formData.country);
+            formDataToSend.append("gender", formData.gender);
+            formDataToSend.append(
+                "password_confirmation",
+                formData.password_confirmation
+            );
+            if (formData.picture) {
+                formDataToSend.append("picture", formData.picture);
             }
-           
+
             await addUser(formDataToSend);
             setFormData({
                 name: "",
                 email: "",
                 role: "",
-                gender:"",
-                country:"",
+                gender: "",
+                country: "",
                 password: "",
                 password_confirmation: "",
                 picture: null,
@@ -114,27 +117,31 @@ export default function AddUserForm() {
     // State to manage the visibility of the custom dropdown
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     // State to manage the visibility of the custom dropdown
-   // Handle country selection
-   const handleCountrySelect = (current_country) => {
-    setFormData((prevData) => ({
-        ...prevData,
-        country: current_country.cca2, // Update the country code in the form data
-    }));
-    setIsDropdownOpen(false); // Close the dropdown after selection
-};
-    //helper function to get the selected country 
-    const getSelectedCountry=()=>{
-        return formData.country?countries.find((country)=>country.cca2===formData.country):null;
-    }
+    // Handle country selection
+    const handleCountrySelect = (current_country) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            country: current_country.cca2, // Update the country code in the form data
+        }));
+        setIsDropdownOpen(false); // Close the dropdown after selection
+    };
+    //helper function to get the selected country
+    const getSelectedCountry = () => {
+        return formData.country
+            ? countries.find((country) => country.cca2 === formData.country)
+            : null;
+    };
     const fetchCountries = async () => {
         try {
-            const response = await axios.get("https://restcountries.com/v3.1/all");
-            const sortedCountries = response.data.sort((a,b)=>{
-               return a.name.common.localeCompare(b.name.common);
-            })
+            const response = await axios.get(
+                "https://restcountries.com/v3.1/all"
+            );
+            const sortedCountries = response.data.sort((a, b) => {
+                return a.name.common.localeCompare(b.name.common);
+            });
             setCountries(sortedCountries);
         } catch (error) {
-            console.error('an error happened.', error);
+            console.error("an error happened.", error);
         }
     };
 
@@ -174,41 +181,51 @@ export default function AddUserForm() {
                     />
                 </div>
                 <div className=" relative p-4 w-full   text-base  ">
-                <label htmlFor="country" className=" text-gray-700">Country</label>
-                     < div   className="mt-1  w-full border border-gray-300 rounded-md p-3  cursor-pointer flex items-center justify-between" onClick={() => setIsDropdownOpen(!isDropdownOpen)} >
-                    
-                    <button
-                        type="button"
-                        
-                        className="flex"
+                    <label htmlFor="country" className=" text-gray-700">
+                        Country
+                    </label>
+                    <div
+                        className="mt-1  w-full border border-gray-300 rounded-md p-3  cursor-pointer flex items-center justify-between"
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     >
-                        {formData.country ? (
-                            <>
-                                <img
-                                    src={getSelectedCountry().flags.svg}
-                                    alt="Flag"
-                                    className="w-6 h-6 mr-2"
-                                />
-                                {getSelectedCountry().name.common}
-                            </>
-                        ) : (
-                            'Select a Country'
-                        )}
-                         
-                        
+                        <button type="button" className="flex">
+                            {formData.country ? (
+                                <>
+                                    <img
+                                        src={getSelectedCountry().flags.svg}
+                                        alt="Flag"
+                                        className="w-6 h-6 mr-2"
+                                    />
+                                    {getSelectedCountry().name.common}
+                                </>
+                            ) : (
+                                "Select a Country"
+                            )}
                         </button>
-                        <span> <KeyboardArrowDownOutlinedIcon fontSize="medium" className=" text-gray-500" /> </span>
-                        </div>
-                         {/* Dropdown menu */}
+                        <span>
+                            {" "}
+                            <KeyboardArrowDownOutlinedIcon
+                                fontSize="medium"
+                                className=" text-gray-500"
+                            />{" "}
+                        </span>
+                    </div>
+                    {/* Dropdown menu */}
                     {isDropdownOpen && (
                         <div className="absolute    lg:w-[478px] w-full  bg-white border border-gray-300 rounded-md shadow-lg z-10 max-h-60 overflow-y-auto">
                             {countries.map((current_country) => (
                                 <div
                                     key={current_country.cca2}
-                                    onClick={() => handleCountrySelect(current_country)}
+                                    onClick={() =>
+                                        handleCountrySelect(current_country)
+                                    }
                                     className="flex items-center p-2 hover:bg-gray-100 cursor-pointer"
                                 >
-                                    <img src={current_country.flags.svg} alt={`${current_country.name.common} flag`} className="w-6 h-6 mr-2" />
+                                    <img
+                                        src={current_country.flags.svg}
+                                        alt={`${current_country.name.common} flag`}
+                                        className="w-6 h-6 mr-2"
+                                    />
                                     {current_country.name.common}
                                 </div>
                             ))}
@@ -217,11 +234,16 @@ export default function AddUserForm() {
                 </div>
                 <div className="flex flex-col px-4 my-2 w-full flex-shrink">
                     <label htmlFor="gender">Gender</label>
-                    <select name="gender" value={formData.gender} onChange={handleChange} className="rounded-lg p-3 my-2 border-neutral-300  focus:ring-yellow-400 focus:outline-yellow-400">
-                        <option value="" >Select Gender</option>
+                    <select
+                        name="gender"
+                        value={formData.gender}
+                        onChange={handleChange}
+                        className="rounded-lg p-3 my-2 border-neutral-300  focus:ring-yellow-400 focus:outline-yellow-400"
+                    >
+                        <option value="">Select Gender</option>
                         <option value="female">Female</option>
-                        <option value="male">Male</option>                    
-                </select>
+                        <option value="male">Male</option>
+                    </select>
                 </div>
                 <div className="flex flex-col px-4 w-full my-2 gap-1 flex-shrink">
                     <label htmlFor="role">Role</label>

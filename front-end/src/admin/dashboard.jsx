@@ -18,7 +18,7 @@ export default function Dashboard() {
                 <div className="fixed inset-0 z-20 bg-black opacity-25 backdrop-blur-sm lg:hidden" onClick={toggle}></div>
             )}
             <main className="  bg-[#F4F4F4] min-h-screen">
-                <header className={`ml-0 lg:ml-64 h-auto border bg-white ${toggled ? "lg:ml-marginLeft" : "lg:ml-64"}`}>
+                <header className={`ml-0 lg:ml-64 h-auto border  bg-white ${toggled ? "lg:ml-marginLeft" : "lg:ml-64"}`}>
                     <AdminHeader toggle={toggle} className="w-full" />
                 </header>
                 <section className={`${toggled ? "lg:ml-24" : "lg:ml-[17rem] mr-3 ml-3"} my-5 `}>
