@@ -18,6 +18,7 @@ export const BookProvider = ({ children }) => {
         try {
             const response = await axiosInstance.get("/books");
             setBooks(response.data.books);
+            
             console.log("Books fetched successfully!");
         } catch (error) {
             console.error("Could not fetch books", error);

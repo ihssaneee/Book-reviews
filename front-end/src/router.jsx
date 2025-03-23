@@ -3,7 +3,6 @@ import Login from './components/login';
 import NotFound from './components/notFound';
 import Signup from './components/signup';
 import App from './App';
-
 import Dashboard from './admin/dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import Genres from './components/Genres/GenresList';
@@ -16,6 +15,8 @@ import EditUser from './components/Users/EditUserForm';
 import AddBookForm from './components/Books/AddBookForm';
 import EditBookForm from './components/Books/EditBookForm';
 import UserProfile from './components/Users/user_profile';
+import Reviews from './components/reviews/ReviewsList';
+import AddReviewForm from './components/reviews/AddReview';
 const router=createBrowserRouter([
     {
         path:'/login',
@@ -81,6 +82,15 @@ const router=createBrowserRouter([
                 path:'books/edit/:id',
                 element:<EditBookForm />,
             },
+            //reviews
+            {
+                path:'reviews',
+                element:<Reviews />,
+            },
+            {
+                path:"reviews/add",
+                element:<AddReviewForm />,
+            }
             
         ]
     },

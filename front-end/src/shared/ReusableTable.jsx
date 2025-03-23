@@ -6,6 +6,10 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Tooltip } from "react-tooltip";
 import Pagination from "./Pagination";
 import { useScrollTrigger } from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
+import RenderStars from "./rating";
 
 // Extract action buttons to a separate component
 const ActionButtons = ({ itemId, onShow, onEdit, onDelete }) => (
@@ -51,21 +55,37 @@ const renderCellContent = (column, item, onShow, onEdit, onDelete) => {
     );
   } else if (column.key === "actions") {
     return <ActionButtons itemId={item.id} onShow={onShow} onEdit={onEdit} onDelete={onDelete} />;
-  } else {
+  } 
+  else if(column.key==="rating"){
+    return <div className="flex items-center justify-cente gap-0.5 rounded-md border w-14 p-1 bg-slate-100">
+      <StarIcon fontSize="small" className="text-yellow-400" /><span className="font-semibold text-black">{item.rating}</span>
+    </div>
+  }
+  else if(column.key==="user_name"){
+    return <div className="">
+          {item.user?.name}
+    </div>
+  }
+  else if(column.key==="book_name"){
+    return <div className="">
+          {item.book?.title}
+    </div>
+  }
+  else {
     return item[column.key];
   }
 };
 
 const ReusableTable = ({ columns, data, onDelete, onEdit, onShow ,pageSize=10}) => {
-  const hasData = data.length > 0;
+  const hasData = Array.isArray(data) && data.length > 0;
   // state for current page
-  const [currentPage,setCurrentPage]=useState(1);
-  //calculate total data
-  const totalPages=Math.ceil(data.length/pageSize);
-  //calculate paginated data
-  const startIndex=(currentPage-1)*pageSize;
-  const endIndex=startIndex+pageSize;
-  const paginatedData=data.slice(startIndex,endIndex);
+  const [currentPage, setCurrentPage] = useState(1);
+  // calculate total data
+  const totalPages = hasData ? Math.ceil(data.length / pageSize) : 0;
+  // calculate paginated data
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedData = hasData ? data.slice(startIndex, endIndex) : [];
 
 
   return (
@@ -115,7 +135,7 @@ const ReusableTable = ({ columns, data, onDelete, onEdit, onShow ,pageSize=10}) 
       <Tooltip id="myTooltip" />
     </table>
     {/*pagination controls*/}
-    <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} pageSize={pageSize} dataLength={data.length}/>
+    {hasData&&<Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} pageSize={pageSize} dataLength={data.length}/>}
     </>
   );
 };

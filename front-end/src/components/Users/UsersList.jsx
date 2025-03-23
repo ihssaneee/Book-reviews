@@ -166,7 +166,7 @@ const Users = () => {
     }
 
     return (
-        <div className="flex overflow-auto flex-col bg-white border mt-4">
+        <div className="flex overflow-auto flex-col bg-white border  ">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">

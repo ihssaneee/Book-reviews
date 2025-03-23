@@ -26,13 +26,10 @@ export default function Pagination({ currentPage, totalPages, onPageChange,pageS
 
                     }} />
                 </button>
-                {Array.from(
-                    { length: totalPages },
-                    (_, index) => index + 1
-                ).map((pageNumber) => (
+                {Array.from({ length: totalPages },(_, index) => index + 1).map((pageNumber) => (
                     <button
                         onClick={() => onPageChange(pageNumber)}
-                        className={` ${pageNumber===currentPage&&"bg-amber-400 text-white"}  border flex items-center justify-center w-[38px] py-2 px-4 rounded-full bg-neutral-200`}
+                        className={` ${pageNumber===currentPage && "bg-yellow-400 text-white"}  border flex items-center justify-center w-[38px] py-2 px-4 rounded-full bg-neutral-200`}
                     >
                         {pageNumber}
                     </button>

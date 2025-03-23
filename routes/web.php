@@ -33,6 +33,7 @@ Route::middleware(['auth:sanctum','Admin'])->group(function(){
     Route::resource('books',BookController::class);
     Route::resource('genres',GenreController::class);
     Route::resource('users',UserController::class);
+    Route::resource('reviews',ReviewController::class);
     
     
 });

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useGenres } from "../../contexts/GenreContext";
-import { RotatingLines } from "react-loader-spinner";
 import { Oval } from "react-loader-spinner";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
@@ -12,7 +11,8 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 import ReusableTable from "../../shared/ReusableTable";
-import { Link, useNavigate } from "react-router-dom";
+import { useReviews } from "../../contexts/ReviewContext";
+import { Link,useNavigate } from "react-router-dom";
 
 /**
  * Genres component that displays a list of genres with filtering options.
@@ -62,48 +62,49 @@ import { Link, useNavigate } from "react-router-dom";
  */
 /**
  * Users component renders a list of genres with filtering options.
- * 
+ *
  * @component
  * @example
  * return (
  *   <Users />
  * )
- * 
+ *
  * @returns {JSX.Element} The rendered component.
- * 
+ *
  * @section State
  * @description Manages the component's state including visibility of filters, selected genre, and selected ID.
- * 
+ *
  * @section Handlers
  * @description Contains event handlers for toggling filter visibility, changing selected genre, and changing selected ID.
- * 
+ *
  * @section Filtering
  * @description Filters the genres based on selected genre name and ID.
- * 
+ *
  * @section Columns
  * @description Defines the columns for the reusable table displaying the genres.
- * 
+ *
  * @section Render
  * @description Renders the component including the filter options, search input, and the table of genres.
  */
 /**
  * Users component that displays a list of genres with filtering options.
- * 
+ *
  * @component
  * @example
  * return (
  *   <Users />
  * )
  */
-const Genres = () => {
+const Reviews = () => {
     // Custom hook to fetch genres and loading state
-    const { genres, loading ,editGenre,deleteGenre,showGenre} = useGenres();
+    const { reviews, loading, deleteReview} = useReviews();
     const navigate=useNavigate();
+
     // State to manage visibility of the filter section
     const [isVisible, setIsVisible] = useState(false);
 
     // State to manage selected genre value
-    const [selectedValue, setSelectedValue] = useState("Choose Genre");
+    const [searchedValue, setSearchedValue] = useState("");
 
     // State to manage selected genre ID
     const [selectedId, setSelectedId] = useState("Choose ID");
@@ -112,54 +113,68 @@ const Genres = () => {
     const handleClick = () => {
         setIsVisible(!isVisible);
     };
-    const handleShow=(id)=>{
-        navigate(`show/${id}`);
-    }
-    const handleEdit=(id)=>{
-        navigate(`edit/${id}`);
-    }
-  
 
     // Filter genres based on selected value and ID
-    const filteredData = genres.filter(genre => {
-        if (selectedValue !== "Choose Genre" && genre.name !== selectedValue) {
+    const filteredData =reviews.filter((review) => {
+        const query = searchedValue.toLowerCase();
+
+        // Check if any value in the user object matches the search query
+        const matchesSearch = Object.values(review).some(
+            (value) =>
+                value != null && value.toString().toLowerCase().includes(query)
+        );
+
+        // Filter out users that don't match the search query if a search value exists
+        if (searchedValue.length !== 0 && !matchesSearch) {
             return false;
         }
-        if (selectedId != "Choose ID" && genre.id != selectedId) {
+
+        // Filter out users that don't match the selected ID if one is specified
+        if (selectedId !== "Choose ID" && review.id !== Number(selectedId)) {
             return false;
         }
+
+        // Include the user if none of the conditions exclude them
         return true;
     });
 
     // Table columns configuration
     const columns = [
-        { key: 'id', header: "ID", className: "pl-2 py- bg-[#EEF1F4]" },
-        { key: 'name', header: "NAME", className: "pl-2 text-left" },
-        { key: 'description', header: "DESCRIPTION", className: "pl-2 py- bg-[#EEF1F4]" },
+        { key: "id", header: "Id", className: "pl-2 py- bg-[#EEF1F4]" },
+        { key: "user_name", header: "Reviewer", className: "pr- text-left" },
+        { key: "book_name", header: "Book Title", className: "pl-2 py- bg-[#EEF1F4]" },
+        { key: "review_text", header: "Review Text" },
+        { key: "rating", header: "Rating" },
+
         {
             key: "actions",
-            header: "ACTIONS",
+            header: "Actions",
             className: "pl-2 text-left",
-        }
+        },
     ];
 
     // Handle change in selected genre value
     const handleChange = (e) => {
-        setSelectedValue(e.target.value);
+        setSearchedValue(e.target.value);
     };
 
     // Handle change in selected genre ID
     const handleIdChange = (e) => {
         setSelectedId(e.target.value);
     };
+    const handleEdit= (id)=>{
+        navigate(`edit/${id}`)
+    }
 
     return (
-        <div className="flex overflow-auto  flex-col bg-white border ">
+        <div className="flex overflow-auto flex-col bg-white border  ">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
-                    <Link to='Add' className="">New Genre</Link>
+                    <Link to="add" className="">
+                        New Review
+                    </Link>
                 </div>
                 <div className="flex items-center justify-center">
                     <div
@@ -172,16 +187,13 @@ const Genres = () => {
                                 className="m-1 p-1.5"
                             />
                         ) : (
-                            <CloseIcon
-                                fontSize="large"
-                                className="m-1 p-1.5"
-                            />
+                            <CloseIcon fontSize="large" className="m-1 p-1.5" />
                         )}
                     </div>
-                    <div className="flex rounded  shadow items-center justify-center border m-4 ">
+                    <div className="flex rounded shadow items-center justify-center border m-4">
                         <input
                             type="search"
-                            className="border-none focus:ring-0 "
+                            className="border-none focus:ring-0"
                         ></input>
                         <SearchIcon />
                     </div>
@@ -189,21 +201,16 @@ const Genres = () => {
             </div>
             {/* Filter section */}
             <div
-                className={`overflow-hidden flex m-3 gap-4 transition-max-height duration-300 ease-in-out ${isVisible ? "max-h-16" : "max-h-0"}`}
+                className={`overflow-hidden flex m-3 gap-4 transition-max-height duration-300 ease-in-out ${
+                    isVisible ? "max-h-16" : "max-h-0"
+                }`}
             >
                 <div className="">
-                    <select
-                        className="focus:ring-0 focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
-                        value={selectedValue}
+                    <input
+                        type="text"
                         onChange={handleChange}
-                    >
-                        <option value="Choose Genre">Choose Genre</option>
-                        {genres.map((genre) => (
-                            <option key={genre.id} value={genre.name}>
-                                {genre.name}
-                            </option>
-                        ))}
-                    </select>
+                        placeholder="Search Review"
+                    />
                 </div>
                 <div className="">
                     <select
@@ -212,15 +219,17 @@ const Genres = () => {
                         className="focus:ring-0 focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
                     >
                         <option value="Choose ID">Choose ID</option>
-                        {genres.map(genre => (
-                            <option key={genre.id} value={genre.id}>{genre.id}</option>
+                        {reviews.map((review) => (
+                            <option key={review.id} value={review.id}>
+                                {review.id}
+                            </option>
                         ))}
                     </select>
                 </div>
             </div>
-           {loading?(
-            <div  className="flex justify-center items-center">
-                <Oval
+            {loading ? (
+                <div className="flex justify-center items-center">
+                    <Oval
                         strokeColor="grey"
                         strokeWidth="5"
                         animationDuration="0.75"
@@ -229,18 +238,11 @@ const Genres = () => {
                         color="#FBDB5B"
                         secondaryColor="#FBDB5B"
                     />
-            </div>
-           ):(
-            <ReusableTable 
-            columns={columns}
-             data={filteredData}
-             onEdit={handleEdit}
-             onDelete={deleteGenre}
-             onShow={handleShow}
-             />
-           )}
-           
+                </div>
+            ) : (
+                <ReusableTable columns={columns} data={filteredData} onDelete={deleteReview} onEdit={handleEdit} />
+            )}
         </div>
     );
 };
-export default Genres;
+export default Reviews;

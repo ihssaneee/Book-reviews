@@ -18,5 +18,7 @@ class Book extends Model
     public function genre(){
         return $this->belongsTo(Genre::class);
     }
-
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
 }
