@@ -32,7 +32,7 @@ export default function Login() {
          const loggedUser=  await login({email,password});
         
             if (loggedUser.role==='admin'){
-              navigate('/dashboard');
+              navigate('/admin');
 
             }
             else{

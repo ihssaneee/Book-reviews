@@ -1,40 +1,46 @@
 import React, { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 
-export const StarRatingInput = ({onRatingChange}) => {
+export const StarRatingInput = ({ onRatingChange }) => {
     const [rating, setRating] = useState(0);
-    const [hoverRating,setHoverRating]=useState(null);
+    const [hoverRating, setHoverRating] = useState(null);
     const handleClick = (selectedRating) => {
         setRating(selectedRating);
         onRatingChange(selectedRating);
     };
     return (
-        <div className="my-2">
-            {[1, 2, 3, 4, 5].map((star) =>{
-                
-                 return(
-                star<=rating?(
-                    <StarIcon 
-                    key={star}
-                    onClick={()=>handleClick(star)}
-                    fontSize="large"
-                    className="text-yellow-400 cursor-pointer"
-                    aria-label={`rate ${star} stars`}
-                    onMouse
-                    />
-                ):(
-                    <StarBorderOutlinedIcon 
-                    key={star}
-                    onClick={()=>handleClick(star)}
-                    fontSize="large"
-                    className="text-gray-400 cursor-pointer"
-                    aria-label={`rate ${star} stars`}
-                    />
-                )
-            )})}
+        <div className="my-2" onMouseLeave={() => setHoverRating(null)}>
+            {[1, 2, 3, 4, 5].map((star) => {
+                const isFilled =
+                    hoverRating != null ? star <= hoverRating : star <= rating;
+                return (
+                    <span
+                        key={star}
+                        onClick={() => handleClick(star)}
+                        onMouseEnter={() => setHoverRating(star)}
+                        aria-label={`rate ${star} stars`}
+                        className="cursor-pointer"
+                    >
+                        {isFilled ? (
+                            <StarIcon
+                                fontSize="large"
+                                className="text-yellow-400 "
+                               
+                            />
+                        ) : (
+                            <StarBorderOutlinedIcon
+                               
+                                fontSize="large"
+                                className="text-gray-400 "
+                              
+                            />
+                        )}
+                    </span>
+                );
+            })}
         </div>
     );
 };
@@ -49,7 +55,6 @@ const RenderStars = ({ rating }) => {
         maxStars -
         (updatedFullStars ? fullStars + 1 : fullStars) -
         (hasHalfStar ? 1 : 0);
-    
 
     return (
         <div className="">

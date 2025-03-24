@@ -7,6 +7,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Middleware\Admin;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -34,6 +35,8 @@ Route::middleware(['auth:sanctum','Admin'])->group(function(){
     Route::resource('genres',GenreController::class);
     Route::resource('users',UserController::class);
     Route::resource('reviews',ReviewController::class);
+    //end points for admin dashboard
+    Route::get('dashoard/user-growth',[DashboardController::class,'userGrowth']);
     
     
 });

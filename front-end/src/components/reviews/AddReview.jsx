@@ -71,8 +71,10 @@ export default function AddReviewForm(){
 
 
     return(
-        <div className="max-w-md  mx-auto bg-white shadow-sm rounded-lg px-8 py-8 m-8 font-Roboto">
-                    <h2 className="text-2xl mb-4">Add a New Review</h2>
+        <div className="lg:max-w-lg w-full  mx-auto bg-white shadow-sm rounded-lg px-8 py-8 m-8 font-Inter">
+                      <div className="border-b py-4 m-4 flex-shrink">
+                        <h2 className="text-2xl font-bold">Add New Book </h2>
+                      </div>
                     <form onSubmit={handleSubmit} className="flex flex-col">
                         <div className="flex flex-col mb-4">
                             <label htmlFor="name" className="block mb-2">
@@ -97,7 +99,8 @@ export default function AddReviewForm(){
                             </select>
                            
                         </div>
-                        <div className="flex flex-col mb-4">
+                        <div className="flex flex-col mb-4 gap-1">
+                            <label htmlFor="review text" >What did you think ?</label>
                         <textarea
                          name="review_text"
                          value={formData.review_text}

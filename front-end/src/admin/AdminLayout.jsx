@@ -3,7 +3,7 @@ import AdminSidebar from "../components/admin/AdminSidebar";
 import AdminHeader from "../components/admin/AdminHeader";
 import { Outlet } from "react-router-dom";
 
-export default function Dashboard() {
+export default function AdminLayout() {
     const [toggled, setToggled] = useState(false);
     const toggle = () => {
         setToggled(!toggled);

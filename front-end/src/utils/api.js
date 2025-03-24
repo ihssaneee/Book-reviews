@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react';
+import {axiosInstance} from "../api/axiosConfig"
 import axios from 'axios';
 
+//fetch countries 
 export const fetchCountries=async()=>{
     try{
         const response= await axios.get("https://restcountries.com/v3.1/all");
@@ -14,5 +16,20 @@ export const fetchCountries=async()=>{
     catch(error){
         console.error('could not fetch countries.',error);
         throw error;
+    }
+};
+//fetch user growth data
+export const userGrowthData=async()=>{
+    
+    try{
+        const response= await axiosInstance.get('/dashoard/user-growth');
+        console.log('user growth data fetched successfully.');
+        return response.data.userGrowthData;
+
+    }
+    catch(error){
+        console.error('user growth data could not be fetched.',error);
+        throw error;
+
     }
 }

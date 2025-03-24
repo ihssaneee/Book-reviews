@@ -3,7 +3,7 @@ import Login from './components/login';
 import NotFound from './components/notFound';
 import Signup from './components/signup';
 import App from './App';
-import Dashboard from './admin/dashboard';
+import AdminLayout from './admin/AdminLayout';
 import ProtectedRoute from './components/ProtectedRoute';
 import Genres from './components/Genres/GenresList';
 import Users from './components/Users/UsersList';
@@ -17,6 +17,7 @@ import EditBookForm from './components/Books/EditBookForm';
 import UserProfile from './components/Users/user_profile';
 import Reviews from './components/reviews/ReviewsList';
 import AddReviewForm from './components/reviews/AddReview';
+import Dashboard from './components/charts/Dashboard';
 const router=createBrowserRouter([
     {
         path:'/login',
@@ -35,13 +36,17 @@ const router=createBrowserRouter([
         element:<App />
     },
     {
-        path:'/dashboard',
+        path:'/admin',
         element:(
         <ProtectedRoute>
-            <Dashboard/>
+            <AdminLayout/>
         </ProtectedRoute>
         ),
         children:[
+            {
+                path:'dashboard',
+                element:<Dashboard/>
+            },
             {
                 path:'genres',
                 element:<Genres />,
