@@ -25,6 +25,7 @@ export default {
       fontFamily: {
         Roboto: ['Roboto','sans-serif'],
         Inter: ['Inter','sans-serif'],
+        'public-sans':['Public Sans','sans-serif'],
       },
       margin:{
         marginLeft: '4.5rem',

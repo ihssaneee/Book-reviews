@@ -61,8 +61,9 @@ const Books = () => {
         { key: "id", header: "ID" },
         { key: "author", header: "Author" },
         { key: "title", header: "TITLE" },
-        { key: "description", header: "DESCRIPTION" },
-        { key: "image", header: "IMAGE" },
+        { key: "image", header: "IMAGE",associatedObject:'book' },
+        { header: "Description", key: "description" },
+        
         { key: "link", header: "LINK" },
         { key: "genre_id", header: "GENRE" },
         { key: "language", header: "LANGUAGE" },
@@ -89,7 +90,7 @@ const Books = () => {
     }
 
     return (
-        <div className="flex flex-col overflow-auto w-full bg-white border ">
+        <div className="flex flex-col  w-full bg-white border ">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">

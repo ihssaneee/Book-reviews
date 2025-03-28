@@ -18,10 +18,10 @@ export default function AdminLayout() {
                 <div className="fixed inset-0 z-20 bg-black opacity-25 backdrop-blur-sm lg:hidden" onClick={toggle}></div>
             )}
             <main className=" m-0 bg-[#F4F4F4] min-h-screen">
-                <header className={`ml-0 lg:ml-64 h-auto border fixed top-0 left-0 right-0 bg-white ${toggled ? "lg:ml-marginLeft" : "lg:ml-64"}`}>
+                <header className={`ml-0 lg:ml-64 h-auto border fixed top-0 z-10 left-0 right-0 bg-white ${toggled ? "lg:ml-marginLeft" : "lg:ml-64"}`}>
                     <AdminHeader toggle={toggle} className="w-full " />
                 </header>
-                <section className={` ${toggled ? "lg:ml-24" : "lg:ml-[17rem] mr-3 ml-3"} mt-24 `}>
+                <section className={` ${toggled ? "lg:ml-24" : "lg:ml-[17rem] mr-3 ml-3"} mt-24  `}>
                     <Outlet />
                 </section>
             </main>

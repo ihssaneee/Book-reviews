@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import {axiosInstance} from "../api/axiosConfig"
 import axios from 'axios';
 
+
 //fetch countries 
 export const fetchCountries=async()=>{
     try{
@@ -32,4 +33,16 @@ export const userGrowthData=async()=>{
         throw error;
 
     }
-}
+};
+//popular books data
+export const popularBooksData=async()=>{
+    try{
+        const response= await axiosInstance.get('/dashboard/popular-books-data');
+        console.log('popular books data fetched successfully.');
+        return response.data.popularBooksCount;
+    }
+    catch(error){
+        console.error('could not fetch popular books data.',error);
+        throw error;
+    }
+};

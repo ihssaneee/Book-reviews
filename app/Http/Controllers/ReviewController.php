@@ -39,7 +39,7 @@ class ReviewController extends Controller
             "user_id"=>"required|exists:users,id",
             "book_id"=>"required|exists:books,id",
             "rating"=>"required|numeric|min:1|max:5",
-            "review_text"=>"sometimes|string|min:8|max:255",
+            "review_text"=>"sometimes|string|min:8|max:255|nullable",
         ]);
         try{
             $review=Review::create($validatedData);

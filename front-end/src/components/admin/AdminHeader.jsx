@@ -163,11 +163,11 @@ const AdminHeader = ({ toggle }) => {
                         </div>
                         <div
                             ref={dropdownRef}
-                            className={`absolute z-10  ${
+                            className={`absolute z-50  ${
                                 !isVisible
                                     ? "hidden opacity-0"
                                     : "flex opacity-100"
-                            } items-center   gap-6 flex-col   h-64 top-16   bg-white rounded-lg right-5 shadow-md max-w-64 p-4  `}
+                            } items-center  flex-col   h-64 top-16    bg-white rounded-lg right-5 shadow-md max-w-64   `}
                         >
                             <DropdownMenu
                                 handleLogout={handleLogout}

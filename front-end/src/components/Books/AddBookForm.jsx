@@ -243,7 +243,7 @@ export default function AddBookForm() {
                         Add
                     </button>
                     <Link
-                        to="/dashboard/books"
+                        to="/admin/books"
                         className="w-24 m-6 rounded-md border p-2 border-red-500 text-red-500 text-base flex items-center justify-center hover:bg-red-50"
                     >
                         Cancel

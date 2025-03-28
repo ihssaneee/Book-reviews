@@ -99,7 +99,7 @@ const AddGenreForm = () => {
                         Add
                     </button>
                     <Link
-                        to="/dashboard/genres"
+                        to="/admin/genres"
                         className="flex items-center max-w-28 justify-center gap-1 bg-blue-950  hover:border-blue-950 hover:ring-0 hover:outline-none hover:text-blue-950 hover:bg-white text-white px-4 py-2 rounded-md border  "
                     >
                         <CancelOutlinedIcon fontSize="small" />

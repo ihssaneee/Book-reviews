@@ -143,8 +143,9 @@ const Reviews = () => {
         { key: "id", header: "Id", className: "pl-2 py- bg-[#EEF1F4]" },
         { key: "user_name", header: "Reviewer", className: "pr- text-left" },
         { key: "book_name", header: "Book Title", className: "pl-2 py- bg-[#EEF1F4]" },
-        { key: "review_text", header: "Review Text" },
         { key: "rating", header: "Rating" },
+        { key: "review_text", header: "Review Text" },
+       
 
         {
             key: "actions",

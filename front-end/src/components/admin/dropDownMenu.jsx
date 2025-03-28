@@ -10,7 +10,7 @@ const DropdownMenu = ({handleLogout,isVisible}) => {
     const {user}=useAuth();
     return (
         <>
-            <div className="flex justify-center items-center gap-2   border-b p-2  ">
+            <div className="flex justify-center items-center gap-2   border-b p-3 my-2  ">
                 <span className=" flex items-center justify-center ">
                     <img src={user.picture} 
                     alt="profile picture"
@@ -22,14 +22,14 @@ const DropdownMenu = ({handleLogout,isVisible}) => {
                     <p className="font-Roboto font-normal text-sm">{user.email}</p>
                 </span>
             </div>
-            <Link to="user/profile" className="flex items-center text-base w-full text-zinc-600 font-Roboto ">
+            <Link to="user/profile" className="flex items-center text-base w-full text-zinc-600 font-Roboto p-3  m-0 hover:bg-slate-100">
                 <PersonOutlineOutlinedIcon
                     fontSize="medium"
                     className="mr-2 text-[#878A99]   "
                 />
                 Profile
             </Link>
-            <a href="#" className="flex items-center text-base w-full  font-Roboto text-zinc-600">
+            <a href="#" className="flex items-center text-base w-full text-zinc-600 font-Roboto p-3  m-0 hover:bg-slate-100">
                 <SettingsOutlinedIcon
                     fontSize="medium"
                     className="mr-2 text-[#878A99] font-Roboto"
@@ -38,7 +38,7 @@ const DropdownMenu = ({handleLogout,isVisible}) => {
             </a>
             <button
                 onClick={handleLogout}
-                className="flex items-center text-base w-full font-Roboto text-zinc-600"
+                className="flex items-center text-base w-full text-zinc-600 font-Roboto p-3  m-0 hover:bg-slate-100"
             >
                 <LogoutIcon
                     fontSize="medium"
