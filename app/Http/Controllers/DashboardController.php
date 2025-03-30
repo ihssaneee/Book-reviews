@@ -95,4 +95,31 @@ class DashboardController extends Controller
         ],500);
     }
     }
+    public function popularCountries(){
+       try{
+        $usersCount=User::query()->count();
+        $usersByCountry=User::query()
+        ->selectRaw("country,count(*) as users_count")
+        ->groupBy('country')
+        ->orderBy('users_count','desc')
+        ->get()
+        ->map(function($item) use ($usersCount){
+            return [
+                'country'=>$item->country,
+                'users_percent'=>($item->users_count/$usersCount)*100,
+            ];
+        });
+        return response()->json([
+            'message'=>'users by country data fetched successfully',
+            'usersByCountry'=>$usersByCountry,
+        ],200);
+       }
+       catch(\Exception $e){
+            Log::info('users by country data could not be fetched.'. $e->getMessage());
+            return response()->json([
+                'message'=>'users by country data count not be fetched',
+
+            ],500);
+       }
+    }
 }

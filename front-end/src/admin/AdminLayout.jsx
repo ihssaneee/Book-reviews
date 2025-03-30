@@ -21,7 +21,7 @@ export default function AdminLayout() {
                 <header className={`ml-0 lg:ml-64 h-auto border fixed top-0 z-10 left-0 right-0 bg-white ${toggled ? "lg:ml-marginLeft" : "lg:ml-64"}`}>
                     <AdminHeader toggle={toggle} className="w-full " />
                 </header>
-                <section className={` ${toggled ? "lg:ml-24" : "lg:ml-[17rem] mr-3 ml-3"} mt-24  `}>
+                <section className={` ${toggled ? "lg:pl-24" : "lg:pl-[17rem] mr-3 ml-3"} mt-24  `}>
                     <Outlet />
                 </section>
             </main>

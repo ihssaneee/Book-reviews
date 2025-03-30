@@ -38,6 +38,7 @@ Route::middleware(['auth:sanctum','Admin'])->group(function(){
     //end points for admin dashboard
     Route::get('dashoard/user-growth',[DashboardController::class,'userGrowth']);
     Route::get('dashboard/popular-books-data',[DashboardController::class,'popularBooks']);
+    Route::get('dashboard/users-by-country',[DashboardController::class,'popularCountries']);
     
     
 });

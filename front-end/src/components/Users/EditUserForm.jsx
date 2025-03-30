@@ -248,7 +248,7 @@ const EditUser = () => {
                     </button>
 
                     <Link
-                        to="/dashboard/users"
+                        to="/admin/users"
                         className="w-24 m-6 rounded-md border p-2 border-red-500 text-red-500 text-base flex items-center justify-center hover:bg-red-50"
                     >
                         <CancelOutlinedIcon fontSize="small" className="" />

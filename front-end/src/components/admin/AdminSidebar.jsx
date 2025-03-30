@@ -7,8 +7,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import useWindowSize from "../useWindowSize";
 import ReviewsOutlinedIcon from "@mui/icons-material/ReviewsOutlined";
+import { Tooltip } from "react-tooltip";
 
 export default function AdminSidebar({ toggled, toggle }) {
+   
     const navigate = useNavigate();
     const { width } = useWindowSize();
 
@@ -56,6 +58,8 @@ export default function AdminSidebar({ toggled, toggle }) {
                     label="Dashboard"
                     icon={<DashboardIcon fontSize="medium" />}
                     toggled={toggled}
+                    data-tooltip-content="Dashboard"
+                    data-tooltip-id="myTooltip"
                 />
 
                 <SidebarLink
@@ -63,34 +67,48 @@ export default function AdminSidebar({ toggled, toggle }) {
                     label="Books"
                     icon={<LibraryBooksIcon fontSize="medium" />}
                     toggled={toggled}
+                    data-tooltip-content="Books"
+                    data-tooltip-id="myTooltip"
+                    data-tooltip-place="right"
                 />
                 <SidebarLink
                     to="users"
                     label="users"
                     icon={<PeopleIcon fontSize="medium" />}
                     toggled={toggled}
+                    data-tooltip-content="Users"
+                    data-tooltip-id="myTooltip"
+                    data-tooltip-place="right"
                 />
                 <SidebarLink
                     to="genres"
                     label="genres"
                     icon={<BookIcon fontSize="medium" />}
                     toggled={toggled}
+                    data-tooltip-content="Genres"
+                    data-tooltip-id="myTooltip"
+                    data-tooltip-place="right"
                 />
                 <SidebarLink
                     to="reviews"
                     label="reviews"
                     icon={<ReviewsOutlinedIcon fontSize="medium" />}
                     toggled={toggled}
+                    data-tooltip-content="Reviews"
+                    data-tooltip-id="myTooltip"
+                    data-tooltip-place="right"
                 />
+                {toggled && <Tooltip id="myTooltip" />}
             </nav>
         </div>
     );
 }
-const SidebarLink = ({ toggled, label, to, icon }) => {
+const SidebarLink = ({ toggled, label, to, icon,...tooltipProps }) => {
     return (
         <NavLink
             to={to}
             className="group flex items-center   font-roboto  font-medium text-xl p-2 mb-1 text-white leading-6 mx-2 hover:bg-yellow-400  rounded-md "
+            {...tooltipProps}
         >
             <span className="text-[#FFDB58] mr-2 group-hover:text-gray-950  ">
                 {icon}

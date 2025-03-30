@@ -95,7 +95,7 @@ export default function BarChart(){
         }
 
         return (
-            <div className="my-4 bg-white border rounded-md p-2 max-w-2xl shadow-sm" >
+            <div className="w-full py-2 bg-white border rounded-md  shadow-sm" >
                 <ReactApexChart series={series} options={options} type="bar" height={350} />
             </div>
         )
