@@ -11,13 +11,15 @@ import { UsersProvider } from "./contexts/UserContext.jsx";
 import { BookProvider } from "./contexts/BookContext.jsx";
 import { ReviewsProvider } from "./contexts/ReviewContext.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
+import DarkModeProvider from "./contexts/DarkModeContext.jsx";
 initializeCsrfProtection();
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
     <StrictMode>
         <QueryClientProvider client={queryClient}>
+           <DarkModeProvider>
             <AuthProvider>
+                
                 <GenresProvider>
                     <UsersProvider>
                         <BookProvider>
@@ -27,7 +29,9 @@ createRoot(document.getElementById("root")).render(
                         </BookProvider>
                     </UsersProvider>
                 </GenresProvider>
+                
             </AuthProvider>
+            </DarkModeProvider>
         </QueryClientProvider>
     </StrictMode>
 );

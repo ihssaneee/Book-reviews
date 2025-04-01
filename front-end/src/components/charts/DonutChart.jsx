@@ -3,8 +3,10 @@ import ReactApexChart from "react-apexcharts";
 import { useQuery } from "@tanstack/react-query";
 import { Oval } from "react-loader-spinner";
 import { usersByCountry } from "../../utils/api";
-
+import { useDarkMode } from "../../contexts/DarkModeContext";
+import { dark } from "@mui/material/styles/createPalette";
 export default function DonutChart() {
+    const {darkMode}=useDarkMode();
     const { data, isLoading, error, isError } = useQuery({
         queryKey: ["usersByCountry"],
         queryFn: usersByCountry,
@@ -15,32 +17,37 @@ export default function DonutChart() {
     const options = {
         chart: {
             type: "donut",
-            height: 350, // Set a fixed height for the chart
+            height: 350, 
         },
         labels: data && data.map((item) => item.country),
         dataLabels: {
             enabled: true,
             formatter: function (val) {
-                return val.toFixed(2) + "%";
+                return val + "%";
             },
+            
         },
-        title: {
-            text: "Users By Country",
-            align: "center",
-            offsetY: -5, // Move the title upwards
-            style: {
-                fontFamily: "Public Sans, sans-serif",
-                fontWeight: "500",
-                fontSize: "18px",
-                color: "#444050",
-            },
+       legend:{
+        labels:{
+            colors:darkMode&&"#BBBBBB",
+            
         },
+        fontWeight:500,
+        position:'right',
+        show:true,
+        markers:{
+            offsetX:-6
+        }
+       },
         plotOptions: {
+          
             pie: {
                 donut: {
-                    size: "36%",
+                    size: "56%",
+                   
                 },
             },
+            
         },
         stroke: { show: false },
         colors: ["#405189", "#0ab39c", "#f7b84b", "#f06548", "#299cdb"],
@@ -63,12 +70,14 @@ export default function DonutChart() {
             ) : isError ? (
                 <div>Error fetching user growth data: {error?.message}</div>
             ) : (
-                <div className="flex flex-col items-center pb-10 pt-4 bg-white border rounded-md p-2 shadow-sm">
+                <div className="flex flex-col gap-3 items-center pb-10 pt-4 bg-white border dark:border-none rounded-md  shadow-sm dark:bg-[#22242B] ">
+                    <h5 className={`${darkMode?"text-neutral-300":"text-gray-800"} dark:border-b-slate-500 border-b w-full text-center pb-3 font-Inter`} >Users By Country</h5>
                     <ReactApexChart
                         series={series}
                         options={options}
                         type="donut"
                         height={350} // Match the height set in the options
+                        className="dark:bg-[#22242B] py-4 "
                     />
                 </div>
             )}

@@ -166,10 +166,10 @@ const Users = () => {
     }
 
     return (
-        <div className="flex overflow-auto flex-col bg-white border  ">
+        <div className="flex overflow-auto flex-col bg-white border dark:border-gray-600 dark:bg-[#22242B] dark:border-none  m-3">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
-                <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
+                <div className="flex border items-center justify-center bg-yellow-400 dark:bg-yellow-500 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
                     <Link to="add" className="">
                         New User
@@ -178,7 +178,7 @@ const Users = () => {
                 <div className="flex items-center justify-center">
                     <div
                         onClick={handleClick}
-                        className="border flex items-center justify-center bg-yellow-400 text-white w-10 h-10 cursor-pointer hover:opacity-70"
+                        className="border dark:border-gray-700 flex items-center justify-center bg-yellow-400 dark:bg-yellow-500 text-white w-10 h-10 cursor-pointer hover:opacity-70"
                     >
                         {!isVisible ? (
                             <FilterAltIcon
@@ -189,12 +189,16 @@ const Users = () => {
                             <CloseIcon fontSize="large" className="m-1 p-1.5" />
                         )}
                     </div>
-                    <div className="flex rounded shadow items-center justify-center border m-4">
+                    <div className="flex rounded shadow items-center justify-center dark:border-[#22242B] border m-4">
                         <input
                             type="search"
-                            className="border-none focus:ring-0"
+                            className="border-none focus:ring-0  "
                         ></input>
-                        <SearchIcon />
+                       <div className="">
+                        <div className="dark:bg-[#22242B] ">
+                            <SearchIcon className="dark:bg-inherit " />
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

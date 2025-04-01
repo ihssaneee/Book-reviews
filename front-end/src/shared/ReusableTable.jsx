@@ -19,7 +19,7 @@ const ActionButtons = ({ itemId, onShow, onEdit, onDelete }) => (
                 onClick={() => onShow(itemId)}
             />
         </div>
-        <div className="text-sm text-gray-500 bg-white cursor-pointer">
+        <div className="text-sm text-gray-500  cursor-pointer">
             <ModeEditOutlinedIcon
                 data-tooltip-content="Edit"
                 data-tooltip-id="myTooltip"
@@ -64,7 +64,7 @@ const renderCellContent = (column, item, onShow, onEdit, onDelete) => {
         );
     } else if (column.key === "rating") {
         return (
-            <div className="flex items-center justify-cente gap-0.5 rounded-md border w-14 p-1 bg-slate-100">
+            <div className="flex items-center justify-cente gap-0.5 rounded-md border  w-14 p-1 bg-slate-100">
                 <StarIcon fontSize="small" className="text-yellow-400" />
                 <span className="font-semibold text-black">{item.rating}</span>
             </div>
@@ -115,10 +115,10 @@ const ReusableTable = ({
     const paginatedData = hasData ? data.slice(startIndex, endIndex) : [];
 
     return (
-        <div className="overflow-x-auto">
-          <table className="min-w-full  mt-3  bg-white table-auto font-public-sans">
+        <div className="overflow-x-auto table-scrollbar  dark:bg-[#22242B] dark:text-white dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 ">
+          <table className="min-w-full  mt-3  bg-white table-auto font-public-sans  dark:bg-[#22242B] dark:text-white">
                 <thead>
-                    <tr className="text-sm text-left bg-white shadow-sm text-zinc-500 border py-3 ">
+                    <tr className="text-sm text-left dark:bg-[#22242B] bg-white shadow-sm text-zinc-500 border dark:border-gray-600 py-3   dark:text-white">
                         {columns.map((column) => (
                             <th
                                 key={column.key}
@@ -136,7 +136,7 @@ const ReusableTable = ({
                 <tbody>
                     {hasData ? (
                         paginatedData.map((item) => (
-                            <tr className="border-b text-sm" key={item.id}>
+                            <tr className="border-b dark:border-b-gray-600 text-sm" key={item.id}>
                                 {columns.map((column) => (
                                     <td
                                         className={

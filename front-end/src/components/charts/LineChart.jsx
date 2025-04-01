@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { userGrowthData } from "../../utils/api";
-
+import { useDarkMode } from "../../contexts/DarkModeContext";
 import { useQuery } from "@tanstack/react-query";
 import { Oval } from "react-loader-spinner";
 export default function Linechart() {
+    const {darkMode}=useDarkMode();
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ["userGrowth"],
         queryFn: userGrowthData,
@@ -47,14 +48,43 @@ export default function Linechart() {
             },
         },
         xaxis: {
-            categories: data.map(
-                (item) =>
-                    `${item.year}-${item.month.toString().padStart(2, "0")}`
-            ),
-            title: "Month",
-        },
+            categories: data.map((item) => `${item.year}-${item.month.toString().padStart(2, "0")}`),
+           title:{
+            text:"Month",
+            style:{
+                color:darkMode&&"#BBBBBB",
+                fontFamily:"Public Sans,sans-serif",
+                fontWeight:"500",
+                fontSize:14,
+            }
+           },
+           labels: {
+            style: {
+              fontSize: '12px', // change font size
+              colors: darkMode&&"#BBBBBB" // change font size
+            }
+          }
+           
+            
+           
+          },
         yaxis: {
-            title: "Number of Users",
+            title:{ 
+                text:"Number of Users",
+                style:{
+                    color:darkMode&&"#BBBBBB",
+                    fontFamily:"Public Sans,sans-serif",
+                    fontWeight:"500",
+                    fontSize:14,
+                }
+            },
+            labels: {
+                style: {
+                  fontSize: '12px', // change font size
+                  colors: [darkMode&&"#BBBBBB"] // change font size
+                }
+              }
+            
             
         },
         title: {
@@ -64,17 +94,10 @@ export default function Linechart() {
                 fontFamily:"Public Sans,sans-serif",
                 fontWeight:"500",
                 fontSize:'18px',
-                color:'#444050  ',
+                color:darkMode&&'#BBBBBB ',
             },
         },
-        dataLabels: {
-            enabled: true,
-            offsetY:-12,
-            style: {
-                fontSize: "12px",
-                colors: ["##26CDFF"],
-            },
-        },
+        
         stroke: {
             curve: "smooth",
             width: 3,
@@ -85,22 +108,19 @@ export default function Linechart() {
                 sizeOffset: 2,
             },
         },
-        grid: {
-            row: {
-                colors: ["#f3f3f3", "transparent"],
-                opacity: 0.5,
-            },
-        },
-    };
-
+       grid:{
+        
+       
+    }};
     return (
-        <div className="my-4 bg-white border rounded-md p-2  shadow-sm" >
+        <div className="my-4 bg-white border dark:bg-[#22242B]  dark:border-none  rounded-md p-2  shadow-sm" >
             <ReactApexChart
                 options={options}
                 series={series}
                 height={350}
                 type="line"
-                className="z-0 py-3"
+                className="z-0 py-3  "
+
             />
         </div>
     );

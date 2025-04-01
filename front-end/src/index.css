@@ -12,7 +12,29 @@ html{
     background-color: #F4F4F4;
     
     
+    
 }
+ .dark{
+  background-color: #1A1C23;
+  ::-webkit-scrollbar {
+    width: 10px !important;
+
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+}
+
+
+.yaxis-dark{
+  fill:#878A99;
+}
+.yaxis-light{
+  fill:#878A99 !important
+}
+
 *{
     margin:0;
     padding:0;

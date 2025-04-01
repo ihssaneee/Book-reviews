@@ -3,13 +3,15 @@ import { useQuery } from "@tanstack/react-query";
 import { popularBooksData } from "../../utils/api";
 import ReactApexChart from "react-apexcharts";
 import {Oval} from 'react-loader-spinner';
-
+import { useDarkMode } from "../../contexts/DarkModeContext";
+import { fontFamily, fontSize } from "@mui/system";
 export default function BarChart(){
     const {data,isLoading,error,isError}=useQuery({
         queryKey:['popularBooks'],
         queryFn:popularBooksData,
         staleTime:1000*60*5,
     })
+    const {darkMode}=useDarkMode();
 
     if (isLoading) {
             return (
@@ -60,34 +62,30 @@ export default function BarChart(){
                     fontFamily:"Public Sans,sans-serif",
                     fontWeight:"500",
                     fontSize:'18px',
-                    color:'#444050  ',
+                    color:darkMode&&"#BBBBBB",
                 },
                 
             },
             xaxis: {
                 categories: data.map(item=>item.book_title),
-                min:0,
+                min: 0,
                 forceNiceScale: true,
                 labels: {
                     formatter: function(val) {
-                      return val.toFixed();
-                    }
-                  },
-                 // Adjust this number based on your data range
-              
-              },
-              yaxis: { // Configuration for the y-axis
+                        return val.toFixed();
+                    },
+                   
+                },
+            },
+            yaxis: {
                 labels: {
-                  style: {
-                    fontFamily:"Public Sans,sans-serif",
-                    fontWeight:"500",
-                    fontSize:'14px',
-                    color:'#444050  ',
-                  },
-                 
-                }
-                
-              }
+                    style: {
+                        cssClass: darkMode ? "yaxis-dark" : "yaxis-light",
+                        fontFamily:"Public Sans,sans-serif",
+                        fontSize:"14px",
+                    },
+                },
+            },
 
 
 
@@ -95,8 +93,8 @@ export default function BarChart(){
         }
 
         return (
-            <div className="w-full py-2 bg-white border rounded-md  shadow-sm" >
-                <ReactApexChart series={series} options={options} type="bar" height={350} />
+            <div className="w-full py-2 bg-white border dark:border-none rounded-md  shadow-sm dark:bg-[#22242B] " >
+                <ReactApexChart series={series} options={options} type="bar" height={350} className="dark:bg-[#22242B] " />
             </div>
         )
 

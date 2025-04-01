@@ -12,13 +12,16 @@ import { useNavigate } from "react-router-dom";
 import DropdownMenu from "./dropDownMenu";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-
+import BedtimeOutlinedIcon from '@mui/icons-material/BedtimeOutlined';
+import BedtimeIcon from '@mui/icons-material/Bedtime';
+import { useDarkMode } from "../../contexts/DarkModeContext";
 import useWindowSize from "../useWindowSize";
 
 const AdminHeader = ({ toggle }) => {
+    const {darkMode,toggleDarkMode}=useDarkMode();
     console.log(useWindowSize());
     const divStyle =
-        "flex items-center justify-center w-10 h-10  rounded-full bg-gray-200";
+        "flex items-center justify-center w-10 h-10  rounded-full bg-gray-200 dark:bg-[#1A1C23] dark:border-solid-transparent ";
     const { loading, user, logout,updateStatus } = useAuth();
     const [status,setStatus] = useState(user.status);
     const { width } = useWindowSize();
@@ -73,7 +76,7 @@ const AdminHeader = ({ toggle }) => {
     
     return (
         <div
-            className={`flex lg:items-center lg:justify-center w-full h-14 ${
+            className={`flex lg:items-center lg:justify-center w-full h-14 border dark:border-none dark:bg-[#22242B] dark:text-white   ${
                 isSearched
                     ? "justify-normal items-start"
                     : "items-center justify-between"
@@ -85,20 +88,20 @@ const AdminHeader = ({ toggle }) => {
                         <ChevronLeftIcon
                             onClick={toggle}
                             fontSize="large"
-                            className="mx-2 text-gray-600 cursor-pointer "
+                            className="mx-2 text-gray-300 cursor-pointer "
                         />
                         {width > 640 ? (
-                            <div className="flex items-center px-4  bg-slate-100 border rounded-md h-auto mx-4 b ">
+                            <div className="flex items-center px-4 bg-white dark:bg-[#1A1C23] dark:border-none border rounded-md h-auto mx-4 b ">
                                 <div className="py-2">
                                     <SearchIcon
                                         fontSize="medium"
-                                        className="mx-1 text-slate-600 "
+                                        className="mx-1 text-black bg-white dark:bg-[#1A1C23] dark:text-gray-200"
                                     />
                                 </div>
                                 <input
                                     type="search"
                                     placeholder="Search..."
-                                    className="p-2 bg-slate-100  focus:ring-0 border-none py-2"
+                                    className="p-2 text-black  focus:ring-0 border-none py-2 dark:bg-[#1A1C23]  dark:text-gray-200"
                                 />
                             </div>
                         ) : (
@@ -118,16 +121,24 @@ const AdminHeader = ({ toggle }) => {
                             <></>
                         )}
 
-                        <div className={divStyle}>
+                        <div className={divStyle} onClick={toggleDarkMode}>
+                            {!darkMode?
                             <LightModeOutlinedIcon
                                 fontSize="medium"
-                                className="cursor-pointer w-1 h-1 text-black"
+                                className="cursor-pointer w-1 h-1 text-black "
+                                
                             />
+                            :<BedtimeIcon 
+                            fontSize="small"
+                           
+                            className="cursor-pointer w-1 h-1 text-black dark:text-gray-400  "
+                            />
+}
                         </div>
                         <div className={divStyle}>
                             <NotificationsNoneIcon
                                 fontSize="medium"
-                                className="cursor-pointer w-1 h-1 text-black"
+                                className="cursor-pointer w-1 h-1 text-black dark:text-gray-400"
                             />
                         </div>
                         <div

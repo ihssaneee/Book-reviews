@@ -16,11 +16,13 @@
  * @property {Array} plugins - An array of plugins to be used with Tailwind CSS.
  */
 export default {
+  darkMode: 'class',
   content: [
     './index.html',
     './src/**/*.{html,cjs,js,jsx,ts,tsx}', // Adjust the paths according to your project structure
   ],
   theme: {
+    
     extend: {
       fontFamily: {
         Roboto: ['Roboto','sans-serif'],

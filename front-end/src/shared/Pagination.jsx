@@ -14,7 +14,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange,pageS
             <div className="flex gap-2">
                 {/*previous button */}
                 <button
-                    className="border py-2 px-3 rounded-md bg-neutral-200 disabled:text-gray-500"
+                    className="border py-2 px-3 rounded-md bg-neutral-200 disabled:text-gray-500 dark:bg-[#1A1C23] dark:border-[#1A1C23]"
                     onClick={() =>
                         onPageChange((prev) => Math.max(prev - 1, 1))
                     }
@@ -29,14 +29,14 @@ export default function Pagination({ currentPage, totalPages, onPageChange,pageS
                 {Array.from({ length: totalPages },(_, index) => index + 1).map((pageNumber) => (
                     <button
                         onClick={() => onPageChange(pageNumber)}
-                        className={` ${pageNumber===currentPage && "bg-yellow-400 text-white"}  border flex items-center justify-center w-[38px] py-2 px-4 rounded-full bg-neutral-200`}
+                        className={` ${pageNumber===currentPage && "bg-yellow-600  text-white"}  border flex items-center justify-center w-[38px] py-2 px-4 rounded-full bg-neutral-200`}
                     >
                         {pageNumber}
                     </button>
                 ))}
                 {/*next buttons */}
                 <button
-                    className="border py-2 w-9 px-3 rounded-md bg-neutral-200 disabled:text-gray-500"
+                    className="border py-2 w-9 px-3 rounded-md bg-neutral-200 disabled:text-gray-500 dark:bg-[#1A1C23] dark:border-[#1A1C23] "
                     onClick={() =>
                         onPageChange((prev) => Math.min(prev + 1, totalPages))
                     }

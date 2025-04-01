@@ -5,9 +5,9 @@ import DonutChart from './DonutChart';
 
 export default function Dashboard() {
   return (
-    <div className='w-full pt-22 mt-2 bg-slate-100 '>
+    <div className='w-full pt-22 mt-2 bg-slate-100 dark:bg-[#1A1C23] '>
       <Linechart />
-      <div className='lg:flex gap-3   transition-all duration-300'>
+      <div className='lg:flex gap-3   transition-all duration-300 dark:bg-[#1A1C23] '>
         {/* Bar Chart takes up more width on larger screens */}
         <div className='flex-grow-[2] basis-0 min-h-0 flex-shrink rounded-md shadow-sm p-2'>
           <BarChart />

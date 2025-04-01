@@ -168,7 +168,7 @@ const Reviews = () => {
     }
 
     return (
-        <div className="flex overflow-auto flex-col bg-white border  ">
+        <div className="flex overflow-visible flex-col bg-white border dark:bg-[#1A1C23]  ">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">

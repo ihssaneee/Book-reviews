@@ -90,7 +90,7 @@ const Books = () => {
     }
 
     return (
-        <div className="flex flex-col  w-full bg-white border ">
+        <div className="flex flex-col  w-full bg-white border dark:border-none dark:bg-[#22242B]">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
                 <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
