@@ -12,7 +12,7 @@ import { Tooltip } from "react-tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 import ReusableTable from "../../shared/ReusableTable";
 import { useReviews } from "../../contexts/ReviewContext";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /**
  * Genres component that displays a list of genres with filtering options.
@@ -97,8 +97,8 @@ import { Link,useNavigate } from "react-router-dom";
  */
 const Reviews = () => {
     // Custom hook to fetch genres and loading state
-    const { reviews, loading, deleteReview} = useReviews();
-    const navigate=useNavigate();
+    const { reviews, loading, deleteReview } = useReviews();
+    const navigate = useNavigate();
 
     // State to manage visibility of the filter section
     const [isVisible, setIsVisible] = useState(false);
@@ -115,7 +115,7 @@ const Reviews = () => {
     };
 
     // Filter genres based on selected value and ID
-    const filteredData =reviews.filter((review) => {
+    const filteredData = reviews.filter((review) => {
         const query = searchedValue.toLowerCase();
 
         // Check if any value in the user object matches the search query
@@ -142,10 +142,13 @@ const Reviews = () => {
     const columns = [
         { key: "id", header: "Id", className: "pl-2 py- bg-[#EEF1F4]" },
         { key: "user_name", header: "Reviewer", className: "pr- text-left" },
-        { key: "book_name", header: "Book Title", className: "pl-2 py- bg-[#EEF1F4]" },
+        {
+            key: "book_name",
+            header: "Book Title",
+            className: "pl-2 py- bg-[#EEF1F4]",
+        },
         { key: "rating", header: "Rating" },
         { key: "review_text", header: "Review Text" },
-       
 
         {
             key: "actions",
@@ -163,15 +166,15 @@ const Reviews = () => {
     const handleIdChange = (e) => {
         setSelectedId(e.target.value);
     };
-    const handleEdit= (id)=>{
-        navigate(`edit/${id}`)
-    }
+    const handleEdit = (id) => {
+        navigate(`edit/${id}`);
+    };
 
     return (
-        <div className="flex overflow-visible flex-col bg-white border dark:bg-[#1A1C23]  ">
+        <div className="flex overflow-visible flex-col bg-white border dark:bg-[#22242B]  ">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
-                <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
+                <div className="flex rounded-sm  items-center justify-center bg-yellow-500 text-neutral-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
                     <Link to="add" className="">
                         New Review
@@ -180,7 +183,7 @@ const Reviews = () => {
                 <div className="flex items-center justify-center">
                     <div
                         onClick={handleClick}
-                        className="border flex items-center justify-center bg-yellow-400 text-white w-10 h-10 cursor-pointer hover:opacity-70"
+                        className="rounded-sm flex items-center justify-center bg-yellow-400 text-white w-10 h-10 cursor-pointer hover:opacity-70"
                     >
                         {!isVisible ? (
                             <FilterAltIcon
@@ -191,12 +194,15 @@ const Reviews = () => {
                             <CloseIcon fontSize="large" className="m-1 p-1.5" />
                         )}
                     </div>
-                    <div className="flex rounded shadow items-center justify-center border m-4">
+                    <div className="flex mx-4 px-1 h-auto  shadow items-center dark:bg-[#1A1C23]   border dark:border-none rounded-md ">
                         <input
                             type="search"
-                            className="border-none focus:ring-0"
-                        ></input>
-                        <SearchIcon />
+                            className="border-none focus:ring-0 dark:bg-[#1A1C23] dark:text-neutral-400 " />
+                      
+                        <div className=" ">
+                            <SearchIcon className=" dark:bg-[#1A1C23] dark:text-neutral-400 " />
+                        </div>
+                   
                     </div>
                 </div>
             </div>
@@ -211,13 +217,14 @@ const Reviews = () => {
                         type="text"
                         onChange={handleChange}
                         placeholder="Search Review"
+                        className="inputStyle"
                     />
                 </div>
                 <div className="">
                     <select
                         value={selectedId}
                         onChange={handleIdChange}
-                        className="focus:ring-0 focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
+                        className="focus:ring-0 inputStyle focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
                     >
                         <option value="Choose ID">Choose ID</option>
                         {reviews.map((review) => (
@@ -241,7 +248,12 @@ const Reviews = () => {
                     />
                 </div>
             ) : (
-                <ReusableTable columns={columns} data={filteredData} onDelete={deleteReview} onEdit={handleEdit} />
+                <ReusableTable
+                    columns={columns}
+                    data={filteredData}
+                    onDelete={deleteReview}
+                    onEdit={handleEdit}
+                />
             )}
         </div>
     );

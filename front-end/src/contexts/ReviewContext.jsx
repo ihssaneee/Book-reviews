@@ -61,8 +61,9 @@ export const ReviewsProvider=({children})=>{
     //show review
     const showReview=async(id)=>{
         try{
-            const response=await axiosInstance.get(`/review/${id}`);
+           const response=await axiosInstance.get(`/reviews/${id}`);
             console.log('review fetched successfully.');
+            return response.data.review;
         }
         catch(error){
             console.error('could not fetch review',error);

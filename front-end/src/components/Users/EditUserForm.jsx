@@ -46,7 +46,7 @@ const EditUser = () => {
             </div>
         ) : null;
 
-    const inputStyle = "rounded-lg p-2 border-neutral-300 ";
+        const inputStyle ="rounded-lg p-2 border-neutral-300  focus:ring-yellow-400 focus:outline-yellow-400 inputStyle";
     const divStyle = "flex flex-col w-full gap-1 p-4 flex-shrink ";
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
@@ -123,13 +123,13 @@ const EditUser = () => {
     };
 
     return (
-        <div className="flex flex-col border rounded-lg my-5 w-full lg:max-w-lg mx-auto font-Roboto    bg-white">
-            <div className="border-b  m-4 py-4 flex-shrink ">
-                <h2 className=" text-2xl font-bold p-2">Edit user</h2>
+        <div className="flex flex-col border dark:border-none dark:bg-[#22242B]  rounded-lg my-5 w-full lg:max-w-lg mx-auto font-public-sans    bg-white">
+            <div className="border-b   py-4 flex-shrink ">
+                <h2 className=" text-2xl font-bold p-1 px-4 labelStyle">Edit User</h2>
             </div>
             <form onSubmit={handleSubmit} className="">
                 <div className={divStyle}>
-                    <label htmlFor="name" className="">
+                    <label htmlFor="name" className="labelStyle">
                         Name
                     </label>
                     <input
@@ -141,7 +141,7 @@ const EditUser = () => {
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email" className="labelStyle">Email</label>
                     <input
                         type="email"
                         name="email"
@@ -172,14 +172,14 @@ const EditUser = () => {
                     )}
                 />
                 <div className={divStyle} >
-                    <label htmlFor="gender">Gender</label>
-                    <select name='gender' value={formData.gender} className={inputStyle+"cursor-pointer"} onChange={handleChange}>
+                    <label htmlFor="gender" className="labelStyle">Gender</label>
+                    <select name='gender' value={formData.gender} className={`cursor-pointer ${inputStyle}`} onChange={handleChange}>
                         <option value="female" >female</option>
                         <option value='male' >male</option>
                     </select>
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="role">Role</label>
+                    <label htmlFor="role" className="labelStyle">Role</label>
                     <input
                         type="text"
                         name="role"
@@ -189,7 +189,7 @@ const EditUser = () => {
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password" className="labelStyle">Password</label>
                     <input
                         type="password"
                         name="password"
@@ -200,7 +200,7 @@ const EditUser = () => {
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="password_confirmation">
+                    <label htmlFor="password_confirmation" className="labelStyle">
                         Confirm Password
                     </label>
                     <input
@@ -213,14 +213,14 @@ const EditUser = () => {
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="picture">Profile Picture</label>
+                    <label htmlFor="Profile picture" className="labelStyle">Profile Picture</label>
                     <img
                         src={currentPicture}
                         className="w-40 h-auto mx-auto my-4"
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="picture">Update Profile Picture</label>
+                    <label htmlFor="picture" className="labelStyle">Update Profile Picture</label>
                     <div
                         {...getRootProps()}
                         className="border-dashed border-2 p-8 rounded-lg text-center cursor-pointer "
@@ -230,7 +230,7 @@ const EditUser = () => {
                             fontSize="large"
                             className="text-gray-500 bg-neutral-200 mb-4"
                         />
-                        <p className="text sm">
+                        <p className="text sm labelStyle" >
                             Drag and drop your picture here, or click to select
                             file
                         </p>
@@ -249,7 +249,7 @@ const EditUser = () => {
 
                     <Link
                         to="/admin/users"
-                        className="w-24 m-6 rounded-md border p-2 border-red-500 text-red-500 text-base flex items-center justify-center hover:bg-red-50"
+                        className="w-24 m-6 rounded-md border p-2 border-red-500 text-red-500 text-base flex items-center justify-center hover:bg-red-300 hover:dark:text-neutral-700"
                     >
                         <CancelOutlinedIcon fontSize="small" className="" />
                         Cancel

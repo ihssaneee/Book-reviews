@@ -4,46 +4,69 @@
 
 /* Your custom styles here */
 body,
-html{
-   
-    margin:0;
-    padding:0;
-    height:100% !important;
-    background-color: #F4F4F4;
-    
-    
-    
+html {
+    margin: 0;
+    padding: 0;
+    height: 100% !important;
+    background-color: #f4f4f4;
 }
- .dark{
-  background-color: #1A1C23;
-  ::-webkit-scrollbar {
-    width: 10px !important;
+.dark {
+    background-color: #1a1c23;
+    ::-webkit-scrollbar {
+        width: 10px !important;
+    }
+}
+.dark .inputStyle {
+    @apply border-none bg-[#1A1C23] text-neutral-400;
+}
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #878a99 !important;
+}
+.labelStyle{
+  animation: fadeIn 1s ease;
+}
+.dark .labelStyle {
+    @apply text-neutral-300;
+    
+ } /* Corrected keyframe name */
+  @keyframes fadeIn{
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
 
-}
+
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
+    background: #888;
+    border-radius: 10px;
 }
 
+.yaxis-dark {
+    fill: #878a99;
+}
+.yaxis-light {
+    fill: #878a99 !important;
 }
 
-
-.yaxis-dark{
-  fill:#878A99;
-}
-.yaxis-light{
-  fill:#878A99 !important
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 .my-circle-icon circle {
     r: 7px; /* Default radius */
-  }
-  
-  .my-circle-icon.active circle {
+}
+
+.my-circle-icon.active circle {
     r: 8px; /* Radius when active */
-  }
+}

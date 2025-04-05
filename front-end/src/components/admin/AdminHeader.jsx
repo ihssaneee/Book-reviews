@@ -146,7 +146,7 @@ const AdminHeader = ({ toggle }) => {
                             ref={profileRef}
                             
                         >
-                            <div className=" flex items-center justify-center ">
+                            <div className=" flex items-center justify-center  ">
                                 {!loading ? (
                                     <>
                                         <img
@@ -178,7 +178,7 @@ const AdminHeader = ({ toggle }) => {
                                 !isVisible
                                     ? "hidden opacity-0"
                                     : "flex opacity-100"
-                            } items-center  flex-col   h-64 top-16    bg-white rounded-lg right-5 shadow-md max-w-64   `}
+                            } items-center  flex-col   h-64 top-16  border dark:border-neutral-800  bg-white rounded-lg right-5 shadow-md max-w-64 dark:bg-[#1A1C23] text-neutral  `}
                         >
                             <DropdownMenu
                                 handleLogout={handleLogout}

@@ -65,6 +65,20 @@ class ReviewController extends Controller
     public function show(Review $review)
     {
         //
+        try{
+            $review->load('user:id,name','book:id,title')->get();
+            return response()->json([
+                'message'=>"Review fetched successfully.",
+                'review'=>$review,
+            ],200);
+            }
+            catch(\Exception $e){
+                return response()->json([
+                    'message'=>'review could not be fetched successfully.',
+    
+                ],500);
+            }
+
     }
 
     /**
@@ -73,6 +87,7 @@ class ReviewController extends Controller
     public function edit(Review $review)
     {
         //
+        
     }
 
     /**

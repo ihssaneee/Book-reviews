@@ -15,4 +15,5 @@ module.exports = {
       tailwindcss: {},
       autoprefixer: {},
     },
+    includePaths: ['src'],
   };

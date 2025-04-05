@@ -56,11 +56,13 @@ const EditGenre = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white shadow-sm rounded-lg px-8 py-8 m-8 font-Roboto">
-      <h2 className="text-2xl mb-4">Edit Genre</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col">
+    <div className="max-w-md mx-auto bg-white shadow-sm rounded-lg py-8  font-public-sans dark:bg-[#22242B]">
+      <div className=" border-b  dark:border-b-neutral-500 p-3 py-2 flex-shrink w-full ">
+                <h2 className="text-2xl font-bold labelStyle animate-bounce duration-100">Edit Review</h2>
+            </div>
+      <form onSubmit={handleSubmit} className="flex flex-col p-8">
         <div className="flex flex-col mb-4">
-          <label htmlFor="name" className="block mb-2">
+          <label htmlFor="name" className="block mb-2 labelStyle">
             Name
           </label>
           <input
@@ -69,11 +71,11 @@ const EditGenre = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="border rounded p-2 focus:outline-none focus:ring-0 focus:border-yellow-500"
+            className="border inputStyle rounded p-2 focus:outline-none focus:ring-0 focus:border-yellow-500"
           />
         </div>
         <div className="flex flex-col mb-4">
-          <label htmlFor="description" className="block mb-2">
+          <label htmlFor="description" className="block mb-2 labelStyle">
             Description
           </label>
           <textarea
@@ -82,7 +84,7 @@ const EditGenre = () => {
             rows="4"
             value={formData.description}
             onChange={handleChange}
-            className="border rounded p-2 focus:outline-none focus:ring-0 focus:border-yellow-500"
+            className="border inputStyle rounded p-2 focus:outline-none focus:ring-0 focus:border-yellow-500"
           />
         </div>
         {error && <span className="text-red-500 mb-4">{error}</span>}
@@ -90,14 +92,14 @@ const EditGenre = () => {
         <div className="flex items-center gap-14 justify-center mx-16">
           <button
             type="submit"
-            className="flex w-28 my-4 items-center justify-center gap-1 text-white bg-yellow-500 hover:bg-white hover:text-yellow-600 hover:border-yellow-600 border rounded-md p-2"
+            className="flex w-28 my-4 items-center justify-center gap-1 text-white bg-yellow-500 hover:bg-white hover:text-yellow-600 hover:border-yellow-600 border rounded-md p-2 px-4"
           >
             <EditOutlinedIcon fontSize="small" />
             Edit
           </button>
           <Link
-            to="/dashboard/genres"
-            className="flex items-center max-w-28 justify-center gap-1 bg-blue-950 hover:border-blue-950 hover:ring-0 hover:outline-none hover:text-blue-950 hover:bg-white text-white px-4 py-2 rounded-md border"
+            to="/admin/genres"
+            className="w-24 m-6 rounded-md border p-2 border-red-500 text-red-500 text-base flex items-center justify-center hover:bg-red-50 hover:text-red-700"
           >
             <CancelOutlinedIcon fontSize="small" />
             Cancel

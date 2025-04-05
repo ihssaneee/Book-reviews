@@ -71,7 +71,7 @@ class GenreController extends Controller
     {
         //
         return response()->json([
-            'message'=>"genre fetchedd correctly!",
+            'message'=>"genre fetched correctly!",
             'genre'=>$genre,
         ]);
     }

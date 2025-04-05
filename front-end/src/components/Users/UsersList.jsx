@@ -169,7 +169,7 @@ const Users = () => {
         <div className="flex overflow-auto flex-col bg-white border dark:border-gray-600 dark:bg-[#22242B] dark:border-none  m-3">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
-                <div className="flex border items-center justify-center bg-yellow-400 dark:bg-yellow-500 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
+                <div className="flex rounded-sm items-center justify-center bg-yellow-500 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-600 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
                     <Link to="add" className="">
                         New User
@@ -189,16 +189,15 @@ const Users = () => {
                             <CloseIcon fontSize="large" className="m-1 p-1.5" />
                         )}
                     </div>
-                    <div className="flex rounded shadow items-center justify-center dark:border-[#22242B] border m-4">
+                    <div className="flex mx-4 px-1 h-auto  shadow items-center dark:bg-[#1A1C23]   border dark:border-none rounded-md ">
                         <input
                             type="search"
-                            className="border-none focus:ring-0  "
-                        ></input>
-                       <div className="">
-                        <div className="dark:bg-[#22242B] ">
-                            <SearchIcon className="dark:bg-inherit " />
+                            className="border-none focus:ring-0 dark:bg-[#1A1C23] dark:text-neutral-400 " />
+                      
+                        <div className=" ">
+                            <SearchIcon className=" dark:bg-[#1A1C23] dark:text-neutral-400 " />
                         </div>
-                    </div>
+                   
                     </div>
                 </div>
             </div>
@@ -213,13 +212,14 @@ const Users = () => {
                         type="text"
                         onChange={handleChange}
                         placeholder="Search User"
+                        className="inputStyle"
                     />
                 </div>
                 <div className="">
                     <select
                         value={selectedId}
                         onChange={handleIdChange}
-                        className="focus:ring-0 focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
+                        className="focus:ring-0 inputStyle focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
                     >
                         <option value="Choose ID">Choose ID</option>
                         {users.map((user) => (

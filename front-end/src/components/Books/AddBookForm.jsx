@@ -25,8 +25,9 @@ export default function AddBookForm() {
         { code: "zh", name: "Chinese" },
     ];
     const inputStyle =
-        "rounded-lg p-2 border-neutral-300  focus:ring-yellow-400 focus:outline-yellow-400";
+        "rounded-lg p-2 border-neutral-300  focus:ring-yellow-400 focus:outline-yellow-400 inputStyle";
     const divStyle = "flex flex-col  p-4 w-full gap-1 flex-shrink ";
+    const labelStyle="labelStyle";
     const { addBook } = useBooks();
     const { genres } = useGenres();
     const [error, setError] = useState(null);
@@ -122,13 +123,13 @@ export default function AddBookForm() {
     };
 
     return (
-        <div className="flex flex-col w-full  bg-white border   lg:max-w-lg m-auto my-5 rounded-md shadow  font-Roboto lg:text-base text-base">
-            <div className="border-b py-4 m-4 flex-shrink">
-                <h2 className="text-2xl font-bold">Add New Book </h2>
+        <div className="flex flex-col w-full  bg-white border dark:border-none dark:bg-[#22242B]   lg:max-w-lg m-auto my-5 rounded-md shadow  font-public-sans lg:text-base text-base">
+            <div className="border-b py-4 p-2 flex-shrink">
+                <h2 className="text-2xl labelStyle font-medium  ">Add New Book </h2>
             </div>
             <form onSubmit={handleSubmit} className="p-4">
                 <div className={divStyle}>
-                    <label htmlFor="author name">Author</label>
+                    <label htmlFor="author name" className={labelStyle}>Author</label>
                     <input
                         type="text"
                         name="author"
@@ -138,7 +139,7 @@ export default function AddBookForm() {
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="description" className={labelStyle}>Description</label>
                     <textarea
                         name="description"
                         rows={4}
@@ -148,7 +149,7 @@ export default function AddBookForm() {
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="genre_id">Select Genre</label>
+                    <label htmlFor="genre_id" className={labelStyle}>Select Genre</label>
                     <select
                         name="genre_id"
                         value={formData.genre_id}
@@ -164,7 +165,7 @@ export default function AddBookForm() {
                     </select>
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="book title">Title</label>
+                    <label htmlFor="book title" className={labelStyle}>Title</label>
                     <input
                         type="text"
                         name="title"
@@ -174,7 +175,7 @@ export default function AddBookForm() {
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="language">Language</label>
+                    <label htmlFor="language" className={labelStyle}>Language</label>
                     <select
                         name="language"
                         onChange={handleChange}
@@ -190,7 +191,7 @@ export default function AddBookForm() {
                     </select>
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="link">Link</label>
+                    <label htmlFor="link" className={labelStyle}>Link</label>
                     <input
                         type="text"
                         name="link"
@@ -200,7 +201,7 @@ export default function AddBookForm() {
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="year">Year</label>
+                    <label htmlFor="year" className={labelStyle}>Year</label>
                     <input
                         type="text"
                         name="year"
@@ -210,7 +211,7 @@ export default function AddBookForm() {
                     />
                 </div>
                 <div className={divStyle}>
-                    <label htmlFor="image">Update Profile Picture</label>
+                    <label htmlFor="image" className={labelStyle}>Update Profile Picture</label>
                     <div
                         {...getRootProps()}
                         className={`border-dashed border-2 p-8 rounded-lg text-center cursor-pointer ${
@@ -221,7 +222,7 @@ export default function AddBookForm() {
                             fontSize="large"
                             className="text-gray-500 bg-neutral-200 mb-4"
                         />
-                        <p className="text sm">
+                        <p className={`text-sm + ${labelStyle}`}>
                             Drag and drop your picture here, or click to select
                             file
                         </p>

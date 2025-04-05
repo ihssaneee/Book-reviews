@@ -54,11 +54,13 @@ const AddGenreForm = () => {
     };
 
     return (
-        <div className="max-w-md  mx-auto bg-white shadow-sm rounded-lg px-8 py-8 m-8 font-Roboto">
-            <h2 className="text-2xl mb-4">Add a New Genre</h2>
-            <form onSubmit={handleSubmit} className="flex flex-col">
+        <div className="max-w-md  mx-auto bg-white shadow-sm rounded-lg py-8 font-public-sans dark:bg-[#22242B]">
+             <div className=" border-b dark:border-b-neutral-500 p-3 flex-shrink w-full">
+                <h2 className="text-2xl font-bold labelStyle">Add New Genre</h2>
+            </div>
+            <form onSubmit={handleSubmit} className="flex flex-col p-8 p">
                 <div className="flex flex-col mb-4">
-                    <label htmlFor="name" className="block mb-2">
+                    <label htmlFor="name" className="block mb-2 labelStyle">
                         Name
                     </label>
                     <input
@@ -67,12 +69,12 @@ const AddGenreForm = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="border rounded p-2 focus:outline-none focus:ring-0 focus:border-yellow-500"
+                        className="border rounded inputStyle p-2 focus:outline-none focus:ring-0 focus:border-yellow-500"
                         required
                     />
                 </div>
                 <div className="flex flex-col mb-4">
-                    <label htmlFor="description" className="block mb-2">
+                    <label htmlFor="description" className="block mb-2 labelStyle">
                         Description
                     </label>
                     <textarea
@@ -82,7 +84,7 @@ const AddGenreForm = () => {
                         value={formData.description}
                         onChange={handleChange}
                         placeholder="Genre Description"
-                        className="border rounded p-2 focus:outline-none focus:ring-0 focus:border-yellow-500"
+                        className="border inputStyle rounded p-2 focus:outline-none focus:ring-0 focus:border-yellow-500"
                         required
                     />
                 </div>
@@ -90,17 +92,17 @@ const AddGenreForm = () => {
                 {success && (
                     <span className="text-green-500 mb-4">{success}</span>
                 )}
-                <div className="flex items-center  gap-14 justify-center mx-16">
+                <div className="flex items-center  gap-10 justify-center ">
                     <button
                         type="submit"
-                        className="flex w-28 my-4  items-center justify-center gap-1 text-white bg-yellow-500 hover:bg-white hover:text-yellow-600 hover:border-yellow-600 border rounded-md p-2"
+                      className="w-24 m-6  text-base p-2 rounded-md bg-yellow-300 flex items-center justify-center gap-2 hover:bg-yellow-400"
                     >
                         <AddIcon fontSize="small" />
                         Add
                     </button>
                     <Link
                         to="/admin/genres"
-                        className="flex items-center max-w-28 justify-center gap-1 bg-blue-950  hover:border-blue-950 hover:ring-0 hover:outline-none hover:text-blue-950 hover:bg-white text-white px-4 py-2 rounded-md border  "
+                        className="w-24 m-6 rounded-md border p-2 border-red-500 text-red-500 text-base flex items-center justify-center hover:bg-red-50 hover:text-red-400"
                     >
                         <CancelOutlinedIcon fontSize="small" />
                         Cancel

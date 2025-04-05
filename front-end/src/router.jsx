@@ -18,6 +18,7 @@ import UserProfile from './components/Users/user_profile';
 import Reviews from './components/reviews/ReviewsList';
 import AddReviewForm from './components/reviews/AddReview';
 import Dashboard from './components/charts/Dashboard';
+
 const router=createBrowserRouter([
     {
         path:'/login',
@@ -95,8 +96,8 @@ const router=createBrowserRouter([
             {
                 path:"reviews/add",
                 element:<AddReviewForm />,
-            }
-            
+            },
+           
         ]
     },
   

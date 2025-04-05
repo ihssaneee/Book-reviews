@@ -115,10 +115,10 @@ const ReusableTable = ({
     const paginatedData = hasData ? data.slice(startIndex, endIndex) : [];
 
     return (
-        <div className="overflow-x-auto table-scrollbar  dark:bg-[#22242B] dark:text-white dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 ">
+        <div className="overflow-x-auto table-scrollbar  dark:bg-[#22242B]  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 ">
           <table className="min-w-full  mt-3  bg-white table-auto font-public-sans  dark:bg-[#22242B] dark:text-white">
                 <thead>
-                    <tr className="text-sm text-left dark:bg-[#22242B] bg-white shadow-sm text-zinc-500 border dark:border-gray-600 py-3   dark:text-white">
+                    <tr className="text-sm text-left dark:bg-[#22242B] bg-white shadow-sm text-zinc-500 border-b dark:border-gray-600 py-3   dark:text-neutral-400">
                         {columns.map((column) => (
                             <th
                                 key={column.key}

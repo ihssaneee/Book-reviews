@@ -90,10 +90,10 @@ const Books = () => {
     }
 
     return (
-        <div className="flex flex-col  w-full bg-white border dark:border-none dark:bg-[#22242B]">
+        <div className="flex flex-col  w-full bg-white border dark:border-none dark:bg-[#22242B] font-public-sans">
             {/* Header section with Add button and filter toggle */}
             <div className="flex justify-between items-center">
-                <div className="flex border items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
+                <div className="flex rounded-sm items-center justify-center bg-yellow-400 text-slate-50 w-32 p-2 m-4 cursor-pointer hover:bg-yellow-500 hover:text-white">
                     <AddIcon fontSize="medium" className="" />
                     <Link to="add" className="">
                         New Book
@@ -102,7 +102,7 @@ const Books = () => {
                 <div className="flex items-center justify-center">
                     <div
                         onClick={handleClick}
-                        className="border flex items-center justify-center bg-yellow-400 text-white w-10 h-10 cursor-pointer hover:opacity-70"
+                        className="rounded-sm flex items-center justify-center bg-yellow-400 text-white w-10 h-10 cursor-pointer hover:opacity-70"
                     >
                         {!isVisible ? (
                             <FilterAltIcon
@@ -113,12 +113,15 @@ const Books = () => {
                             <CloseIcon fontSize="large" className="m-1 p-1.5" />
                         )}
                     </div>
-                    <div className="flex rounded shadow items-center justify-center border m-4">
+                         
+                    <div className="flex mx-4 px-1 h-auto  shadow items-center dark:bg-[#1A1C23]   border dark:border-none rounded-md ">
                         <input
                             type="search"
-                            className="border-none focus:ring-0"
+                            className="border-none focus:ring-0 dark:bg-[#1A1C23] dark:text-neutral-400"
                         ></input>
-                        <SearchIcon />
+                        <div className="py-2">
+                        <SearchIcon className="dark:bg-[#1A1C23] dark:text-neutral-400 " fontSize="medium"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -132,16 +135,17 @@ const Books = () => {
                     <input
                         type="text"
                         onChange={handleChange}
-                        placeholder="Search User"
+                        placeholder="Search Book"
+                        className="focus:ring-0 focus:outline-none dark:bg-[#1A1C23] dark:border-none dark:text-neutral-400"
                     />
                 </div>
                 <div className="">
                     <select
                         value={selectedId}
                         onChange={handleIdChange}
-                        className="focus:ring-0 focus:border-zinc-300 border-zinc-300 rounded text-zinc-500 font-Roboto"
+                       className="focus:ring-0 focus:outline-none dark:bg-[#1A1C23] dark:border-none dark:text-neutral-400"
                     >
-                        <option value="Choose ID">Choose ID</option>
+                        <option value="Choose ID"  >Choose ID</option>
                         {books.map((user) => (
                             <option key={user.id} value={user.id}>
                                 {user.id}
