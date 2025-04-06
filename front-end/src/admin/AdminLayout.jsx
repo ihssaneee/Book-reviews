@@ -45,7 +45,7 @@ export default function AdminLayout() {
                 <section
                     className={`${
                         toggled ? "lg:pl-24" : "lg:pl-[17rem] "
-                    } mt-24   `}
+                    } mt-20   `}
                 >
                     <Outlet />
                 </section>

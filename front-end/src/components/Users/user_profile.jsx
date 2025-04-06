@@ -30,21 +30,21 @@ export default function UserProfile() {
     };
 
     return (
-        <div className=" font-Roboto h-auto pb-2  ">
-            <div className="relative bg-white min-h-[350px] ">
+        <div className=" font-public-sans h-full  mx-5  ">
+            <div className="relative min-h-[350px] bg-white dark:bg-[#22242B]  dark:text-neutral-400 ">
                 <div className="">
                     <img
                         src="/images/default_cover.webp"
-                        className="w-screen h-56 border object-cover"
+                        className="w-screen h-56  object-cover"
                     />
                     <div className="absolute top-44 left-6">
                         <img
                             src={user.picture}
-                            className="w-40 h-40  rounded-full object-cover border-4"
+                            className="w-40 h-40  rounded-full object-cover border-4  dark:border-[#1A1C23]"
                         />
                         <button
                             onClick={handleClick}
-                            className="absolute bottom-6 left-32  bg-gray-200 rounded-full hover:bg-opacity-85"
+                            className="absolute bottom-6 left-32  bg-gray-200 rounded-full hover:bg-opacity-85 dark:bg-[#1A1C23]  dark:text-neutral-400"
                         >
                             <EditIcon fontSize="large" className="p-2 " />
                         </button>
@@ -64,20 +64,20 @@ export default function UserProfile() {
                 </div>
             </div>
         
-            <div className="relative block bg-white my-8 font-Inter ">
-                    <div className="border-b p-4 font-medium">
-                        <h5>General Info</h5>
+            <div className="relative block pb-1  bg-white mt-8 font-public-sans h-auto dark:bg-[#22242B] labelStyle dark:border-neutral-800 dark:border ">
+                    <div className="border-b dark:border-neutral-800 p-4 font-medium dark:bg-[#22242B]">
+                        <h5 className="labelStyle ">General Info</h5>
                     </div>
            
-                <table className="border table-auto w-full text-sm text-slate-600 font-medium">
+                <table className="border inputStyle  table-auto w-full text-sm text-slate-600 font-medium   ">
                     <tbody>
-                        <tr className=" ">
+                        <tr className= "">
                             <td className="px-6 ">Name</td>
                             <td className="p-2">-</td>
                             <td className="text-left">{user.name}</td>
                         </tr>
-                        <tr className="" >
-                        <td className="px-6">Email</td>
+                        <tr className="dark:bg-[#22242B]" >
+                        <td className="px-6 ">Email</td>
                             <td className="p-2">-</td>
                             <td className="text-left">{user.email}</td>
                         </tr>
@@ -87,7 +87,7 @@ export default function UserProfile() {
                             <td className="text-left">{user.gender}</td>
                         </tr>
                         
-                        <tr className="" >
+                        <tr className="dark:bg-[#22242B]" >
                         <td className="px-6">phone number</td>
                             <td className="p-2">-</td>
                             <td className="text-left">{user.phone_number}</td>
@@ -97,7 +97,7 @@ export default function UserProfile() {
                             <td className="p-2">-</td>
                             <td className="text-left">{user.country}</td>
                         </tr>
-                        <tr className="" >
+                        <tr className="dark:bg-[#22242B]" >
                         <td className="px-6">Reviews Count</td>
                             <td className="p-2">-</td>
                             <td className="text-left">{user.reviews_count}</td>

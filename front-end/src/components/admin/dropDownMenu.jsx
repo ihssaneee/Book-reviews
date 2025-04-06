@@ -30,13 +30,13 @@ const DropdownMenu = ({handleLogout,isVisible}) => {
                 />
                 Profile
             </Link>
-            <a href="#" className={LinkStyle}>
+            <Link to="settings" className={LinkStyle}>
                 <SettingsOutlinedIcon
                     fontSize="medium"
                     className="mr-2 text-[#878A99] dark:text-slate-500"
                 />
                 Settings
-            </a>
+            </Link>
             <button
                 onClick={handleLogout}
                 className={LinkStyle}

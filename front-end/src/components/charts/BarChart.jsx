@@ -74,6 +74,11 @@ export default function BarChart(){
                     formatter: function(val) {
                         return val.toFixed();
                     },
+                    style: {
+                        cssClass: darkMode ? "yaxis-dark" : "yaxis-light",
+                        fontFamily:"Public Sans,sans-serif",
+                        fontSize:"14px",
+                    },
                    
                 },
             },

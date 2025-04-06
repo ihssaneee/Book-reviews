@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-const CustomDropdown = ({ options, value, onChange, placeholder, renderOption }) => {
+const CustomDropdown = ({ options, value, onChange, placeholder, renderOption,className=null }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     // Handle option selection
@@ -13,7 +13,7 @@ const CustomDropdown = ({ options, value, onChange, placeholder, renderOption })
     };
 
     return (
-        <div className="relative  mx-4 rounded-md  ">
+        <div className={`${className?className:"relative  mx-4 rounded-md "}`}>
             <label htmlFor="country" className="labelStyle">country</label>
             {/* Dropdown Button */}
             <button
