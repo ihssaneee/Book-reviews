@@ -94,4 +94,60 @@ class AuthController extends Controller
     
             return response()->json(['status' => 'success']);
         }
+        public function validatePassword(Request $request){
+            try{
+                $user=Auth::user();
+                $isValid=Hash::check($request->password,$user->password);
+                return response()->json([
+                    'message'=>'password is validated  successfully',
+                    'isValid'=>$isValid,
+                ],200);
+            }
+            catch(\Exception $e){
+                Log::info("an error occured with verification of password". $e->getMessage());
+                return response()->json([
+                    'message'=>'password validation failed',
+                    
+                ],500);
+            }
+        }
+        public function updatePassword(Request $request){
+            $validatedPassword=$request->validate([
+                'password' => 'required|string|min:4|confirmed',
+            ]);
+            try{
+                 /** @var \App\Models\User $user */
+                $user=Auth::user();
+                $user->password=Hash::make($validatedPassword['password']);
+                $user->save();
+                return response()->json([
+                    'message'=>'password updated successfully',
+
+                ],200);
+            }
+            catch(\Exception $e){
+                Log::info('password could not be udpated' . $e->getMessage());
+                return response()->json([
+                    'message'=>"password could not be updated"
+                ],500);
+            }
+        }
+        public function deleteAuthenticatedUser(Request $request ){
+            try{
+                /** @var \App\Models\User $user */
+                $user=Auth::user();
+                $user->delete();
+                return response()->json([
+                    'message'=>"Account has been deleted successfully",
+
+                ],200);
+
+            }
+            catch(\Exception $e){
+                Log::info('Account could not be deleted ' .$e->getMessage());
+                return response()->json([
+                    'message'=>"Account could not be deleted"
+                ],500);
+            }
+        }
     }

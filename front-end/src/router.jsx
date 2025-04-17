@@ -98,6 +98,7 @@ const router=createBrowserRouter([
                 path:"reviews/add",
                 element:<AddReviewForm />,
             },
+            //authenticated user settings
             {
                 path:"settings",
                 element:<Settings />,

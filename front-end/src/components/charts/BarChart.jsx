@@ -67,7 +67,7 @@ export default function BarChart(){
                 
             },
             xaxis: {
-                categories: data.map(item=>item.book_title),
+                categories: data&&data.map(item=>item.book_title),
                 min: 0,
                 forceNiceScale: true,
                 labels: {
@@ -95,6 +95,11 @@ export default function BarChart(){
 
 
               
+        }
+        if (data&&data.length<0){
+            return (<div className="">
+                No data to fetch
+            </div>)
         }
 
         return (

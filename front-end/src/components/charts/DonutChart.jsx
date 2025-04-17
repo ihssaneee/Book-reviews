@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Oval } from "react-loader-spinner";
 import { usersByCountry } from "../../utils/api";
 import { useDarkMode } from "../../contexts/DarkModeContext";
-import { dark } from "@mui/material/styles/createPalette";
+
 export default function DonutChart() {
     const {darkMode}=useDarkMode();
     const { data, isLoading, error, isError } = useQuery({
@@ -12,8 +12,10 @@ export default function DonutChart() {
         queryFn: usersByCountry,
         staleTime: 1000 * 60 * 5,
     });
-
-    const series = data ? data.map((item) => item.users_percent) : [];
+    if (data&&data.length>0){
+        console.log(data)
+    }
+    const series = data ?data.map((item) => item.users_percent) : [];
     const options = {
         chart: {
             type: "donut",
@@ -23,7 +25,7 @@ export default function DonutChart() {
         dataLabels: {
             enabled: true,
             formatter: function (val) {
-                return val + "%";
+                return val.toFixed(2) + "%";
             },
             
         },
@@ -52,6 +54,11 @@ export default function DonutChart() {
         stroke: { show: false },
         colors: ["#405189", "#0ab39c", "#f7b84b", "#f06548", "#299cdb"],
     };
+    if (data&&data.length<0){
+        return (<div className="">
+            No data to fetch
+        </div>)
+    }
 
     return (
         <>

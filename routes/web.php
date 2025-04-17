@@ -27,6 +27,11 @@ Route::middleware(['auth:sanctum'])->group(function(){
     //current authenticated user 
     Route::get('/user',[AuthController::class,'user']);
     Route::put('/user/status',[AuthController::class,'updateStatus']);
+    Route::delete('/user/delete',[AuthController::class,'deleteAuthenticatedUser']);
+    //validate password
+    Route::post('/validate-password',[AuthController::class,'validatePassword']);
+    Route::put('/update-password',[AuthController::class,'updatePassword']);
+    
     
 });
 

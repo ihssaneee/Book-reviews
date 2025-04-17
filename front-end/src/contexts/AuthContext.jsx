@@ -82,6 +82,27 @@ const AuthProvider = ({ children }) => {
         }
 
     }
+    //update user password
+    const updatePassword=async(updatedPassword)=>{
+        try{
+            await axiosInstance.put('/update-password',updatedPassword);
+            console.log('password updated successfully');
+        }
+        catch(error){
+            console.error('password could not be updated',error);
+            throw error;
+        }
+    };
+    const deleteAuthenticatedUser=async()=>{
+        try{
+            await axiosInstance.delete('/user/delete');
+            console.log('account deleted successfully');
+        }
+        catch(error){
+            console.error('account could not be deleted',error);
+            throw error;
+        }
+    }
 
     const value = {
         user,
@@ -91,7 +112,9 @@ const AuthProvider = ({ children }) => {
         loginLoading,
         updateUser,
         updateStatus,
-        isAuthenticated
+        isAuthenticated,
+        updatePassword,
+        deleteAuthenticatedUser
     };
 
 

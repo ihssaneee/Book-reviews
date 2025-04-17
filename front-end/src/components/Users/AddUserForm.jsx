@@ -156,8 +156,8 @@ export default function AddUserForm() {
         console.log("countries fetched successfully", countries);
     }, [countries]);
     return (
-        <div className="flex flex-col   bg-white border dark:border-none dark:bg-[#22242B]  max-w-lg m-auto my-5 rounded-md shadow  font-Inter lg:text-base text-sm">
-            <div className=" border-b  p-4 flex-shrink">
+        <div className="flex flex-col   bg-white border dark:border-none dark:bg-[#22242B]  max-w-lg m-auto my-5 rounded-md shadow  font-public-sans lg:text-base text-sm">
+            <div className=" border-b dark:border-b-neutral-600  p-4 flex-shrink">
                 <h2 className="text-2xl font-bold labelStyle">Add New User</h2>
             </div>
             <form onSubmit={handleSubmit}>
@@ -188,8 +188,9 @@ export default function AddUserForm() {
                         Country
                     </label>
                     <div
-                        className="mt-1  w-full border border-gray-300 dark:border-none inputStyle rounded-md p-3  cursor-pointer flex items-center justify-between"
+                        className="mt-1  w-full border focus:outline focus:ring-yellow-400  focus:outline-yellow-400 border-gray-300 dark:border-none inputStyle rounded-md p-3  cursor-pointer flex items-center justify-between"
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        tabIndex="0"
                     >
                         <button type="button " className="flex   ">
                             {formData.country ? (

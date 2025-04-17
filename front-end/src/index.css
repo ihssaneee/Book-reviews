@@ -3,29 +3,37 @@
 @tailwind utilities;
 
 /* Your custom styles here */
-body,
-html {
+body,html {
     margin: 0;
     padding: 0;
     height: 100% !important;
     background-color: #f4f4f4;
 }
-.dark {
+.dark body,.dark {
     background-color: #1a1c23;
-    ::-webkit-scrollbar {
-        width: 10px !important;
-    }
+}
+.dark ::-webkit-scrollbar {
+    width: 10px !important;
 }
 .dark .inputStyle {
     @apply border-none bg-[#1A1C23] text-neutral-400;
 }
-/* Change the white to any color */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    -webkit-background-clip: text;
+.dark .loginStyle:-webkit-autofill,
+.dark  .loginStyle:-webkit-autofill:hover,
+.dark .loginStyle:-webkit-autofill:focus,
+.dark .loginStyle:-webkit-autofill:active {
     -webkit-text-fill-color: #878a99 !important;
+    -webkit-box-shadow: 0 0 0px 1000px #22242B inset !important;
+}
+/* Change the white to any color */
+.dark input:-webkit-autofill,
+.dark  input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+    
+    -webkit-text-fill-color: #878a99;
+    -webkit-box-shadow: 0 0 0px 1000px #1A1C23 inset;
+    border:solid 1px 1A1C23 ;
 }
 .labelStyle{
   animation: fadeIn 1s ease;
@@ -67,6 +75,7 @@ input:-webkit-autofill:active {
     r: 7px; /* Default radius */
 }
 
-.my-circle-icon.active circle {
+.my-circle-icon circle {
     r: 8px; /* Radius when active */
 }
+

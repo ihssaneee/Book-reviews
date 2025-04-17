@@ -34,7 +34,7 @@ export default function Linechart() {
     const series = [
         {
             name: "Users registered",
-            data: data.map((item) => item.user_count),
+            data:data&& data.map((item) => item.user_count),
         },
     ];
     const options = {
@@ -48,7 +48,7 @@ export default function Linechart() {
             },
         },
         xaxis: {
-            categories: data.map((item) => `${item.year}-${item.month.toString().padStart(2, "0")}`),
+            categories:data&& data.map((item) => `${item.year}-${item.month.toString().padStart(2, "0")}`),
            title:{
             text:"Month",
             style:{
@@ -112,6 +112,11 @@ export default function Linechart() {
         
        
     }};
+    if (data&&data.length<0){
+        return (<div className="">
+            No data to fetch
+        </div>)
+    }
     return (
         <div className="my-4 bg-white border dark:bg-[#22242B]  dark:border-none  rounded-md p-2  shadow-sm" >
             <ReactApexChart

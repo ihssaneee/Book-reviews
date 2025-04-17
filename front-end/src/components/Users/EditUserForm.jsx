@@ -8,6 +8,7 @@ import AddIcon from "@mui/icons-material/Add";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import CustomDropdown from "../../shared/custom_dropdown";
 import { fetchCountries } from "../../utils/api";
+import { useQuery } from "@tanstack/react-query";
 
 const EditUser = () => {
     const [formData, setFormData] = useState({
@@ -20,6 +21,11 @@ const EditUser = () => {
         password_confirmation: "",
         picture: null,
     });
+    const {data: fetchedCountries, isLoading, error: queryError, isError} = useQuery({
+            queryKey:['countries'],
+            queryFn:fetchCountries,
+
+    })
     const [countries, setCountries] = useState([]);
     const onDrop = (acceptedFiles) => {
         setFormData({
@@ -63,9 +69,7 @@ const EditUser = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const fetchedCountries = await fetchCountries();
-                setCountries(fetchedCountries);
-
+              
                 const user = await showUser(id);
                 const selectedCountry = fetchedCountries.find(
                     (country) => country.cca2 === user.country
@@ -83,7 +87,7 @@ const EditUser = () => {
                 });
 
                 setCurrentPicture(user.picture);
-                console.log("user fetched successfuly");
+                console.log("user fetched successfuly",user.picture);
             } catch (error) {
                 console.error("user could not be fetched", error);
             }
@@ -127,7 +131,7 @@ const EditUser = () => {
             <div className="border-b   py-4 flex-shrink ">
                 <h2 className=" text-2xl font-bold p-1 px-4 labelStyle">Edit User</h2>
             </div>
-            <form onSubmit={handleSubmit} className="">
+            <form onSubmit={handleSubmit} className="" autoComplete="off">
                 <div className={divStyle}>
                     <label htmlFor="name" className="labelStyle">
                         Name
@@ -151,8 +155,9 @@ const EditUser = () => {
                     />
                 </div>
                 <CustomDropdown
-                    options={countries}
+                    options={fetchedCountries}
                     value={formData.country}
+                    style="relative rounded-md mx-4"
                     onChange={(selectedCountry) =>
                         setFormData((prevData) => ({
                             ...prevData,
