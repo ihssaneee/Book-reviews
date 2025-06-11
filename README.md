@@ -121,13 +121,13 @@ View platform statistics including:
 ---
 
 ## **Screenshots**
-@['users Screenshot'](https://tinyurl.com/246ngsfj) 
-@['Books Screenshot'](https://tinyurl.com/29aztx3a) 
-@['Reviews Screenshot'](https://tinyurl.com/25hh55q4) 
-@['User profile Screenshot'](https://tinyurl.com/223d3um6) 
-@['Update Password Screenshot'](https://tinyurl.com/2dp5yg8b) 
-@['Delete User Account Screenshot'](https://tinyurl.com/2y4yxmwj) 
-@['Add new Review Screenshot'](https://tinyurl.com/27t3p5dt) 
+!['users Screenshot'](https://tinyurl.com/246ngsfj) 
+!['Books Screenshot'](https://tinyurl.com/29aztx3a) 
+!['Reviews Screenshot'](https://tinyurl.com/25hh55q4) 
+!['User profile Screenshot'](https://tinyurl.com/223d3um6) 
+!['Update Password Screenshot'](https://tinyurl.com/2dp5yg8b) 
+!['Delete User Account Screenshot'](https://tinyurl.com/2y4yxmwj) 
+!['Add new Review Screenshot'](https://tinyurl.com/27t3p5dt) 
     
 
 ## **Contributing**
