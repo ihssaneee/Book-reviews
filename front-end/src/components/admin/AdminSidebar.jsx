@@ -16,7 +16,7 @@ export default function AdminSidebar({ toggled, toggle }) {
 
     return (
         <div
-            className={`top-0 left-0 h-dvh  dark:bg-[#1A1C23] dark:text-white bg-[#000035] border border-gray-500 rounded-none transition-all duration-300 ease-in-out `}
+            className={`top-0 left-0 h-dvh  dark:bg-[#1A1C23] dark:text-white bg-[#000035] border-r border-gray-800 rounded-none transition-all duration-300 ease-in-out `}
         >
             <div className="flex items-center justify-center pb-6 items ">
                 {width >= 1020 ? (

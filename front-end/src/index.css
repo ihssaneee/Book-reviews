@@ -21,9 +21,11 @@ body,html {
 .dark .loginStyle:-webkit-autofill,
 .dark  .loginStyle:-webkit-autofill:hover,
 .dark .loginStyle:-webkit-autofill:focus,
-.dark .loginStyle:-webkit-autofill:active {
+.dark .loginStyle:-webkit-autofill:active
+ {
     -webkit-text-fill-color: #878a99 !important;
     -webkit-box-shadow: 0 0 0px 1000px #22242B inset !important;
+    color:#878a99
 }
 /* Change the white to any color */
 .dark input:-webkit-autofill,

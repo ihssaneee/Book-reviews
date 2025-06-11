@@ -42,10 +42,17 @@ export default function Login() {
 
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 dark:bg-[#1A1C23] ">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-neutral-400">
+           <div className="flex min-h-full  flex-1 flex-col justify-center px-6 py-4 pt-8 lg:px-8">
+                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                    <img
+                        alt=""
+                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                        className="mx-auto h-10 w-auto"
+                    />
+                    <h2 className="mt-6 labelStyle text-center text-2xl/9 font-bold tracking-tight text-gray-900">
                     Sign in to your account
-                </h2>
+                    </h2>
+                </div>
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -53,7 +60,7 @@ export default function Login() {
                     <div>
                         <label
                             htmlFor="email"
-                            className="block text-sm/6 font-medium text-gray-900 "
+                            className="block text-sm/6 font-medium text-gray-900 labelStyle"
                         >
                             Email address
                         </label>
@@ -62,6 +69,7 @@ export default function Login() {
                                 id="email"
                                 name="email"
                                 type="email"
+                                value={email}
                                 required
                                 autoComplete="email"
                                 onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +82,7 @@ export default function Login() {
                         <div className="flex items-center justify-between">
                             <label
                                 htmlFor="password"
-                                className="block text-sm/6 font-medium text-gray-900"
+                                className="block text-sm/6 font-medium text-gray-900 labelStyle"
                             >
                                 Password
                             </label>
@@ -92,6 +100,7 @@ export default function Login() {
                                 id="password"
                                 name="password"
                                 type="password"
+                                value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                                 autoComplete="current-password"
