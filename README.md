@@ -42,10 +42,10 @@ This dashboard is an integral part of the **BookReview** platform, enabling admi
 - Toggle user statuses (e.g., active/inactive) with real-time feedback.
 
 ### **Statistics and Analytics**
-    View platform statistics including:
-        - Montly user growth.
-        -Most popular books based on books reviews.
-        -User distribution by country.
+View platform statistics including:
+- Montly user growth.
+- Most popular books based on books reviews.
+- User distribution by country.
 
 
 ---
