@@ -121,13 +121,13 @@ View platform statistics including:
 ---
 
 ## **Screenshots**
-!['users Screenshot'](https://tinyurl.com/246ngsfj) 
-!['Books Screenshot'](https://tinyurl.com/29aztx3a) 
-!['Reviews Screenshot'](https://tinyurl.com/25hh55q4) 
-!['User profile Screenshot'](https://tinyurl.com/223d3um6) 
-!['Update Password Screenshot'](https://tinyurl.com/2dp5yg8b) 
-!['Delete User Account Screenshot'](https://tinyurl.com/2y4yxmwj) 
-!['Add new Review Screenshot'](https://tinyurl.com/27t3p5dt) 
+!['users Screenshot'](https://www.awesomescreenshot.com/image/54930403?key=31a9d316b07c5311e8fa76f83b7bfe24) 
+!['Books Screenshot'](https://www.awesomescreenshot.com/image/54930358?key=8cdd38ac6a8172c1642ce9facc08b00e) 
+!['Reviews Screenshot'](https://www.awesomescreenshot.com/image/54930372?key=add3f15011ff3e4f72ea7367caca7175) 
+!['User profile Screenshot'](https://www.awesomescreenshot.com/image/54930390?key=b012b338624b24a28c458492b214d21e) 
+!['Update Password Screenshot'](https://www.awesomescreenshot.com/image/54930401?key=4bd38d4eff3e4137477dea1fd02a4fef) 
+!['Delete User Account Screenshot'](https://www.awesomescreenshot.com/image/54930399?key=d7b0cd868680dcf382bd0ab8cb6fcb34) 
+!['Add new Review Screenshot'](https://www.awesomescreenshot.com/image/54930375?key=1b4c06788c715b76c0afcb379d0b37e3https://tinyurl.com/27t3p5dt) 
     
 
 ## **Contributing**
