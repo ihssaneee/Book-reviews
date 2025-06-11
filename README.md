@@ -121,13 +121,13 @@ View platform statistics including:
 ---
 
 ## **Screenshots**
-!['users Screenshot'](https://www.awesomescreenshot.com/image/54930403?key=31a9d316b07c5311e8fa76f83b7bfe24) 
-!['Books Screenshot'](https://www.awesomescreenshot.com/image/54930358?key=8cdd38ac6a8172c1642ce9facc08b00e) 
-!['Reviews Screenshot'](https://www.awesomescreenshot.com/image/54930372?key=add3f15011ff3e4f72ea7367caca7175) 
-!['User profile Screenshot'](https://www.awesomescreenshot.com/image/54930390?key=b012b338624b24a28c458492b214d21e) 
-!['Update Password Screenshot'](https://www.awesomescreenshot.com/image/54930401?key=4bd38d4eff3e4137477dea1fd02a4fef) 
-!['Delete User Account Screenshot'](https://www.awesomescreenshot.com/image/54930399?key=d7b0cd868680dcf382bd0ab8cb6fcb34) 
-!['Add new Review Screenshot'](https://www.awesomescreenshot.com/image/54930375?key=1b4c06788c715b76c0afcb379d0b37e3https://tinyurl.com/27t3p5dt) 
+!['users Screenshot'](https://awesomescreenshot.s3.amazonaws.com/image/6484468/54930403-4a139bcb9b94fb4690db2ae4ec93f880.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20250611%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250611T172918Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=021dd6bc25d0bfa476c487c2c9450e40789e026971531a7bc765b0e46bfba7e0) 
+!['Books Screenshot'](https://awesomescreenshot.s3.amazonaws.com/image/6484468/54930358-422e5f70e8c52e4b1c96b1accd9ee466.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20250611%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250611T173031Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=3f442d550ccc437866e312001f11b46e1348a3cd2fd130cf90b688d5b37b3f3ahttps://tinyurl.com/29aztx3a) 
+!['Reviews Screenshot'](https://awesomescreenshot.s3.amazonaws.com/image/6484468/54930372-9f27db27cfe945a48664accce95fed3b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20250611%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250611T173057Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=4217c240c571d50316f238485ab72861f505a82306fd9df62a04a2d3ffa3c865) 
+!['User profile Screenshot'](https://awesomescreenshot.s3.amazonaws.com/image/6484468/54930390-a3b20aa966df12c6b6cb794a10e99739.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20250611%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250611T173122Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=47cfff9ee594a9cf225a39bd74b0f51ce40e31289a02dfb22622268f6e5e7360) 
+!['Update Password Screenshot'](https://awesomescreenshot.s3.amazonaws.com/image/6484468/54930401-963dcff9cb07c2c92be4c43871ce4e80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20250611%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250611T173147Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=7a42e0461a0a3d0e00f9ac1ca670d4d83fb51130287396c2df6b784e3e2948a0) 
+!['Delete User Account Screenshot'](https://awesomescreenshot.s3.amazonaws.com/image/6484468/54930399-040982e011aef48b8b6f2c219820c90e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20250611%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250611T173215Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=444de634fa8e6548402538c0e16f7d57ac7c96544a20a52cddadb15d6b81aa7e) 
+!['Add new Review Screenshot'](https://awesomescreenshot.s3.amazonaws.com/image/6484468/54930375-25e4cdf3c8222457f9928a6cb31fa9c0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20250611%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250611T173236Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=3a6b0b298054e616eb4c2d571f28c04c10ccc7bc930f04a538f3b8a30d3b45f8) 
     
 
 ## **Contributing**
